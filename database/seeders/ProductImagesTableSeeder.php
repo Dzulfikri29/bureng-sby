@@ -21,21 +21,21 @@ class ProductImagesTableSeeder extends Seeder
         \DB::table('product_images')->insert(array (
             0 => 
             array (
-                'id' => 46,
+                'id' => 48,
                 'product_id' => 5,
-                'image' => 'product/master-gemuk-16823272033lyTi3ql.png',
+                'image' => 'product/daging-sapi-segar-1682484578OnOWJruq.jpg',
                 'is_main' => 0,
-                'created_at' => '2023-04-24 09:06:43',
-                'updated_at' => '2023-04-24 09:06:43',
+                'created_at' => '2023-04-26 11:49:38',
+                'updated_at' => '2023-04-26 11:49:38',
             ),
             1 => 
             array (
-                'id' => 47,
+                'id' => 49,
                 'product_id' => 6,
-                'image' => 'product/makanan-hewan-16823274090Jifxa7m.png',
+                'image' => 'product/susu-sapi-segar-1682484882m69QTWWz.jpg',
                 'is_main' => 0,
-                'created_at' => '2023-04-24 09:10:09',
-                'updated_at' => '2023-04-24 09:10:09',
+                'created_at' => '2023-04-26 11:54:42',
+                'updated_at' => '2023-04-26 11:54:42',
             ),
         ));
         

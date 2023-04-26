@@ -37,6 +37,7 @@ class SectionController extends Controller
                     $action['edit'] = route("admin.$this->view_folder.edit", [$this->view_folder => $row->id]);
                     $action['delete'] = route("admin.$this->view_folder.destroy", [$this->view_folder => $row->id]);
                     $action['main'] = $this->view_folder;
+                    $action['can_delete'] = false;
 
                     return view('admin.component.action_button', $action);
                 })

@@ -22,7 +22,7 @@ class SectionImagesTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 10,
-                'section_id' => 8,
+                'section_id' => 9,
                 'path' => 'section/bagian-1-1682318394Wklyf1X3.jpg',
                 'created_at' => '2023-04-24 06:39:56',
                 'updated_at' => '2023-04-24 06:39:56',
@@ -30,7 +30,7 @@ class SectionImagesTableSeeder extends Seeder
             1 => 
             array (
                 'id' => 13,
-                'section_id' => 9,
+                'section_id' => 8,
                 'path' => 'section/bagian-2-16823197784Dlg5kFV.jpeg',
                 'created_at' => '2023-04-24 07:02:58',
                 'updated_at' => '2023-04-24 07:02:58',
@@ -46,7 +46,7 @@ class SectionImagesTableSeeder extends Seeder
             3 => 
             array (
                 'id' => 15,
-                'section_id' => 8,
+                'section_id' => 9,
                 'path' => 'section/bagian-1-1682319991erqKjei5.jpg',
                 'created_at' => '2023-04-24 07:06:31',
                 'updated_at' => '2023-04-24 07:06:31',
@@ -54,7 +54,7 @@ class SectionImagesTableSeeder extends Seeder
             4 => 
             array (
                 'id' => 16,
-                'section_id' => 8,
+                'section_id' => 9,
                 'path' => 'section/bagian-1-1682321280BWo9DQcy.jpeg',
                 'created_at' => '2023-04-24 07:28:00',
                 'updated_at' => '2023-04-24 07:28:00',

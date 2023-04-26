@@ -22,16 +22,16 @@ class ProductCategoriesTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 19,
-                'name' => 'Vitamin Hewan',
+                'name' => 'Makanan Mentah',
                 'created_at' => '2023-04-18 05:13:43',
-                'updated_at' => '2023-04-24 09:04:56',
+                'updated_at' => '2023-04-26 11:55:33',
             ),
             1 => 
             array (
-                'id' => 20,
-                'name' => 'Makanan Hewan',
-                'created_at' => '2023-04-24 09:10:03',
-                'updated_at' => '2023-04-24 09:10:03',
+                'id' => 21,
+                'name' => 'Minuman',
+                'created_at' => '2023-04-26 11:54:06',
+                'updated_at' => '2023-04-26 11:54:06',
             ),
         ));
         

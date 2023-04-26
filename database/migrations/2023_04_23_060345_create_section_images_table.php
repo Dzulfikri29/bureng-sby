@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('section_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Section::class);
+            $table->foreignIdFor(Section::class)->constrained();
             $table->string('path')->nullable();
             $table->timestamps();
         });

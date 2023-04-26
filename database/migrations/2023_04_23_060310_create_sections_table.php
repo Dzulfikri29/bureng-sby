@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Page::class);
+            $table->foreignIdFor(Page::class)->constrained();
             $table->string('name');
             $table->text('title')->nullable();
             $table->text('subtitle')->nullable();
