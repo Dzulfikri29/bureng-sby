@@ -126,6 +126,16 @@
                         </div>
                     </a>
                 </div>
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <a href="{{ route('registration.index') }}" class="card-main-menu card my-1" target="_blank">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h2><i class="text-success fa fa-book-reader"></i></h2>
+                                <p class="section-title__tagline">Pendaftara Pelatihan</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
             <div class="text-center py-3">
                 <p>© Copyright {{ date('Y') }} <a href="#">{{ $general->website_name }}</a></p>

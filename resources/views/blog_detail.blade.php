@@ -24,6 +24,10 @@
        <meta name="twitter:image" content="{{ asset('storage/' . $blog->image) }}">
    @endsection
 
+   @section('css')
+       <link rel="stylesheet" href="{{ asset('assets/vendors/js-social/dist/jssocials.css') }}">
+   @endsection
+
    @section('content')
        <!--Blog Details Start-->
        <section class="blog-details">
@@ -48,11 +52,11 @@
                                {!! $blog->body !!}
                            </div>
                            <div class="blog-details__bottom">
-                               <div class="blog-details__social-list">
-                                   <a href="blog-details.html"><i class="fab fa-twitter"></i></a>
+                               <div class="blog-details__social-list" id="share">
+                                   {{-- <a href="blog-details.html"><i class="fab fa-twitter"></i></a>
                                    <a href="blog-details.html"><i class="fab fa-facebook"></i></a>
                                    <a href="blog-details.html"><i class="fab fa-pinterest-p"></i></a>
-                                   <a href="blog-details.html"><i class="fab fa-instagram"></i></a>
+                                   <a href="blog-details.html"><i class="fab fa-instagram"></i></a> --}}
                                </div>
                            </div>
                            <div class="blog-details__pagenation-box">
@@ -110,7 +114,31 @@
    @endsection
 
    @section('js')
+       <script src="{{ asset('assets/vendors/js-social/dist/jssocials.min.js') }}"></script>
        <script>
            $('.menu-blog').addClass('current');
+
+           $("#share").jsSocials({
+               shares: [
+                   "email",
+                   {
+                       share: "facebook",
+                       logo: "fab fa-facebook-f",
+                   },
+                   {
+                       share: "twitter",
+                       logo: "fab fa-twitter",
+                   },
+                   {
+                       share: "whatsapp",
+                       logo: "fab fa-whatsapp",
+                   },
+               ],
+               url: "{{ route('blog.show', ['slug' => $blog->slug]) }}",
+               text: "\n{{ $blog->title }}",
+               showLabel: false,
+               showCount: false,
+
+           });
        </script>
    @endsection
