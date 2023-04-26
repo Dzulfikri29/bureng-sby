@@ -112,7 +112,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="cta-one__inner">
-                                <div class="cta-one__left">
+                                <div class="cta-one__left w-75">
                                     <div class="cta-one__icon">
                                         <span class="fa fa-book-reader"></span>
                                     </div>

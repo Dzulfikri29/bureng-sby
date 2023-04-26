@@ -114,6 +114,7 @@
                     <thead class="thead-light">
                         <tr>
                             <th>{{ Str::headline('bagian') }}</th>
+                            <th>{{ Str::headline('judul') }}</th>
                             <th>{{ Str::headline('opsi') }}</th>
                         </tr>
                     </thead>

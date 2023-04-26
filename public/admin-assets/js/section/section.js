@@ -9,6 +9,9 @@ $(document).on('ready', function () {
                 data: "name",
             },
             {
+                data: "title",
+            },
+            {
                 data: "action",
                 orderable: false,
                 searchable: false,

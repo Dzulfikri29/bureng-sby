@@ -121,6 +121,7 @@ class ProductController extends Controller
             $model->price = parse_price($request->price);
             $model->phone = $request->phone;
             $model->short_desc = $request->short_desc;
+            $model->description = $request->description;
             $model->status = 'inactive';
             $model->save();
 
@@ -214,6 +215,7 @@ class ProductController extends Controller
             $model->price = parse_price($request->price);
             $model->phone = $request->phone;
             $model->short_desc = $request->short_desc;
+            $model->description = $request->description;
             $model->status = $request->status;
             $model->save();
 

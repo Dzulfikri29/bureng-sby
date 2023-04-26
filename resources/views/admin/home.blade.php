@@ -12,7 +12,6 @@
                 <h1>Hello, nice to see you!</h1>
                 <p>You are now minutes away from creativity than ever before. Enjoy!</p>
 
-                <a class="btn btn-primary" href="./layouts/index.html">Create my first campaign</a>
             </div>
         </div>
         <!-- End Row -->

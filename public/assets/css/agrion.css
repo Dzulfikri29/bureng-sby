@@ -10374,6 +10374,9 @@ ul {
 
 .product__all-img img {
     width: 100%;
+    min-height: 300px;
+    max-height: 300px;
+    object-fit: cover;
     border-radius: var(--agrion-bdr-radius);
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
