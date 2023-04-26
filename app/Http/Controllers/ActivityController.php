@@ -19,7 +19,14 @@ class ActivityController extends Controller
             ->where('activities.status', 'active')
             ->get();
 
-        return view('activity', compact('activities'));
+        $jadwal_pelatihan = Section::whereHas('page', function ($query) {
+            $query->where('name', 'kegiatan');
+        })
+            ->with('images')
+            ->where('name', 'jadwal-pelatihan')
+            ->first();
+
+        return view('activity', compact('activities', 'jadwal_pelatihan'));
     }
 
     public function show($slug)

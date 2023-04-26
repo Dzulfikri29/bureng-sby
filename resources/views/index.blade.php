@@ -95,7 +95,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <a href="{{ route('profile') }}" class="card-main-menu card my-1" target="_blank">
-                        <div class="card-body">
+                        <div class="card-body py-4">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h2><i class="text-success fa fa-info-circle"></i></h2>
                                 <p class="section-title__tagline">Profil</p>
@@ -105,7 +105,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <a href="{{ route('structure') }}" class="card-main-menu card my-1" target="_blank">
-                        <div class="card-body">
+                        <div class="card-body py-4">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h2><i class="text-success fa fa-sitemap"></i></h2>
                                 <p class="section-title__tagline">Struktur</p>
@@ -115,7 +115,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <a href="{{ route('product') }}" class="card-main-menu card my-1" target="_blank">
-                        <div class="card-body">
+                        <div class="card-body py-4">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h2><i class="text-success fa fa-shopping-basket"></i></h2>
                                 <p class="section-title__tagline">Produk</p>
@@ -126,7 +126,7 @@
                 <div class="col-md-12"></div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <a href="{{ route('activity') }}" class="card-main-menu card my-1" target="_blank">
-                        <div class="card-body">
+                        <div class="card-body py-4">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h2><i class="text-success fa fa-chalkboard-teacher"></i></h2>
                                 <p class="section-title__tagline">Kegiatan</p>
@@ -136,7 +136,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <a href="{{ route('blog') }}" class="card-main-menu card my-1" target="_blank">
-                        <div class="card-body">
+                        <div class="card-body py-4">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h2><i class="text-success fa fa-rss"></i></h2>
                                 <p class="section-title__tagline">Blog</p>
@@ -146,7 +146,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <a href="{{ route('registration.index') }}" class="card-main-menu card my-1" target="_blank">
-                        <div class="card-body">
+                        <div class="card-body py-4">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h2><i class="text-success fa fa-book-reader"></i></h2>
                                 <p class="section-title__tagline">Pendaftaran Pelatihan</p>
