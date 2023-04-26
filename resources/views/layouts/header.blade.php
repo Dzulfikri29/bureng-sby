@@ -66,13 +66,6 @@
                                          <div class="main-menu__search-box">
                                              <a href="#" class="main-menu__search search-toggler icon-magnifying-glass"></a>
                                          </div>
-                                         <div class="main-menu__cart-box">
-                                             <a href="cart.html" class="main-menu__cart icon-shopping-cart"></a>
-                                         </div>
-                                         <div class="main-menu__btn-box">
-                                             <a href="contact.html" class="thm-btn main-menu__btn">Get Free Quote
-                                                 <i class="icon-right-arrow"></i> </a>
-                                         </div>
                                      </div>
                                  </div>
                              </div>
@@ -82,7 +75,7 @@
              </div>
              <div class="main-header__phone-contact-box">
                  <div class="main-header__phone-number">
-                     <a href="tel:9200886823">+92 (0088) 6823</a>
+                     <a href="tel:{{ $general->phone }}">+{{ $general->phone }}</a>
                  </div>
                  <div class="main-header__call-box">
                      <div class="main-header__call-inner">

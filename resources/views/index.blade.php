@@ -149,7 +149,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h2><i class="text-success fa fa-book-reader"></i></h2>
-                                <p class="section-title__tagline">Pendaftara Pelatihan</p>
+                                <p class="section-title__tagline">Pendaftaran Pelatihan</p>
                             </div>
                         </div>
                     </a>
