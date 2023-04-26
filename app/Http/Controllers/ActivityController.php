@@ -59,12 +59,13 @@ class ActivityController extends Controller
             ->when($request->end, function ($query, $end) {
                 return $query->whereDate('to_date', '<=', Carbon::parse($end));
             })
-            ->select('trainings.id', 'trainings.activity as title', 'trainings.from_date as start', 'trainings.to_date as end')
+            ->select('trainings.id', 'trainings.activity as title', 'trainings.from_date as start', 'trainings.to_date as end', 'trainings.institution')
             ->get();
 
         foreach ($data as $key => $d) {
             $d->start = Carbon::parse($d->start)->format('Y-m-d');
             $d->end = Carbon::parse($d->end)->addDay()->format('Y-m-d');
+            $d->title = "$d->institution : $d->title";
             $color = '#000000';
             if (Carbon::parse($d->end)->endOfDay()->greaterThan(Carbon::now()->endOfDay())) {
                 $color = '#1f6306';

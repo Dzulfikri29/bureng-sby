@@ -15,6 +15,13 @@ class PageController extends Controller
 
     public function profile()
     {
+        $data['header'] = Section::whereHas('page', function ($query) {
+            $query->where('name', 'profil');
+        })
+            ->with('images')
+            ->where('name', 'header')
+            ->first();
+
         $data['section_1'] = Section::whereHas('page', function ($query) {
             $query->where('name', 'profil');
         })

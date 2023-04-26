@@ -3,6 +3,21 @@
 @section('title', Str::headline('profile'))
 
 @section('content')
+    <!--Page Header Start-->
+    <section class="page-header">
+        <div class="page-header-bg" style="background-image: url({{ asset('storage/' . $header->images[0]->path) }})">
+        </div>
+        <div class="container">
+            <div class="page-header__inner">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li>{{ $header->title }}</li>
+                </ul>
+                <h2 class="agrion-font text-capitalize">{{ $header->subtitle }}</h2>
+            </div>
+        </div>
+    </section>
+    <!--Page Header End-->
+
     <section class="about-three">
         <div class="container">
             <div class="row">

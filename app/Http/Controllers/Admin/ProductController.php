@@ -216,7 +216,6 @@ class ProductController extends Controller
             $model->phone = $request->phone;
             $model->short_desc = $request->short_desc;
             $model->description = $request->description;
-            $model->status = $request->status;
             $model->save();
 
             $response = ['success' => true, 'message' => 'product updated successfully'];

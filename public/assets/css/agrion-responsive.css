@@ -1598,7 +1598,13 @@
         justify-content: center;
     }
 
+    .cta-one__title {
+        width: 100% !important;
+    }
 
+    .cta-one__left {
+        width: 100% !important;
+    }
 
 
 

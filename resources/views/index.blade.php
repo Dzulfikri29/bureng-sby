@@ -71,6 +71,19 @@
             background-image: url({{ asset('storage/' . $general->logo_short) }});
         }
     </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TBTNLJ0ZZC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-TBTNLJ0ZZC');
+    </script>
 </head>
 
 <body class="custom-cursor">
@@ -84,7 +97,7 @@
     <!-- /.preloader -->
 
     <div class="page-wrapper">
-        <div class="main-menu-wrapper container d-flex  flex-column  vh-100 justify-content-between pt-5">
+        <div class="main-menu-wrapper container-fluid d-flex  flex-column  vh-100 justify-content-between pt-5">
             <div class="row justify-content-center align-content-center  align-items-center">
                 <div class="col-md-12 text-center mb-5">
                     <img src="{{ asset('storage/' . $general->logo_short) }}" alt="" srcset="" width="150" class="mb-2">
@@ -95,17 +108,17 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <a href="{{ route('profile') }}" class="card-main-menu card my-1" target="_blank">
-                        <div class="card-body py-4">
+                        <div class="card-body py-5 px-5">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h2><i class="text-success fa fa-info-circle"></i></h2>
-                                <p class="section-title__tagline">Profil</p>
+                                <h2><i class="text-white fa fa-info-circle"></i></h2>
+                                <p class="section-title__tagline text-white">Profil</p>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <a href="{{ route('structure') }}" class="card-main-menu card my-1" target="_blank">
-                        <div class="card-body py-4">
+                        <div class="card-body py-5 px-5">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h2><i class="text-success fa fa-sitemap"></i></h2>
                                 <p class="section-title__tagline">Struktur</p>
@@ -115,7 +128,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <a href="{{ route('product') }}" class="card-main-menu card my-1" target="_blank">
-                        <div class="card-body py-4">
+                        <div class="card-body py-5 px-5">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h2><i class="text-success fa fa-shopping-basket"></i></h2>
                                 <p class="section-title__tagline">Produk</p>
@@ -126,7 +139,7 @@
                 <div class="col-md-12"></div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <a href="{{ route('activity') }}" class="card-main-menu card my-1" target="_blank">
-                        <div class="card-body py-4">
+                        <div class="card-body py-5 px-5">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h2><i class="text-success fa fa-chalkboard-teacher"></i></h2>
                                 <p class="section-title__tagline">Kegiatan</p>
@@ -136,7 +149,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <a href="{{ route('blog') }}" class="card-main-menu card my-1" target="_blank">
-                        <div class="card-body py-4">
+                        <div class="card-body py-5 px-5">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h2><i class="text-success fa fa-rss"></i></h2>
                                 <p class="section-title__tagline">Blog</p>
@@ -146,7 +159,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <a href="{{ route('registration.index') }}" class="card-main-menu card my-1" target="_blank">
-                        <div class="card-body py-4">
+                        <div class="card-body py-5 px-5">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h2><i class="text-success fa fa-book-reader"></i></h2>
                                 <p class="section-title__tagline">Pendaftaran Pelatihan</p>

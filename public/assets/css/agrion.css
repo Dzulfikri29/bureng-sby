@@ -11953,14 +11953,59 @@ body.boxed-wrapper {
 
 .card-main-menu {
     transition: 0.5s;
+    border-radius: 12px;
+    background-size: cover;
+    border: 0 !important;
+}
+
+.card-main-menu:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/backgrounds/bg-main-menu.jpg');
+    background-size: cover;
+    opacity: 0.3;
+    border-radius: 12px;
+}
+
+.card-main-menu i::before:hover {
+    opacity: 1 !important;
+    color: #0e2207 !important;
+}
+
+.card-main-menu .card-body {
+    border-radius: 12px;
 }
 
 .main-menu-tagline {
     width: 75%;
 }
 
-.card-main-menu:hover {
-    background-color: #1f6306;
+.card-main-menu:hover::before {
+    opacity: 0.8;
+}
+
+.card-main-menu:hover i::before {
+    opacity: 1 !important;
+    color: #0a1905;
+}
+
+.card-main-menu i:before {
+    opacity: 1 !important;
+}
+
+.card-main-menu i,
+.card-main-menu p {
+    color: #1a5305 !important;
+}
+
+.card-main-menu p {
+    font-size: 24px;
+    text-align: right;
+    line-height: 28px;
 }
 
 .card-main-menu:hover i,
