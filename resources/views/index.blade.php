@@ -13,7 +13,25 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . $general->browser_logo) }}" />
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('storage/' . $general->browser_logo) }}" />
     <link rel="manifest" href="{{ asset('assets/images/favicons/site.webmanifest') }}" />
-    <meta name="description" content="Agrion HTML 5 Template " />
+    <meta name="description" content="{{ $general->meta_description }}">
+    <meta name="keyword" content="{{ $general->meta_keywords }}">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="{{ $general->website_name }}">
+    <meta itemprop="description" content="{{ $general->meta_description }}">
+    <meta itemprop="image" content="{{ asset('storage/' . $general->meta_image) }}">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ $general->website_name }}">
+    <meta property="og:description" content="{{ $general->meta_description }}">
+    <meta property="og:image" content="{{ asset('storage/' . $general->meta_image) }}">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $general->website_name }}">
+    <meta name="twitter:description" content="{{ $general->meta_description }}">
+    <meta name="twitter:image" content="{{ asset('storage/' . $general->meta_image) }}">
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
