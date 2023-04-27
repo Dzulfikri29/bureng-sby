@@ -161,7 +161,7 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('admin-assets/vendor/chart.js/dist/Chart.min.js') }}"></script>
+    <script src="{{ asset('admin-assets/vendor/chart.js/dist/chart.min.js') }}"></script>
     <script src="{{ asset('admin-assets/vendor/chartjs-chart-matrix/dist/chartjs-chart-matrix.min.js') }}"></script>
     <script src="{{ asset('admin-assets/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js') }}"></script>
     <script src="{{ asset('admin-assets/vendor/daterangepicker/moment.min.js') }}"></script>

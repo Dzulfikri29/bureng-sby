@@ -256,45 +256,11 @@
                             <img class="img-fluid" src="{{ asset('admin-assets/svg/illustrations-light/oc-chatting.svg') }}" alt="Image Description" style="width: 12rem;" data-hs-theme-appearance="dark">
                         </div>
 
-                        <div class="mb-5">
-                            <h2 class="display-5">Build digital products with:</h2>
+                        <div class="mb-5 text-center">
+                            <h2 class="display-5 text-center">Dashboard {{ $general->website_name }}</h2>
+                            <p class="text-center">{{ $general->tagline }}</p>
                         </div>
 
-                        <!-- List Checked -->
-                        <ul class="list-checked list-checked-lg list-checked-primary list-py-2">
-                            <li class="list-checked-item">
-                                <span class="d-block fw-semibold mb-1">All-in-one tool</span>
-                                Build, run, and scale your apps - end to end
-                            </li>
-
-                            <li class="list-checked-item">
-                                <span class="d-block fw-semibold mb-1">Easily add &amp; manage your services</span>
-                                It brings together your tasks, projects, timelines, files and more
-                            </li>
-                        </ul>
-                        <!-- End List Checked -->
-
-                        <div class="row justify-content-between mt-5 gx-3">
-                            <div class="col">
-                                <img class="img-fluid" src="{{ asset('admin-assets/svg/brands/gitlab-gray.svg') }}" alt="Logo">
-                            </div>
-                            <!-- End Col -->
-
-                            <div class="col">
-                                <img class="img-fluid" src="{{ asset('admin-assets/svg/brands/fitbit-gray.svg') }}" alt="Logo">
-                            </div>
-                            <!-- End Col -->
-
-                            <div class="col">
-                                <img class="img-fluid" src="{{ asset('admin-assets/svg/brands/flow-xo-gray.svg') }}" alt="Logo">
-                            </div>
-                            <!-- End Col -->
-
-                            <div class="col">
-                                <img class="img-fluid" src="{{ asset('admin-assets/svg/brands/layar-gray.svg') }}" alt="Logo">
-                            </div>
-                            <!-- End Col -->
-                        </div>
                         <!-- End Row -->
                     </div>
                 </div>
