@@ -73,7 +73,7 @@
     </style>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TBTNLJ0ZZC"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-216187213-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -82,7 +82,7 @@
         }
         gtag('js', new Date());
 
-        gtag('config', 'G-TBTNLJ0ZZC');
+        gtag('config', 'UA-216187213-1');
     </script>
 </head>
 

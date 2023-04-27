@@ -29,14 +29,14 @@
                     {{-- DASHBOARD --}}
                     <div class="nav-item">
                         <a class="nav-link " id="home-menu" href="{{ route('admin.home.index') }}" data-placement="left">
-                            <i class="bi-house-door nav-icon"></i>
+                            <i class="total-visitors-page-views-chart-container-house-door nav-icon"></i>
                             <span class="nav-link-title">{{ Str::headline('Dashboard') }}</span>
                         </a>
                     </div>
                     {{-- END DASHBOARD --}}
 
                     <span class="dropdown-header mt-4">Pages</span>
-                    <small class="bi-three-dots nav-subtitle-replacer"></small>
+                    <small class="total-visitors-page-views-chart-container-three-dots nav-subtitle-replacer"></small>
 
                     <!-- Collapse -->
                     <div class="navbar-nav nav-compact">

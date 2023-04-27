@@ -38,6 +38,7 @@ Route::group(
     ],
     function () {
         Route::resource('home', HomeController::class);
+        Route::get('user-types', [HomeController::class, 'user_types'])->name('home.user-types');
 
         Route::resource('user', UserController::class);
         Route::post('user/multiple-destroy', [App\Http\Controllers\Admin\UserController::class, 'multiple_destroy'])->name('user.multiple-destroy');
