@@ -6,7 +6,7 @@
 
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HW2GCQHLHL"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-216187213-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -15,8 +15,9 @@
         }
         gtag('js', new Date());
 
-        gtag('config', 'G-HW2GCQHLHL');
+        gtag('config', 'UA-216187213-1');
     </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('title') - {{ $general->website_name }}</title>
