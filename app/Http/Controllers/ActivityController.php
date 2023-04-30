@@ -14,10 +14,26 @@ class ActivityController extends Controller
 {
     public function index(Request $request)
     {
-        $activities = DB::table('activities')
-            ->select('activities.*')
-            ->where('activities.status', 'active')
-            ->get();
+        if ($request->ajax()) {
+            $activities = DB::table('activities')
+                ->select('activities.*')
+                ->where('activities.status', 'active')
+                ->orderBy('activities.created_at', 'desc')
+                ->when($request->search, function ($query) use ($request) {
+                    return $query->where(function ($q) use ($request) {
+                        $q->where('activities.title', 'like', '%' . $request->search . '%')
+                            ->orWhere('activities.body', 'like', '%' . $request->search . '%');
+                    });
+                })
+                ->paginate(2);
+
+            $response = [
+                'success' => true,
+                'html' => view('activity_data', compact('activities'))->render(),
+            ];
+
+            return response()->json($response);
+        }
 
         $jadwal_pelatihan = Section::whereHas('page', function ($query) {
             $query->where('name', 'kegiatan');
@@ -26,7 +42,7 @@ class ActivityController extends Controller
             ->where('name', 'jadwal-pelatihan')
             ->first();
 
-        return view('activity', compact('activities', 'jadwal_pelatihan'));
+        return view('activity', compact('jadwal_pelatihan'));
     }
 
     public function show($slug)

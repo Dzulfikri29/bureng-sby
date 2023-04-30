@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\Blog;
 use App\Models\Product;
+use App\Models\Tutorial;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -23,6 +24,7 @@ class Controller extends BaseController
             ->add(url('/structure'))
             ->add(url('/product'))
             ->add(url('/activity'))
+            ->add(url('/tutorial'))
             ->add(url('/blog'))
             ->add(url('/registration'));
 
@@ -39,6 +41,11 @@ class Controller extends BaseController
         $activities = Activity::all();
         foreach ($activities as $activity) {
             $sitemap->add(url("/activity/{$activity->slug}"));
+        }
+
+        $tutorials = Tutorial::all();
+        foreach ($tutorials as $tutorial) {
+            $sitemap->add(url("/tutorial/{$tutorial->slug}"));
         }
 
         $sitemap->writeToFile(public_path('sitemap.xml'));

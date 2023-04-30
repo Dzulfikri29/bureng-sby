@@ -107,6 +107,15 @@
                         </div>
                         <!-- ACTIVITY -->
 
+                        <!-- ACTIVITY -->
+                        <div class="nav-item">
+                            <a class="nav-link " id="activity-menu" href="{{ route('admin.tutorial.index') }}" data-placement="left">
+                                <i class="bi-camera-video nav-icon"></i>
+                                <span class="nav-link-title">{{ Str::headline('E-learning') }}</span>
+                            </a>
+                        </div>
+                        <!-- ACTIVITY -->
+
                         {{-- USER --}}
                         <div class="nav-item">
                             <a class="nav-link " id="user-menu" href="{{ route('admin.user.index') }}" data-placement="left">

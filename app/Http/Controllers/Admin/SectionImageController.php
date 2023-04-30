@@ -50,7 +50,7 @@ class SectionImageController extends Controller
 
         $request->validate([
             'section_id' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:3048',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:10048',
         ]);
 
         try {
@@ -59,7 +59,7 @@ class SectionImageController extends Controller
                 $file = $request->file('image');
                 $file_name = Str::slug($section->name) . "-" . time() . Str::random(8) . "." . $request->file('image')->getClientOriginalExtension();
                 $image = Image::make($file);
-                $image->resize(700, null, function ($constraint) {
+                $image->resize(900, null, function ($constraint) {
                     $constraint->aspectRatio();
                 });
                 Storage::put('section/' . $file_name, (string) $image->encode());

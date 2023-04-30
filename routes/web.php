@@ -27,7 +27,11 @@ Route::get('event', [App\Http\Controllers\ActivityController::class, 'event'])->
 
 Route::get('blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');
 Route::get('blog/{slug}', [App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
+
 Route::resource('registration', App\Http\Controllers\RegistrationController::class);
+
+Route::get('tutorial', [App\Http\Controllers\TutorialController::class, 'index'])->name('tutorial');
+Route::get('tutorial/{slug}', [App\Http\Controllers\TutorialController::class, 'show'])->name('tutorial.show');
 
 Route::group(
     [
@@ -82,6 +86,12 @@ Route::group(
         Route::resource('section', SectionController::class);
         Route::resource('section-image', SectionImageController::class);
         Route::post('section-image-delete', [App\Http\Controllers\Admin\SectionImageController::class, 'destroy']);
+
+        Route::resource('tutorial', TutorialController::class);
+        Route::post('tutorial/{id}/toggle', [App\Http\Controllers\Admin\TutorialController::class, 'toggle'])->name('tutorial.toggle');
+        Route::post('tutorial/multiple-destroy', [App\Http\Controllers\Admin\TutorialController::class, 'multiple_destroy'])->name('tutorial.multiple-destroy');
+        Route::post('tutorial/upload-image', [App\Http\Controllers\Admin\TutorialController::class, 'upload_image'])->name('tutorial.upload-image');
+        Route::post('tutorial/delete-image', [App\Http\Controllers\Admin\TutorialController::class, 'delete_image'])->name('tutorial.delete-image');
     }
 );
 

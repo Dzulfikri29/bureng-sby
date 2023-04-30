@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @php
-    $main = 'activity';
+    $main = 'tutorial';
 @endphp
 
 @section('title', Str::headline($main)))
@@ -71,11 +71,11 @@
 
                     <!-- Dropdown -->
                     <div class="dropdown">
-                        <button type="button" class="btn btn-white btn-sm dropdown-toggle w-100" id="activitysExportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" class="btn btn-white btn-sm dropdown-toggle w-100" id="tutorialsExportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi-download me-2"></i> Export
                         </button>
 
-                        <div class="dropdown-menu dropdown-menu-sm-end" aria-labelledby="activitysExportDropdown">
+                        <div class="dropdown-menu dropdown-menu-sm-end" aria-labelledby="tutorialsExportDropdown">
                             <span class="dropdown-header">Options</span>
                             <a id="export-copy" class="dropdown-item" href="javascript:;">
                                 <img class="avatar avatar-xss avatar-4x3 me-2" src="{{ asset('admin-assets/svg/illustrations/copy-icon.svg') }}" alt="Image Description">
@@ -108,7 +108,7 @@
 
             <!-- Table -->
             <div class="table-responsive datatable-custom">
-                <table id="datatable-activity" class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                <table id="datatable-tutorial" class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                     <thead class="thead-light">
                         <tr>
                             <th class="table-column-pe-0">

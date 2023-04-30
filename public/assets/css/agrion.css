@@ -11956,61 +11956,35 @@ body.boxed-wrapper {
     border-radius: 12px;
     background-size: cover;
     border: 0 !important;
-}
-
-.card-main-menu:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../images/backgrounds/bg-main-menu.jpg');
-    background-size: cover;
-    opacity: 0.3;
-    border-radius: 12px;
-}
-
-.card-main-menu i::before:hover {
-    opacity: 1 !important;
-    color: #0e2207 !important;
+    background-size: cover !important;
+    min-height: 125px;
+    max-height: 125px;
 }
 
 .card-main-menu .card-body {
     border-radius: 12px;
+    position: relative;
+    z-index: 10;
 }
 
 .main-menu-tagline {
     width: 75%;
 }
 
-.card-main-menu:hover::before {
-    opacity: 0.8;
-}
-
-.card-main-menu:hover i::before {
-    opacity: 1 !important;
-    color: #0a1905;
-}
-
-.card-main-menu i:before {
-    opacity: 1 !important;
-}
-
 .card-main-menu i,
 .card-main-menu p {
-    color: #1a5305 !important;
+    color: #1f6306;
 }
 
 .card-main-menu p {
-    font-size: 24px;
+    font-size: 21px;
     text-align: right;
     line-height: 28px;
 }
 
 .card-main-menu:hover i,
 .card-main-menu:hover p {
-    color: #fff !important;
+    color: #71826c !important;
 }
 
 .data-pagination svg {
@@ -12168,4 +12142,18 @@ small.error {
     top: calc(50% - 5px);
     margin-left: 0;
     margin-right: 0;
+}
+
+.main-menu-wrapper {
+    background-size: cover !important;
+    overflow-x: hidden !important;
+    /* background: linear-gradient(to right, rgba(255, 255, 255, .8), #1a5305); */
+}
+
+.blog-video-play {
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

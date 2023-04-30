@@ -55,6 +55,9 @@
                                              <li class="menu-activity">
                                                  <a href="{{ route('activity') }}">{{ Str::headline('kegiatan') }}</a>
                                              </li>
+                                             <li class="menu-tutorial">
+                                                 <a href="{{ route('tutorial') }}">{{ Str::headline('e-learning') }}</a>
+                                             </li>
                                              <li class="menu-blog">
                                                  <a href="{{ route('blog') }}">{{ Str::headline('blog') }}</a>
                                              </li>

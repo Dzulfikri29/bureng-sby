@@ -10,7 +10,21 @@ class PageController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $data['background_utama'] = Section::whereHas('page', function ($query) {
+            $query->where('name', 'home');
+        })
+            ->with('images')
+            ->where('name', 'background-utama')
+            ->first();
+
+        $data['background_menu'] = Section::whereHas('page', function ($query) {
+            $query->where('name', 'home');
+        })
+            ->with('images')
+            ->where('name', 'background-menu')
+            ->first();
+
+        return view('index', $data);
     }
 
     public function profile()
