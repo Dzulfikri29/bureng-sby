@@ -59,7 +59,7 @@ class SectionImageController extends Controller
                 $file = $request->file('image');
                 $file_name = Str::slug($section->name) . "-" . time() . Str::random(8) . "." . $request->file('image')->getClientOriginalExtension();
                 $image = Image::make($file);
-                $image->resize(900, null, function ($constraint) {
+                $image->resize(700, null, function ($constraint) {
                     $constraint->aspectRatio();
                 });
                 Storage::put('section/' . $file_name, (string) $image->encode());

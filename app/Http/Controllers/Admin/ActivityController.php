@@ -120,6 +120,9 @@ class ActivityController extends Controller
                 $file = $request->file('image');
                 $file_name = Str::slug('image-' . time()) . "." . $request->file('image')->getClientOriginalExtension();
                 $image = Image::make($file);
+                $image->resize(700, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
                 $image_path = 'activity-main-image/' . $file_name;
                 Storage::put($image_path, (string) $image->encode());
                 $model->update(
@@ -220,6 +223,9 @@ class ActivityController extends Controller
                 $file = $request->file('image');
                 $file_name = Str::slug('image-' . time()) . "." . $request->file('image')->getClientOriginalExtension();
                 $image = Image::make($file);
+                $image->resize(700, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
                 $image_path = 'activity-main-image/' . $file_name;
                 Storage::put($image_path, (string) $image->encode());
                 $model->update(

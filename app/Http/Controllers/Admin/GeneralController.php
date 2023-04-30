@@ -78,6 +78,9 @@ class GeneralController extends Controller
                 $file = $request->file('meta_image');
                 $file_name = Str::slug('meta_image-' . time()) . "." . $request->file('meta_image')->getClientOriginalExtension();
                 $meta_image = Image::make($file);
+                $meta_image->resize(700, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
                 $meta_image_path = 'general/' . $file_name;
                 Storage::put($meta_image_path, (string) $meta_image->encode());
                 $model->update(
