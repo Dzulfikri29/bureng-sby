@@ -98,6 +98,15 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="mb-4">
+                                    <label for="participant_total" class="form-label">{{ Str::headline('jumlah peserta') }}</label>
+                                    <input type="number" class="form-control" name="participant_total" id="participant_total" required value="{{ @old('participant_total') }}">
+                                    @error('participant_total')
+                                        <span class="form-text text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="mb-4">
                                     <label for="description" class="form-label">{{ Str::headline('keterangan') }}</label>

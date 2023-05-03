@@ -14,18 +14,19 @@ class ActivityController extends Controller
 {
     public function index(Request $request)
     {
+        $activities = DB::table('activities')
+            ->select('activities.*')
+            ->orderBy('title')
+            ->get();
+
         if ($request->ajax()) {
-            $activities = DB::table('activities')
-                ->select('activities.*')
-                ->where('activities.status', 'active')
-                ->orderBy('activities.created_at', 'desc')
-                ->when($request->search, function ($query) use ($request) {
-                    return $query->where(function ($q) use ($request) {
-                        $q->where('activities.title', 'like', '%' . $request->search . '%')
-                            ->orWhere('activities.body', 'like', '%' . $request->search . '%');
-                    });
+            $activities = DB::table('activity_images')
+                ->select('activity_images.*')
+                ->orderBy('activity_images.created_at', 'desc')
+                ->when($request->activity_id, function ($query) use ($request) {
+                    return $query->where('activity_id', $request->activity_id);
                 })
-                ->paginate(2);
+                ->paginate(10);
 
             $response = [
                 'success' => true,
@@ -42,7 +43,7 @@ class ActivityController extends Controller
             ->where('name', 'jadwal-pelatihan')
             ->first();
 
-        return view('activity', compact('jadwal_pelatihan'));
+        return view('activity', compact('jadwal_pelatihan', 'activities'));
     }
 
     public function show($slug)

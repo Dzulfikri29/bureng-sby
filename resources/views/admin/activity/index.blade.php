@@ -117,9 +117,7 @@
                                     <label class="form-check-label" for="datatableCheckAll"></label>
                                 </div>
                             </th>
-                            <th></th>
                             <th>{{ Str::headline('judul') }}</th>
-                            <th>{{ Str::headline('status') }}</th>
                             <th>{{ Str::headline('opsi') }}</th>
                         </tr>
                     </thead>

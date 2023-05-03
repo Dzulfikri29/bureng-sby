@@ -58,6 +58,12 @@
                                     <small class="error text-capitalize validation-error-message d-none" id="activity_error"></small>
                                 </div>
                                 <div class="mb-2 col-xl-12">
+                                    <div class="contact-form__input-box">
+                                        <input type="text" placeholder="Jumlah Peserta" name="participant_total" value="{{ @old('participant_total') }}">
+                                    </div>
+                                    <small class="error text-capitalize validation-error-message d-none" id="participant_total_error"></small>
+                                </div>
+                                <div class="mb-2 col-xl-12">
                                     <div class="contact-form__input-box text-message-box">
                                         <textarea name="description" placeholder="Keterangan Lain" rows="2">{{ @old('description') }}</textarea>
                                     </div>

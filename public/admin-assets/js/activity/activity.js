@@ -11,17 +11,7 @@ $(document).on('ready', function () {
                 searchable: false,
             },
             {
-                data: "image",
-                orderable: false,
-                searchable: false,
-            },
-            {
                 data: "title",
-            },
-            {
-                data: "switch",
-                orderable: false,
-                searchable: false,
             },
             {
                 data: "action",
@@ -114,19 +104,3 @@ $(document).on('ready', function () {
 });
 
 $("#datatable-activity").css("width", "100%");
-
-const toggle_switch = (id) => {
-    $.ajax({
-        url: `${base_url}/admin/activity/${id}/toggle`,
-        method: "POST",
-        headers: {
-            'X-CSRF-TOKEN': token,
-        },
-        success: function (res) {
-            Toast.fire({
-                icon: res.success ? 'success' : 'error',
-                title: res.message,
-            });
-        }
-    });
-}

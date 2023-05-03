@@ -90,6 +90,7 @@ class TrainingController extends Controller
             'address' => 'required',
             'activity' => 'required',
             'description' => 'required',
+            'participant_total' => 'required',
         ]);
 
         try {
@@ -101,6 +102,7 @@ class TrainingController extends Controller
             $model->address = $request->address;
             $model->activity = $request->activity;
             $model->description = $request->description;
+            $model->participant_total = $request->participant_total;
             $model->status = 'pending';
             $model->save();
 
@@ -165,6 +167,7 @@ class TrainingController extends Controller
             'address' => 'required',
             'activity' => 'required',
             'description' => 'required',
+            'participant_total' => 'required',
         ]);
 
         try {
@@ -176,6 +179,7 @@ class TrainingController extends Controller
             $model->address = $request->address;
             $model->activity = $request->activity;
             $model->description = $request->description;
+            $model->participant_total = $request->participant_total;
             $model->save();
 
             $response = ['success' => true, 'message' => 'Training updated successfully'];

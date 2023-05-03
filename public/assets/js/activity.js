@@ -3,13 +3,16 @@ const get_activities = (page) => {
         page = 1;
     }
     $.ajax({
-        url: `${base_url}/activity?page=${page}&search=${$('#search').val()}`,
+        url: `${base_url}/activity?page=${page}&activity_id=${$('#activity_id').val()}`,
         method: "GET",
         headers: {
             'X-CSRF-TOKEN': token,
         },
         success: function (res) {
             $('#activity-container').html(res.html);
+            setTimeout(() => {
+                refreshFsLightbox()
+            }, 1200);
         }
     });
 }
@@ -20,17 +23,10 @@ $(document).on('click', '.data-pagination a', function (event) {
     get_activities(page);
 });
 
-var typingTimer;
-var doneTypingInterval = 1000;
-var $input = $('#search');
+const set_activity = (id) => {
+    $('.category-list').removeClass('active');
+    $('#activity_' + id).addClass('active');
 
-//on keyup, start the countdown
-$input.on('keyup', function () {
-    clearTimeout(typingTimer);
-    typingTimer = setTimeout(get_activities, doneTypingInterval);
-});
-
-//on keydown, clear the countdown
-$input.on('keydown', function () {
-    clearTimeout(typingTimer);
-});
+    $('#activity_id').val(id);
+    get_activities();
+}

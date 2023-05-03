@@ -41,6 +41,7 @@ class RegistrationController extends Controller
             'from_date' => 'required|date',
             'to_date' => 'required|date',
             'activity' => 'required|max:255',
+            'participant_total' => 'required|numeric',
             'description' => 'nullable:max:255',
             'g-recaptcha-response' => 'required|recaptcha',
         ], [], [
@@ -50,6 +51,7 @@ class RegistrationController extends Controller
             'from_date' => 'tanggal mulai',
             'to_date' => 'tanggal selesai',
             'activity' => 'pelatihan',
+            'participant_total' => 'jumlah peserta',
             'description' => 'keterangan lain',
             'g-recaptcha-response' => 'captcha',
         ]);
@@ -82,6 +84,7 @@ class RegistrationController extends Controller
             $model->from_date = $request->from_date;
             $model->to_date = $request->to_date;
             $model->activity = $request->activity;
+            $model->participant_total = $request->participant_total;
             $model->description = $request->description ?? '';
             $model->status = 'pending';
             $model->save();

@@ -31,9 +31,9 @@
                                  <li class="menu-profile">
                                      <a href="{{ route('profile') }}">{{ Str::headline('profil') }}</a>
                                  </li>
-                                 <li class="menu-structure">
+                                 {{-- <li class="menu-structure">
                                      <a href="{{ route('structure') }}">{{ Str::headline('struktur') }}</a>
-                                 </li>
+                                 </li> --}}
                                  <li class="menu-product">
                                      <a href="{{ route('product') }}">{{ Str::headline('produk') }}</a>
                                  </li>

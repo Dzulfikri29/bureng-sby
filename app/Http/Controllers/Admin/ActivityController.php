@@ -36,21 +36,6 @@ class ActivityController extends Controller
 
                     return $checkbox;
                 })
-                ->addColumn('image', function ($row) {
-                    $photo = asset('storage/' . $row->image);
-                    $image = "<img class='avatar avatar-lg' src='$photo'>";
-
-                    return $image;
-                })
-                ->addColumn('switch', function ($row) {
-                    $checked = $row->status == "active" ? "checked" : "";
-                    $switch = "<div class='form-check form-switch mb-4'>
-                                <input type='checkbox' class='form-check-input is-valid' id='validSwitch' $checked onchange='toggle_switch($row->id)'>
-                                <label class='form-check-valid'>Publikasikan</label>
-                            </div>";
-
-                    return $switch;
-                })
                 ->addColumn('action', function ($row) {
                     $action['data'] = $row;
                     $action['edit'] = route("admin.$this->view_folder.edit", [$this->view_folder => $row->id]);
@@ -89,11 +74,6 @@ class ActivityController extends Controller
 
         $request->validate([
             'title' => 'required',
-            'meta_title' => 'required',
-            'meta_keywords' => 'required',
-            'meta_description' => 'required',
-            'body' => 'required',
-            'image' => 'required',
         ]);
 
         $slug = Str::slug(Str::lower($request->title));
@@ -107,34 +87,11 @@ class ActivityController extends Controller
             $model = new model();
             $model->slug = $slug;
             $model->title = $request->title;
-            $model->meta_title = $request->meta_title;
-            $model->meta_keywords = $request->meta_keywords;
-            $model->meta_description = $request->meta_description;
-            $model->body = $request->body;
             $model->user_id = auth()->user()->id;
             $model->save();
 
-
-            if ($request->file('image')) {
-                Storage::delete($model->image ?? '');
-                $file = $request->file('image');
-                $file_name = Str::slug('image-' . time()) . "." . $request->file('image')->getClientOriginalExtension();
-                $image = Image::make($file);
-                $image->resize(700, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
-                $image_path = 'activity-main-image/' . $file_name;
-                Storage::put($image_path, (string) $image->encode());
-                $model->update(
-                    [
-                        'image' => $image_path,
-                    ]
-                );
-            }
-
             $response = ['success' => true, 'message' => 'activity created successfully'];
             DB::commit();
-            $this->createSiteMap();
 
             if ($request->ajax()) {
                 return response()->json($response);
@@ -190,11 +147,6 @@ class ActivityController extends Controller
 
         $request->validate([
             'title' => 'required',
-            'meta_title' => 'required',
-            'meta_keywords' => 'required',
-            'meta_description' => 'required',
-            'body' => 'required',
-            'image' => 'nullable',
         ]);
 
         $slug = Str::slug(Str::lower($request->title));
@@ -210,34 +162,10 @@ class ActivityController extends Controller
             $model = model::find($id);
             $model->slug = $slug;
             $model->title = $request->title;
-            $model->meta_title = $request->meta_title;
-            $model->meta_keywords = $request->meta_keywords;
-            $model->meta_description = $request->meta_description;
-            $model->body = $request->body;
-            $model->user_id = auth()->user()->id;
             $model->save();
-
-
-            if ($request->file('image')) {
-                Storage::delete($model->image ?? '');
-                $file = $request->file('image');
-                $file_name = Str::slug('image-' . time()) . "." . $request->file('image')->getClientOriginalExtension();
-                $image = Image::make($file);
-                $image->resize(700, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
-                $image_path = 'activity-main-image/' . $file_name;
-                Storage::put($image_path, (string) $image->encode());
-                $model->update(
-                    [
-                        'image' => $image_path,
-                    ]
-                );
-            }
 
             $response = ['success' => true, 'message' => 'activity updated successfully'];
             DB::commit();
-            $this->createSiteMap();
 
             if ($request->ajax()) {
                 return response()->json($response);
@@ -267,21 +195,15 @@ class ActivityController extends Controller
         DB::beginTransaction();
         try {
             $model = model::findOrFail($id);
-
-            $doc = new DOMDocument();
-            $doc->loadHTML($model->body);
-            $xml = simplexml_import_dom($doc);
-            $images = $xml->xpath('//img');
+            $images = $model->images();
             foreach ($images as $img) {
-                $src = $img->attributes()->src;
-                $src = str_replace(asset('storage/'), '', $src);
-                Storage::delete($src);
+                Storage::delete($img->path);
+                $img->delete();
             }
             $model->delete();
 
             $response = ['success' => true, 'message' => 'activity deleted successfully'];
             DB::commit();
-            $this->createSiteMap();
 
             if ($request->ajax()) {
                 return response()->json($response);
@@ -305,23 +227,16 @@ class ActivityController extends Controller
         try {
             $models = model::whereIn('id', $request->ids)->get();
             foreach ($models as $model) {
-                Storage::delete($model->image);
-
-                $doc = new DOMDocument();
-                $doc->loadHTML($model->body);
-                $xml = simplexml_import_dom($doc);
-                $images = $xml->xpath('//img');
+                $images = $model->images();
                 foreach ($images as $img) {
-                    $src = $img->attributes()->src;
-                    $src = str_replace(asset('storage/'), '', $src);
-                    Storage::delete($src);
+                    Storage::delete($img->path);
+                    $img->delete();
                 }
                 $model->delete();
             }
 
             $response = ['success' => true, 'message' => 'activity deleted successfully'];
             DB::commit();
-            $this->createSiteMap();
 
             if ($request->ajax()) {
                 return response()->json($response);
@@ -337,78 +252,6 @@ class ActivityController extends Controller
 
             return redirect()->back()->with($response);
         }
-    }
-
-    public function toggle(Request $request, $id)
-    {
-        DB::beginTransaction();
-        try {
-            $model = model::findOrFail($id);
-            $model->status = $model->status == 'active' ? 'inactive' : 'active';
-            $model->save();
-
-            $response = ['success' => true, 'message' => 'Activity status updated successfully'];
-            DB::commit();
-
-            if ($request->ajax()) {
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with($response);
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            $response = ['success' => false, 'message' => $th->getMessage()];
-            if ($request->ajax()) {
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with($response);
-        }
-    }
-
-    public function upload_image(Request $request)
-    {
-        DB::beginTransaction();
-
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
-
-        try {
-            if ($request->file('image')) {
-                $file = $request->file('image');
-                $file_name = Str::slug($request->file('image')->getClientOriginalName()) . "-" . time() . Str::random(8) . "." . $request->file('image')->getClientOriginalExtension();
-                $image = Image::make($file);
-                $image->resize(500, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
-                Storage::put('activity/' . $file_name, (string) $image->encode());
-                $image_path = 'activity/' . $file_name;
-            }
-
-            $response = [
-                'success' => true,
-                'message' => 'Image uploaded successfully',
-                'url' => asset('storage/' . $image_path),
-            ];
-            DB::commit();
-
-            if ($request->ajax()) {
-                return response()->json($response);
-            }
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            $response = ['success' => false, 'message' => $th->getMessage()];
-            if ($request->ajax()) {
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with($response);
-        }
-    }
-
-    public function delete_image(Request $request)
-    {
         try {
             $paths = $request->paths ?? [];
             $fix_path = [];

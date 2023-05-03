@@ -53,12 +53,12 @@
                         {{-- END GENERAL --}}
 
                         <!-- STUCTURE -->
-                        <div class="nav-item">
+                        {{-- <div class="nav-item">
                             <a class="nav-link " id="structure-menu" href="{{ route('admin.structure.index') }}" data-placement="left">
                                 <i class="bi-diagram-3 nav-icon"></i>
                                 <span class="nav-link-title">{{ Str::headline('struktur') }}</span>
                             </a>
-                        </div>
+                        </div> --}}
                         <!-- STUCTURE -->
 
                         <!-- PRODUCT -->

@@ -21,7 +21,6 @@ class Controller extends BaseController
     {
         $sitemap = SitemapIndex::create()
             ->add(url('/profile'))
-            ->add(url('/structure'))
             ->add(url('/product'))
             ->add(url('/activity'))
             ->add(url('/tutorial'))

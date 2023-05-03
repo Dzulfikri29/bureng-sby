@@ -72,10 +72,9 @@ Route::group(
         Route::post('blog/delete-image', [App\Http\Controllers\Admin\BlogController::class, 'delete_image'])->name('blog.delete-image');
 
         Route::resource('activity', ActivityController::class);
-        Route::post('activity/{id}/toggle', [App\Http\Controllers\Admin\ActivityController::class, 'toggle'])->name('activity.toggle');
         Route::post('activity/multiple-destroy', [App\Http\Controllers\Admin\ActivityController::class, 'multiple_destroy'])->name('activity.multiple-destroy');
-        Route::post('activity/upload-image', [App\Http\Controllers\Admin\ActivityController::class, 'upload_image'])->name('activity.upload-image');
-        Route::post('activity/delete-image', [App\Http\Controllers\Admin\ActivityController::class, 'delete_image'])->name('activity.delete-image');
+        Route::resource('activity-image', ActivityImageController::class);
+        Route::post('activity-image-delete', [App\Http\Controllers\Admin\ActivityImageController::class, 'destroy']);
 
         Route::resource('training', TrainingController::class);
         Route::post('training/multiple-destroy', [App\Http\Controllers\Admin\TrainingController::class, 'multiple_destroy'])->name('training.multiple-destroy');

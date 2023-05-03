@@ -19,4 +19,9 @@ class Activity extends Model
         'body',
         'image',
     ];
+
+    public function images()
+    {
+        return $this->hasMany(ActivityImage::class);
+    }
 }

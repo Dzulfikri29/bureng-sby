@@ -1,32 +1,3 @@
-new TomSelect('#activity_category_id', {
-    valueField: 'id',
-    labelField: 'name',
-    searchField: 'name',
-    createOnBlur: true,
-    create: true,
-    load: function (query, callback) {
-        var url = `${base_url}/activity-category/select`;
-        fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    'search': encodeURIComponent(query),
-                    '_token': token,
-                }),
-            })
-            .then(response => response.json())
-            .then(json => {
-                callback(json);
-            }).catch(() => {
-                callback();
-            });
-
-    },
-});
-
 Dropzone.options.activityImageUpload = {
     paramName: 'image',
     textTarget: null,
@@ -101,20 +72,20 @@ const get_activity_images = () => {
         success: function (res) {
             let html = '';
             res.data.forEach(e => {
-                html += `<div class="col-6 col-sm-4 col-md-3 mb-3 mb-lg-5" id="${e.image}">
+                html += `<div class="col-6 col-sm-4 col-md-3 mb-3 mb-lg-5" id="${e.path}">
                                 <div class="card card-sm">
-                                    <img class="card-img-top" src="${base_url}/storage/${e.image}" alt="Image Description">
+                                    <img class="card-img-top" src="${base_url}/storage/${e.path}" alt="Image Description">
 
                                     <div class="card-body">
                                         <div class="row col-divider text-center">
                                             <div class="col">
-                                                <a class="text-body lightbox" href="${base_url}/storage/${e.image}" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
+                                                <a class="text-body lightbox" href="${base_url}/storage/${e.path}" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
                                                     <i class="bi-eye"></i>
                                                 </a>
                                             </div>
 
                                             <div class="col">
-                                                <a class="text-danger" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete" onclick="delete_activity_image('${e.image}')">
+                                                <a class="text-danger" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete" onclick="delete_activity_image('${e.path}')">
                                                     <i class="bi-trash"></i>
                                                 </a>
                                             </div>
