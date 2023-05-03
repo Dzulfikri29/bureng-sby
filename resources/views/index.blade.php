@@ -63,8 +63,8 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/timepicker/timePicker.css') }}" />
 
     <!-- template styles -->
-    <link rel="stylesheet" href="{{ asset('assets/css/agrion.css') }}?v=2" />
-    <link rel="stylesheet" href="{{ asset('assets/css/agrion-responsive.css') }}?v=2" />
+    <link rel="stylesheet" href="{{ asset('assets/css/agrion.css') }}?v=3" />
+    <link rel="stylesheet" href="{{ asset('assets/css/agrion-responsive.css') }}?v=3" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/slick/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/slick/slick-theme.css') }}">
 
@@ -105,7 +105,7 @@
 
     <div class="page-wrapper px-3" style="background-size: cover !important;background: linear-gradient(to right, #1a5305b5, #1a5305b5),url({{ asset('storage/' . ($background_utama->images[0]->path ?? '')) }})">
         <div class="main-menu-wrapper container-fluid d-flex vh-100  flex-column justify-content-between pt-5">
-            <div class="row justify-content-center align-content-center align-items-center h-100">
+            <div class="main-menu-content row justify-content-center align-content-center align-items-center">
                 <div class="col-md-6 dekstop-view">
                     <div class="px-3 container">
                         <div class="sidebar__single sidebar__search mb-3">
@@ -176,7 +176,7 @@
                                 <a href="{{ route('registration.index') }}" class="card-main-menu h-100 card my-1" target="_blank" style="background: linear-gradient(to top,#fcc850, #fcc850)">
                                     <div class="card-body py-2 px-3">
                                         <div class="d-flex justify-content-between align-items-end h-100 pt-2">
-                                            <p class="mt-2 section-title__tagline text-start">Edufarm <br> Literasi</p>
+                                            <p class="mt-2 section-title__tagline"><b>Edufarm <br> Literasi</b></p>
                                         </div>
                                     </div>
                                 </a>
@@ -185,7 +185,7 @@
                                 <a href="{{ route('profile') }}" class="card-main-menu h-100 card my-1" target="_blank" style="background: linear-gradient(to top,#fcc850, #fcc850)">
                                     <div class="card-body py-2 px-3">
                                         <div class="d-flex justify-content-between align-items-end h-100 pt-2">
-                                            <p class="mt-2 section-title__tagline">Profil Literasi</p>
+                                            <p class="mt-2 section-title__tagline"><b>Profil Literasi</b></p>
                                         </div>
                                     </div>
                                 </a>
@@ -194,7 +194,7 @@
                                 <a href="{{ route('product') }}" class="card-main-menu h-100 card my-1" target="_blank" style="background: linear-gradient(to top,#fcc850, #fcc850)">
                                     <div class="card-body py-2 px-3">
                                         <div class="d-flex justify-content-between align-items-end h-100 pt-2">
-                                            <p class="mt-2 section-title__tagline">Produk Literasi</p>
+                                            <p class="mt-2 section-title__tagline"><b>Produk Literasi</b></p>
                                         </div>
                                     </div>
                                 </a>
@@ -205,7 +205,7 @@
                                 <a href="{{ route('activity') }}" class="card-main-menu h-100 card my-1" target="_blank" style="background: linear-gradient(to top,#fcc850, #fcc850)">
                                     <div class="card-body py-2 px-3">
                                         <div class="d-flex justify-content-between align-items-end h-100 pt-2">
-                                            <p class="mt-2 section-title__tagline text-start">Dokumentasi <br> Kegiatan</p>
+                                            <p class="mt-2 section-title__tagline"><b>Dokumentasi <br> Kegiatan</b></p>
                                         </div>
                                     </div>
                                 </a>
@@ -214,7 +214,7 @@
                                 <a href="javascript:;" class="card-main-menu h-100 card my-1" style="background: linear-gradient(to top,#fcc850, #fcc850)">
                                     <div class="card-body py-2 px-3">
                                         <div class="d-flex justify-content-between align-items-end h-100 pt-2">
-                                            <p class="mt-2 section-title__tagline">360 Tour</p>
+                                            <p class="mt-2 section-title__tagline"><b>360 Tour</b></p>
                                         </div>
                                     </div>
                                 </a>
@@ -224,7 +224,7 @@
                                 <a href="{{ route('tutorial') }}" class="card-main-menu h-100 card my-1" target="_blank" style="background: linear-gradient(to top,#fcc850, #fcc85025), url({{ asset('storage/' . ($background_menu->images[0]->path ?? '')) }})">
                                     <div class="card-body py-4 px-3">
                                         <div class="d-flex justify-content-between align-items-end h-100 pt-5">
-                                            <p class="mt-5 section-title__tagline">E-Learning</p>
+                                            <h2 class="mt-5 agrion-font">E-Learning</h2>
                                         </div>
                                     </div>
                                 </a>

@@ -11974,7 +11974,7 @@ body.boxed-wrapper {
     line-height: normal;
 }
 
-.card-main-menu i,
+.card-main-menu h2,
 .card-main-menu p {
     color: #1f6306;
 }
@@ -11985,7 +11985,7 @@ body.boxed-wrapper {
     line-height: 20px;
 }
 
-.card-main-menu:hover i,
+.card-main-menu:hover h2,
 .card-main-menu:hover p {
     color: #71826c !important;
 }
@@ -12151,6 +12151,10 @@ small.error {
     background-size: cover !important;
     overflow-x: hidden !important;
     /* background: linear-gradient(to right, rgba(255, 255, 255, .8), #1a5305); */
+}
+
+.main-menu-content {
+    height: 100%;
 }
 
 .blog-video-play {

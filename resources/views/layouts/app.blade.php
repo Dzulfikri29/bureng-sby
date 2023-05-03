@@ -81,8 +81,8 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/timepicker/timePicker.css') }}" />
 
     <!-- template styles -->
-    <link rel="stylesheet" href="{{ asset('assets/css/agrion.css') }}?v=2" />
-    <link rel="stylesheet" href="{{ asset('assets/css/agrion-responsive.css') }}?v=2" />
+    <link rel="stylesheet" href="{{ asset('assets/css/agrion.css') }}?v=3" />
+    <link rel="stylesheet" href="{{ asset('assets/css/agrion-responsive.css') }}?v=3" />
 
     @yield('css')
     <style>
