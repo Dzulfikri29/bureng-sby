@@ -506,7 +506,13 @@
         overflow: scroll;
     }
 
+    .dekstop-view {
+        display: none;
+    }
 
+    .mobile-view {
+        display: block;
+    }
 
 
 
@@ -1161,6 +1167,22 @@
     .Provide-One__wrap {
         display: block;
     }
+
+    .dekstop-view {
+        display: none;
+    }
+
+    .mobile-view {
+        display: block;
+    }
+
+    .blog-carousel img {
+        max-height: 10rem;
+        min-height: 10rem;
+        object-fit: cover;
+        border-radius: 20px !important;
+    }
+
 }
 
 

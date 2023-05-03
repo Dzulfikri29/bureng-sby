@@ -11957,8 +11957,8 @@ body.boxed-wrapper {
     background-size: cover;
     border: 0 !important;
     background-size: cover !important;
-    min-height: 125px;
-    max-height: 125px;
+    min-height: 95px;
+    max-height: 95px;
 }
 
 .card-main-menu .card-body {
@@ -11971,15 +11971,19 @@ body.boxed-wrapper {
     width: 75%;
 }
 
+.main-menu-tagline p {
+    line-height: normal;
+}
+
 .card-main-menu i,
 .card-main-menu p {
     color: #1f6306;
 }
 
 .card-main-menu p {
-    font-size: 21px;
-    text-align: right;
-    line-height: 28px;
+    font-size: 18px;
+    text-align: left !important;
+    line-height: 20px;
 }
 
 .card-main-menu:hover i,
@@ -12156,4 +12160,19 @@ small.error {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.blog-carousel img {
+    max-height: 20rem;
+    min-height: 20rem;
+    object-fit: cover;
+    border-radius: 20px !important;
+}
+
+.mobile-view {
+    display: none;
+}
+
+.line-height-unset {
+    line-height: 0px !important;
 }
