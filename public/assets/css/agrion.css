@@ -11957,8 +11957,7 @@ body.boxed-wrapper {
     background-size: cover;
     border: 0 !important;
     background-size: cover !important;
-    min-height: 95px;
-    max-height: 95px;
+    min-height: 80px;
 }
 
 .card-main-menu .card-body {
