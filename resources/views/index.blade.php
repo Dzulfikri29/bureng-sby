@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/timepicker/timePicker.css') }}" />
 
     <!-- template styles -->
-    <link rel="stylesheet" href="{{ asset('assets/css/agrion.css') }}?v=3" />
+    <link rel="stylesheet" href="{{ asset('assets/css/agrion.css') }}?v=4" />
     <link rel="stylesheet" href="{{ asset('assets/css/agrion-responsive.css') }}?v=3" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/slick/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/slick/slick-theme.css') }}">
@@ -104,7 +104,7 @@
     <!-- /.preloader -->
 
     <div class="page-wrapper px-3" style="background-size: cover !important;background: linear-gradient(to right, #1a5305b5, #1a5305b5),url({{ asset('storage/' . ($background_utama->images[0]->path ?? '')) }})">
-        <div class="main-menu-wrapper container-fluid d-flex vh-100  flex-column justify-content-between pt-5">
+        <div class="main-menu-wrapper no-scroll container-fluid d-flex vh-100  flex-column justify-content-between pt-5">
             <div class="main-menu-content row justify-content-center align-content-center align-items-center">
                 <div class="col-md-6 dekstop-view">
                     <div class="px-3 container">
@@ -160,74 +160,80 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1 dekstop-view"></div>
-                <div class="col-md-5">
-                    <div class="col-md-12 text-center mb-2">
-                        <img src="{{ asset('storage/' . $general->logo_short) }}" alt="" srcset="" width="100" class="mb-2">
-                        <h2 class="agrion-font text-uppercase text-white">{{ $general->website_name }}</h2>
-                        <h4 class="agrion-font text-capitalize text-white">Lingkungan Peternakan Sapi Terintegrasi</h4>
-                        <div class="main-menu-tagline mt-2 mx-auto">
-                            <p class="text-center text-white">{{ $general->tagline }}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-12 mt-3">
-                        <div class="row justify-content-center align-content-center">
-                            <div class="col-md-4 col-sm-6 col-xs-6 mb-3">
-                                <a href="{{ route('registration.index') }}" class="card-main-menu h-100 card my-1" target="_blank" style="background: linear-gradient(to top,#fcc850, #fcc850)">
-                                    <div class="card-body py-2 px-3">
-                                        <div class="d-flex justify-content-between align-items-end h-100 pt-2">
-                                            <p class="mt-2 section-title__tagline"><b>Edufarm <br> Literasi</b></p>
-                                        </div>
-                                    </div>
-                                </a>
+                {{-- <div class="col-md-1 dekstop-view"></div> --}}
+                <div class="col-md-6">
+                    <div class="card bg-primary-dark card-home">
+                        <div class="card-body">
+                            <div class="col-md-12 text-center mb-2">
+                                <img src="{{ asset('storage/' . $general->logo_short) }}" alt="" srcset="" width="100" class="mb-2">
+                                <h3 class="agrion-font text-uppercase text-white">{{ $general->website_name }}</h3>
+                                <h5 class="agrion-font text-capitalize text-white">Lingkungan Peternakan Sapi Terintegrasi</h5>
+                                <div class="main-menu-tagline mt-2 mx-auto">
+                                    <p class="text-center text-white">{{ $general->tagline }}</p>
+                                </div>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-xs-6 mb-3">
-                                <a href="{{ route('profile') }}" class="card-main-menu h-100 card my-1" target="_blank" style="background: linear-gradient(to top,#fcc850, #fcc850)">
-                                    <div class="card-body py-2 px-3">
-                                        <div class="d-flex justify-content-between align-items-end h-100 pt-2">
-                                            <p class="mt-2 section-title__tagline"><b>Profil Literasi</b></p>
-                                        </div>
+                            <div class="col-md-12 mt-5">
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-6 col-xs-6 mb-3">
+                                        <a href="{{ route('registration.index') }}" class="card-main-menu h-100 card my-1" target="_blank">
+                                            <div class="card-body py-3 px-3">
+                                                <div class="text-center h-100">
+                                                    <i class="fa fa-chalkboard"></i>
+                                                    <p class="mt-1"><b>Edufarm<br>Literasi</b></p>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-6 mb-3">
-                                <a href="{{ route('product') }}" class="card-main-menu h-100 card my-1" target="_blank" style="background: linear-gradient(to top,#fcc850, #fcc850)">
-                                    <div class="card-body py-2 px-3">
-                                        <div class="d-flex justify-content-between align-items-end h-100 pt-2">
-                                            <p class="mt-2 section-title__tagline"><b>Produk Literasi</b></p>
-                                        </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-6 mb-3">
+                                        <a href="{{ route('profile') }}" class="card-main-menu h-100 card my-1" target="_blank">
+                                            <div class="card-body py-3 px-3">
+                                                <div class="text-center h-100">
+                                                    <i class="fa fa-users"></i>
+                                                    <p class="mt-1"><b>Profil<br>Literasi</b></p>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-
-                            <div class="col-md-12"></div>
-                            <div class="col-md-4 col-sm-6 col-xs-6 mb-3">
-                                <a href="{{ route('activity') }}" class="card-main-menu h-100 card my-1" target="_blank" style="background: linear-gradient(to top,#fcc850, #fcc850)">
-                                    <div class="card-body py-2 px-3">
-                                        <div class="d-flex justify-content-between align-items-end h-100 pt-2">
-                                            <p class="mt-2 section-title__tagline"><b>Dokumentasi <br> Kegiatan</b></p>
-                                        </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-6 mb-3">
+                                        <a href="{{ route('product') }}" class="card-main-menu h-100 card my-1" target="_blank">
+                                            <div class="card-body py-3 px-3">
+                                                <div class="text-center h-100">
+                                                    <i class="fa fa-shopping-basket"></i>
+                                                    <p class="mt-1"><b>Produk<br>Literasi</b></p>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-6 mb-3">
-                                <a href="javascript:;" class="card-main-menu h-100 card my-1" style="background: linear-gradient(to top,#fcc850, #fcc850)">
-                                    <div class="card-body py-2 px-3">
-                                        <div class="d-flex justify-content-between align-items-end h-100 pt-2">
-                                            <p class="mt-2 section-title__tagline"><b>360 Tour</b></p>
-                                        </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-6 mb-3">
+                                        <a href="{{ route('activity') }}" class="card-main-menu h-100 card my-1" target="_blank">
+                                            <div class="card-body py-3 px-3">
+                                                <div class="text-center h-100">
+                                                    <i class="fa fa-images"></i>
+                                                    <p class="mt-1"><b>Dokumentasi<br>Kegiatan</b></p>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="col-md-12"></div>
-                            <div class="col-md-12 col-xs-6 mb-3">
-                                <a href="{{ route('tutorial') }}" class="card-main-menu h-100 card my-1" target="_blank" style="background: linear-gradient(to top,#fcc850, #fcc85025), url({{ asset('storage/' . ($background_menu->images[0]->path ?? '')) }})">
-                                    <div class="card-body py-4 px-3">
-                                        <div class="d-flex justify-content-between align-items-end h-100 pt-5">
-                                            <h2 class="mt-5 agrion-font">E-Learning</h2>
-                                        </div>
+                                    {{-- <div class="col-md-4 col-sm-6 col-xs-6 mb-3">
+                                        <a href="javascript:;" class="card-main-menu h-100 card my-1" style="background: linear-gradient(to top,#fcc850, #fcc850)">
+                                            <div class="card-body py-2 px-3">
+                                                <div class="text-center h-100">
+                                                    <p class="mt-2 section-title__tagline"><b>360 Tour</b></p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div> --}}
+                                    <div class="col-md-12"></div>
+                                    <div class="col-md-12 col-xs-6 mb-3">
+                                        <a href="{{ route('tutorial') }}" class="card-main-menu h-100 card my-1" target="_blank" style="background: linear-gradient(to top,#fcc850, #fcc85025), url({{ asset('storage/' . ($background_menu->images[0]->path ?? '')) }})">
+                                            <div class="card-body py-4 px-3">
+                                                <div class="d-flex align-items-end text-center h-100 pt-5">
+                                                    <h2 class="mt-5 agrion-font text-white">E-Learning</h2>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>

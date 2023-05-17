@@ -34,6 +34,7 @@
     --agrion-extra: #f8f6f1;
     --agrion-extra-rgb: 248, 246, 241;
     --agrion-bdr-radius: 10px;
+    --agrion-dark: #44603A;
 
 }
 
@@ -44,7 +45,7 @@
 .gutter-y-30 {
     --bs-gutter-y: 30px;
 }
-
+-primary
 body {
     font-family: var(--agrion-font);
     color: var(--agrion-gray);
@@ -11957,7 +11958,6 @@ body.boxed-wrapper {
     background-size: cover;
     border: 0 !important;
     background-size: cover !important;
-    min-height: 80px;
 }
 
 .card-main-menu .card-body {
@@ -11974,20 +11974,23 @@ body.boxed-wrapper {
     line-height: normal;
 }
 
-.card-main-menu h2,
-.card-main-menu p {
-    color: #1f6306;
+.card-main-menu p,
+.card-main-menu i {
+    color: #FFC107;
 }
 
-.card-main-menu p {
-    font-size: 18px;
-    text-align: left !important;
+.card-main-menu p{
+    font-size: 14px;
     line-height: 20px;
 }
 
-.card-main-menu:hover h2,
-.card-main-menu:hover p {
-    color: #71826c !important;
+.card-main-menu i{
+    font-size: 28px;
+}
+
+.card-main-menu:hover p,
+.card-main-menu:hover i {
+    color: #1f6306 !important;
 }
 
 .data-pagination svg {
@@ -12179,3 +12182,26 @@ small.error {
 .line-height-unset {
     line-height: 0px !important;
 }
+
+.bg-primary-dark {
+    background-color: #44603a9d;
+}
+
+.card-home {
+    border: 0 !important;
+    border-radius: 18px !important;
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+
+ .no-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scroll {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
