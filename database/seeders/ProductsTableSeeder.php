@@ -31,7 +31,7 @@ class ProductsTableSeeder extends Seeder
                 'status' => 'active',
                 'phone' => 6285736413245,
                 'created_at' => '2023-04-24 09:06:38',
-                'updated_at' => '2023-04-26 11:50:06',
+                'updated_at' => '2023-04-26 14:01:55',
             ),
             1 => 
             array (
@@ -45,7 +45,7 @@ class ProductsTableSeeder extends Seeder
                 'status' => 'active',
                 'phone' => 6285736413245,
                 'created_at' => '2023-04-24 09:10:03',
-                'updated_at' => '2023-04-26 11:55:05',
+                'updated_at' => '2023-04-26 14:03:00',
             ),
         ));
         

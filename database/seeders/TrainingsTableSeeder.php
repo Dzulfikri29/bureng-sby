@@ -30,6 +30,7 @@ class TrainingsTableSeeder extends Seeder
                 'activity' => 'Memaksimalkan Peternakan di Era Modern',
                 'description' => '-',
                 'status' => 'approve',
+                'participant_total' => 0,
                 'created_at' => '2023-04-25 21:28:18',
                 'updated_at' => '2023-04-26 11:58:51',
             ),
@@ -44,8 +45,24 @@ class TrainingsTableSeeder extends Seeder
                 'activity' => 'Dasar Beternak Sapi',
                 'description' => '-',
                 'status' => 'approve',
+                'participant_total' => 0,
                 'created_at' => '2023-04-25 21:56:20',
                 'updated_at' => '2023-04-26 11:57:45',
+            ),
+            2 => 
+            array (
+                'id' => 14,
+                'from_date' => '2023-05-27',
+                'to_date' => '2023-05-29',
+                'institution' => 'Petani',
+                'phone' => 812345678,
+                'address' => 'Wiyung Brantas',
+                'activity' => 'Penanaman Hidroponik',
+                'description' => 'testing',
+                'status' => 'approve',
+                'participant_total' => 0,
+                'created_at' => '2023-04-26 13:34:34',
+                'updated_at' => '2023-04-26 13:35:11',
             ),
         ));
         

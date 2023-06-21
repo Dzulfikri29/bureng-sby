@@ -29,7 +29,7 @@ class GeneralsTableSeeder extends Seeder
                 'phone' => '6285736413245',
                 'email' => 'literasi@gmail.com',
                 'address' => 'Sumbersari, Kec. Sambeng, Lamongan, Jawa Timur',
-                'tagline' => 'Membangun Keberlanjutan Masa Depan Melalui Integrasi dan Inovasi Teknologi Dalam Industri Peternakan',
+                'tagline' => 'Membangun Keberlanjutan Masa Depan Melalui Integrasi dan Inovasi Teknologi Dalam Sektor Peternakan dan Pertanian',
                 'training_registration' => 'Mari bergabung dengan pelatihan kami dan tingkatkan keterampilan Anda dalam bidang yang Anda minati!',
                 'logo' => 'general/logo-1681453448.png',
                 'logo_short' => 'general/logo-short-1681453448.png',
@@ -37,7 +37,7 @@ class GeneralsTableSeeder extends Seeder
                 'logo_short_white' => 'general/logo-short-white-1681453448.png',
                 'browser_logo' => 'general/browser-logo-1681453448.png',
                 'created_at' => NULL,
-                'updated_at' => '2023-04-26 11:33:34',
+                'updated_at' => '2023-04-30 12:28:25',
             ),
         ));
         

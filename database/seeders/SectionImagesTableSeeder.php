@@ -59,6 +59,38 @@ class SectionImagesTableSeeder extends Seeder
                 'created_at' => '2023-04-24 07:28:00',
                 'updated_at' => '2023-04-24 07:28:00',
             ),
+            5 => 
+            array (
+                'id' => 17,
+                'section_id' => 13,
+                'path' => 'section/header-1682493342lTXFkNrH.jpg',
+                'created_at' => '2023-04-26 14:15:43',
+                'updated_at' => '2023-04-26 14:15:43',
+            ),
+            6 => 
+            array (
+                'id' => 18,
+                'section_id' => 9,
+                'path' => 'section/bagian-1-1682498308L4JAcMxF.jpg',
+                'created_at' => '2023-04-26 15:38:29',
+                'updated_at' => '2023-04-26 15:38:29',
+            ),
+            7 => 
+            array (
+                'id' => 22,
+                'section_id' => 14,
+                'path' => 'section/background-utama-1682834401Hzy497Cq.JPG',
+                'created_at' => '2023-04-30 13:00:03',
+                'updated_at' => '2023-04-30 13:00:03',
+            ),
+            8 => 
+            array (
+                'id' => 23,
+                'section_id' => 15,
+                'path' => 'section/background-menu-1683100447noZI3KRD.JPG',
+                'created_at' => '2023-05-03 14:54:10',
+                'updated_at' => '2023-05-03 14:54:10',
+            ),
         ));
         
         

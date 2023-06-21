@@ -22,11 +22,11 @@ class StructuresTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 4,
-                'name' => 'John Doe',
+                'name' => 'John Doer',
                 'position' => 'Direktur Utama',
                 'photo' => 'structure/muhammad-rifai-1682323417.jpg',
                 'created_at' => '2023-04-24 07:41:55',
-                'updated_at' => '2023-04-26 11:34:45',
+                'updated_at' => '2023-04-27 16:20:31',
                 'structure_id' => NULL,
             ),
             1 => 

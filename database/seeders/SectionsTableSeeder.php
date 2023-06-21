@@ -69,10 +69,54 @@ class SectionsTableSeeder extends Seeder
                 'page_id' => 4,
                 'name' => 'pendaftaran',
                 'title' => 'Pendaftaran Pelatihan',
-                'subtitle' => 'Isi identitas Peserta Pelatihan',
+                'subtitle' => 'Edufarm Literasi',
                 'body' => '<p><br></p>',
                 'created_at' => '2023-04-25 21:05:32',
-                'updated_at' => '2023-04-26 12:21:54',
+                'updated_at' => '2023-05-03 17:39:08',
+            ),
+            5 => 
+            array (
+                'id' => 12,
+                'page_id' => 4,
+                'name' => 'jadwal-pelatihan',
+                'title' => 'Pelatihan',
+                'subtitle' => 'Jadwal Pelatihan di Literasi',
+                'body' => '<p><br></p>',
+                'created_at' => '2023-04-26 13:46:52',
+                'updated_at' => '2023-04-26 13:47:13',
+            ),
+            6 => 
+            array (
+                'id' => 13,
+                'page_id' => 1,
+                'name' => 'header',
+                'title' => 'Profile',
+                'subtitle' => 'Profile Literasi',
+                'body' => '<p><br></p>',
+                'created_at' => '2023-04-26 14:12:44',
+                'updated_at' => '2023-04-26 14:13:59',
+            ),
+            7 => 
+            array (
+                'id' => 14,
+                'page_id' => 6,
+                'name' => 'background-utama',
+                'title' => '',
+                'subtitle' => '',
+                'body' => '',
+                'created_at' => '2023-04-26 14:12:44',
+                'updated_at' => '2023-04-26 14:13:59',
+            ),
+            8 => 
+            array (
+                'id' => 15,
+                'page_id' => 6,
+                'name' => 'background-menu',
+                'title' => '',
+                'subtitle' => '',
+                'body' => '',
+                'created_at' => '2023-04-26 14:12:44',
+                'updated_at' => '2023-04-26 14:13:59',
             ),
         ));
         

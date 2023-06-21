@@ -34,5 +34,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SocialMediaTableSeeder::class);
         $this->call(StructuresTableSeeder::class);
         $this->call(TrainingsTableSeeder::class);
+        $this->call(ActivityImagesTableSeeder::class);
+        $this->call(PersonalAccessTokensTableSeeder::class);
+        $this->call(TutorialsTableSeeder::class);
     }
 }
