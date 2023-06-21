@@ -71,20 +71,20 @@ const init_total_visitors_page_views_chart = (chart_data) => {
         data: {
             labels: chart_data.total_visitors_page_views.labels,
             datasets: [{
-                    label: 'Pengunjung',
-                    data: chart_data.total_visitors_page_views.visitor_data,
-                    "backgroundColor": "#377dff",
-                    "hoverBackgroundColor": "#377dff",
-                    "borderColor": "#377dff",
-                    "maxBarThickness": "10"
-                },
-                {
-                    label: 'Halaman Dilihat',
-                    data: chart_data.total_visitors_page_views.page_view_data,
-                    "backgroundColor": "#e7eaf3",
-                    "borderColor": "#e7eaf3",
-                    "maxBarThickness": "10"
-                }
+                label: 'Pengunjung',
+                data: chart_data.total_visitors_page_views.visitor_data,
+                "backgroundColor": "#377dff",
+                "hoverBackgroundColor": "#377dff",
+                "borderColor": "#377dff",
+                "maxBarThickness": "10"
+            },
+            {
+                label: 'Halaman Dilihat',
+                data: chart_data.total_visitors_page_views.page_view_data,
+                "backgroundColor": "#e7eaf3",
+                "borderColor": "#e7eaf3",
+                "maxBarThickness": "10"
+            }
             ]
         },
         "options": {
@@ -144,10 +144,14 @@ const init_top_countries_table = (chart_data) => {
             return item.name == e[0][0];
         });
 
+        let flag_image = '';
+        if (country_flag != '') {
+            flag_image = `<img class="avatar avatar-xss avatar-circle" src="${base_url}/admin-assets/vendor/flag-icon-css/${country_flag[0].flag_1x1}">`;
+        }
         html += `  <tr>
                         <th scope="row">
                             <span>
-                                <img class="avatar avatar-xss avatar-circle" src="${base_url}/admin-assets/vendor/flag-icon-css/${country_flag[0].flag_1x1}">
+                                ${flag_image}
                             </span> ${e[0][0]}
                         </th>
                         <td>
