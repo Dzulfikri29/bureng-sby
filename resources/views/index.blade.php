@@ -161,7 +161,7 @@
                     </div>
                 </div>
                 {{-- <div class="col-md-1 dekstop-view"></div> --}}
-                <div class="col-md-6">
+                <div class="col-xl-6">
                     <div class="card bg-primary-dark card-home">
                         <div class="card-body">
                             <div class="col-md-12 text-center mb-2">
@@ -239,7 +239,7 @@
                     </div>
                 </div>
                 <div class="col-md-1 mobile-view"></div>
-                <div class="col-md-6 mobile-view">
+                <div class="col-xl-6 mobile-view">
                     <div class="px-3 container">
                         <div class="sidebar__single sidebar__search mt-5 mb-3">
                             <form action="{{ route('blog') }}" class="sidebar__search-form">
