@@ -5,8 +5,9 @@
 <html lang="en">
 
 <head>
+
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-216187213-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HW2GCQHLHL"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -15,7 +16,7 @@
         }
         gtag('js', new Date());
 
-        gtag('config', 'UA-216187213-1');
+        gtag('config', 'G-HW2GCQHLHL');
     </script>
 
     <!-- Required Meta Tags Always Come First -->

@@ -9,7 +9,7 @@
          <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
          <div class="logo-box">
-             <a href="index.html" aria-label="logo image"><img src="{{ asset('storage/' . $general->logo_short) }}" width="122" alt="" /></a>
+             <a href="{{ route('index') }}" aria-label="logo image"><img src="{{ asset('storage/' . $general->logo_short) }}" width="122" alt="" /></a>
          </div>
          <!-- /.logo-box -->
          <div class="mobile-nav__container"></div>
