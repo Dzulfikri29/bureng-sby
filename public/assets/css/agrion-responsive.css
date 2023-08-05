@@ -502,10 +502,20 @@
     }
 
 
-    .main-menu-wrapper {
-        overflow: scroll;
-    }
 
+
+
+
+
+
+
+
+
+
+
+}
+
+@media only screen and (max-width: 1199px) {
     .dekstop-view {
         display: none;
     }
@@ -514,20 +524,14 @@
         display: block;
     }
 
+
+    .main-menu-wrapper {
+        overflow: scroll;
+    }
+
     .main-menu-content {
         height: unset;
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }
 

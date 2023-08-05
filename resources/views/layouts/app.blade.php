@@ -83,7 +83,7 @@
 
     <!-- template styles -->
     <link rel="stylesheet" href="{{ asset('assets/css/agrion.css') }}?v=4" />
-    <link rel="stylesheet" href="{{ asset('assets/css/agrion-responsive.css') }}?v=3" />
+    <link rel="stylesheet" href="{{ asset('assets/css/agrion-responsive.css') }}?v=4" />
 
     @yield('css')
     <style>

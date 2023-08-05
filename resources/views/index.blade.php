@@ -64,7 +64,7 @@
 
     <!-- template styles -->
     <link rel="stylesheet" href="{{ asset('assets/css/agrion.css') }}?v=4" />
-    <link rel="stylesheet" href="{{ asset('assets/css/agrion-responsive.css') }}?v=3" />
+    <link rel="stylesheet" href="{{ asset('assets/css/agrion-responsive.css') }}?v=4" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/slick/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/slick/slick-theme.css') }}">
 
@@ -106,7 +106,7 @@
     <div class="page-wrapper px-3" style="background-size: cover !important;background: linear-gradient(to right, #1a5305b5, #1a5305b5),url({{ asset('storage/' . ($background_utama->images[0]->path ?? '')) }})">
         <div class="main-menu-wrapper no-scroll container-fluid d-flex vh-100  flex-column justify-content-between pt-5">
             <div class="main-menu-content row justify-content-center align-content-center align-items-center">
-                <div class="col-md-6 dekstop-view">
+                <div class="col-xl-6 col-sm-12 dekstop-view">
                     <div class="px-3 container">
                         <div class="sidebar__single sidebar__search mb-3">
                             <form action="{{ route('blog') }}" class="sidebar__search-form">
@@ -161,7 +161,7 @@
                     </div>
                 </div>
                 {{-- <div class="col-md-1 dekstop-view"></div> --}}
-                <div class="col-md-6">
+                <div class="col-xl-6 col-sm-12">
                     <div class="card bg-primary-dark card-home">
                         <div class="card-body">
                             <div class="col-md-12 text-center mb-2">
@@ -239,7 +239,7 @@
                     </div>
                 </div>
                 <div class="col-md-1 mobile-view"></div>
-                <div class="col-md-6 mobile-view">
+                <div class="col-xl-6 col-sm-12 mobile-view">
                     <div class="px-3 container">
                         <div class="sidebar__single sidebar__search mt-5 mb-3">
                             <form action="{{ route('blog') }}" class="sidebar__search-form">
