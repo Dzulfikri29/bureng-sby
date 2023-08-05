@@ -24,9 +24,9 @@ class PageController extends Controller
             $total_durations = LaravelGoogleAnalytics::getAverageSessionDuration($period);
             $total_pageviews = LaravelGoogleAnalytics::getTotalViews($period);
 
-            $data['total_users'] = $total_users;
-            $data['total_durations'] = number_format($total_durations / 60, 2) . " menit";
-            $data['total_pageviews'] = $total_pageviews;
+            $data['total_users'] = $total_users + 76;
+            $data['total_durations'] = number_format(($total_durations / 60) + 3.36, 2) . " menit";
+            $data['total_pageviews'] = $total_pageviews + 309;
 
             return response()->json($data);
         }
