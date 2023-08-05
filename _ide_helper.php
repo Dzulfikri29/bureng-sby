@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 9.52.5.
+ * Generated for Laravel 9.52.14.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1252,7 +1252,7 @@
          * Call the given Closure / class@method and inject its dependencies.
          *
          * @param callable|string $callback
-         * @param \Illuminate\Container\array<string,  mixed>  $parameters
+         * @param array<string, mixed> $parameters
          * @param string|null $defaultMethod
          * @return mixed 
          * @throws \InvalidArgumentException
@@ -10328,6 +10328,7 @@
      * 
      *
      * @method static string|null getContentTypeFormat()
+     * @method static \Symfony\Component\HttpFoundation\InputBag getPayload()
      * @see \Illuminate\Http\Request
      */ 
         class Request {
@@ -17765,6 +17766,1101 @@
      
 }
 
+    namespace AkkiIo\LaravelGoogleAnalytics\Facades { 
+            /**
+     * 
+     *
+     * @method static ?int getPropertyId()
+     * @method static \Google\Analytics\Data\V1beta\NumericValue getNumericObject( $value)
+     * @method static array getUsersByCountry(\AkkiIo\LaravelGoogleAnalytics\Period $period)
+     * @method static array getUsersByCity(\AkkiIo\LaravelGoogleAnalytics\Period $period)
+     * @method static array getUsersByGender(\AkkiIo\LaravelGoogleAnalytics\Period $period)
+     * @method static array getUsersByLanguage(\AkkiIo\LaravelGoogleAnalytics\Period $period)
+     * @method static array getUsersByAge(\AkkiIo\LaravelGoogleAnalytics\Period $period)
+     * @method static array getUserByPlatform(\AkkiIo\LaravelGoogleAnalytics\Period $period)
+     * @method static array getUserByOperatingSystem(\AkkiIo\LaravelGoogleAnalytics\Period $period)
+     * @method static array getUserByBrowser(\AkkiIo\LaravelGoogleAnalytics\Period $period)
+     * @method static array getUserByScreenResolution(\AkkiIo\LaravelGoogleAnalytics\Period $period)
+     * @method static array getMostUserByPlatform(\AkkiIo\LaravelGoogleAnalytics\Period $period, int $count = 20)
+     * @method static array getMostUserByOperatingSystem(\AkkiIo\LaravelGoogleAnalytics\Period $period, int $count = 20)
+     * @method static array getMostUserByBrowser(\AkkiIo\LaravelGoogleAnalytics\Period $period, int $count = 20)
+     * @method static array getMostUserByScreenResolution(\AkkiIo\LaravelGoogleAnalytics\Period $period, int $count = 20)
+     * @method static \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalyticsResponse formatResponse(\Google\Analytics\Data\V1beta\RunReportResponse $response)
+     * @method static array getMetricAggregationsTable(\Google\Analytics\Data\V1beta\RunReportResponse $response)
+     * @method static array getTable(\Google\Analytics\Data\V1beta\RunReportResponse $response)
+     * @method static setDimensionAndMetricHeaders(\Google\Analytics\Data\V1beta\RunReportResponse $response)
+     */ 
+        class LaravelGoogleAnalytics {
+                    /**
+         * Set the property id.
+         *
+         * @param int|null $propertyId
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function setPropertyId($propertyId = null)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->setPropertyId($propertyId);
+        }
+                    /**
+         * Get the property id.
+         *
+         * @return int|null 
+         * @static 
+         */ 
+        public static function getPropertyId()
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getPropertyId();
+        }
+                    /**
+         * Set the credentials.
+         *
+         * @param null $credentials
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function setCredentials($credentials = null)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->setCredentials($credentials);
+        }
+                    /**
+         * Get the credentials.
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function getCredentials()
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getCredentials();
+        }
+                    /**
+         * Get the client.
+         *
+         * @return \Google\Analytics\Data\V1beta\BetaAnalyticsDataClient 
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getClient()
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getClient();
+        }
+                    /**
+         * Get the result from the GA4 query explorer.
+         *
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalyticsResponse 
+         * @throws \Google\ApiCore\ApiException|\Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function get()
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->get();
+        }
+                    /**
+         * 
+         *
+         * @throws ValidationException
+         * @throws ApiException
+         * @static 
+         */ 
+        public static function getRealTimeReport()
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getRealTimeReport();
+        }
+                    /**
+         * Set the date Range.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function dateRange($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->dateRange($period);
+        }
+                    /**
+         * Set the date Ranges.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $items
+         * @return \LaravelGoogleAnalytics|\AkkiIo\LaravelGoogleAnalytics\Traits\DateRangeTrait 
+         * @static 
+         */ 
+        public static function dateRanges(...$items)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->dateRanges(...$items);
+        }
+                    /**
+         * Set the metric.
+         *
+         * @param string $name
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function metric($name)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->metric($name);
+        }
+                    /**
+         * Set the metrics.
+         *
+         * @param string $items
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function metrics(...$items)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->metrics(...$items);
+        }
+                    /**
+         * Set the dimension.
+         *
+         * @param string $name
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function dimension($name)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->dimension($name);
+        }
+                    /**
+         * Set the dimensions.
+         *
+         * @param string $items
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function dimensions(...$items)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->dimensions(...$items);
+        }
+                    /**
+         * Set the order by metric.
+         *
+         * @param string $name
+         * @param string $order
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function orderByMetric($name, $order = 'ASC')
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->orderByMetric($name, $order);
+        }
+                    /**
+         * Set the desc order by metric.
+         *
+         * @param string $name
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function orderByMetricDesc($name)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->orderByMetricDesc($name);
+        }
+                    /**
+         * Set the order by dimension.
+         *
+         * @param string $name
+         * @param string $order
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function orderByDimension($name, $order = 'ASC')
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->orderByDimension($name, $order);
+        }
+                    /**
+         * Set the desc order by dimension.
+         *
+         * @param string $name
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function orderByDimensionDesc($name)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->orderByDimensionDesc($name);
+        }
+                    /**
+         * Set the metric aggregation.
+         *
+         * @param int $value
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function metricAggregation($value)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->metricAggregation($value);
+        }
+                    /**
+         * Set the metric aggregations.
+         *
+         * @param int $items
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function metricAggregations(...$items)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->metricAggregations(...$items);
+        }
+                    /**
+         * Apply where dimension filter.
+         *
+         * @param string $name
+         * @param int $matchType
+         * @param string|int $value
+         * @param bool $caseSensitive
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function whereDimension($name, $matchType, $value, $caseSensitive = false)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->whereDimension($name, $matchType, $value, $caseSensitive);
+        }
+                    /**
+         * Apply whereIn dimension filter.
+         *
+         * @param string $name
+         * @param array $values
+         * @param bool $caseSensitive
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function whereDimensionIn($name, $values, $caseSensitive = false)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->whereDimensionIn($name, $values, $caseSensitive);
+        }
+                    /**
+         * Apply where dimension filter using 'and_group'.
+         *
+         * @param array $dimensions
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function whereAndGroupDimensions($dimensions)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->whereAndGroupDimensions($dimensions);
+        }
+                    /**
+         * Apply where dimension filter using 'or_group'.
+         *
+         * @param array $dimensions
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function whereOrGroupDimensions($dimensions)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->whereOrGroupDimensions($dimensions);
+        }
+                    /**
+         * Apply where metric filter.
+         *
+         * @param string $name
+         * @param int $operation
+         * @param int|string|float $value
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function whereMetric($name, $operation, $value)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->whereMetric($name, $operation, $value);
+        }
+                    /**
+         * Apply whereBetween metric filter.
+         *
+         * @param string $name
+         * @param int|string|float $from
+         * @param int|string|float $to
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function whereMetricBetween($name, $from, $to)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->whereMetricBetween($name, $from, $to);
+        }
+                    /**
+         * Set the keep empty rows.
+         * 
+         * If false or unspecified, each row with all metrics equal to 0 will not be returned.
+         * If true, these rows will be returned if they are not separately removed by a filter.
+         *
+         * @param bool $keepEmptyRows
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function keepEmptyRows($keepEmptyRows = false)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->keepEmptyRows($keepEmptyRows);
+        }
+                    /**
+         * Set the limit.
+         *
+         * @param int|null $limit
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function limit($limit = null)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->limit($limit);
+        }
+                    /**
+         * Set the offset.
+         *
+         * @param int|null $offset
+         * @return \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics 
+         * @static 
+         */ 
+        public static function offset($offset = null)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->offset($offset);
+        }
+                    /**
+         * Get total users.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return int 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalUsers($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalUsers($period);
+        }
+                    /**
+         * Get total users by date.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalUsersByDate($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalUsersByDate($period);
+        }
+                    /**
+         * Get total users by session source.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalUsersBySessionSource($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalUsersBySessionSource($period);
+        }
+                    /**
+         * Get total users by date.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @param int $count
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getMostUsersByDate($period, $count = 20)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getMostUsersByDate($period, $count);
+        }
+                    /**
+         * Get total users by session source.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @param int $count
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getMostUsersBySessionSource($period, $count = 20)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getMostUsersBySessionSource($period, $count);
+        }
+                    /**
+         * Get average session durations in seconds.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return float 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getAverageSessionDuration($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getAverageSessionDuration($period);
+        }
+                    /**
+         * Get average session durations in seconds by date.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getAverageSessionDurationByDate($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getAverageSessionDurationByDate($period);
+        }
+                    /**
+         * Get total views.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return int 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalViews($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalViews($period);
+        }
+                    /**
+         * Get total views by date.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalViewsByDate($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalViewsByDate($period);
+        }
+                    /**
+         * Get total views by page.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalViewsByPage($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalViewsByPage($period);
+        }
+                    /**
+         * Get total views by page and user.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalViewsByPageAndUser($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalViewsByPageAndUser($period);
+        }
+                    /**
+         * Get most views by page.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @param int $count
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getMostViewsByPage($period, $count = 20)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getMostViewsByPage($period, $count);
+        }
+                    /**
+         * Get most views by user.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @param int $count
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getMostViewsByUser($period, $count = 20)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getMostViewsByUser($period, $count);
+        }
+                    /**
+         * Get total new and returning users.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalNewAndReturningUsers($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalNewAndReturningUsers($period);
+        }
+                    /**
+         * Get total new and returning users by date.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalNewAndReturningUsersByDate($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalNewAndReturningUsersByDate($period);
+        }
+                    /**
+         * Get total users by country.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalUsersByCountry($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalUsersByCountry($period);
+        }
+                    /**
+         * Get total users by city.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalUsersByCity($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalUsersByCity($period);
+        }
+                    /**
+         * Get total users by gender.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalUsersByGender($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalUsersByGender($period);
+        }
+                    /**
+         * Get total users by language.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalUsersByLanguage($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalUsersByLanguage($period);
+        }
+                    /**
+         * Get total users by age.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalUsersByAge($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalUsersByAge($period);
+        }
+                    /**
+         * Get most users by country.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @param int $count
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getMostUsersByCountry($period, $count = 20)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getMostUsersByCountry($period, $count);
+        }
+                    /**
+         * Get most users by city.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @param int $count
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getMostUsersByCity($period, $count = 20)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getMostUsersByCity($period, $count);
+        }
+                    /**
+         * Get most users by language.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @param int $count
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getMostUsersByLanguage($period, $count = 20)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getMostUsersByLanguage($period, $count);
+        }
+                    /**
+         * Get most users by age.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @param int $count
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getMostUsersByAge($period, $count = 20)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getMostUsersByAge($period, $count);
+        }
+                    /**
+         * Get total users by platform.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalUsersByPlatform($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalUsersByPlatform($period);
+        }
+                    /**
+         * Get total users by operating system.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalUsersByOperatingSystem($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalUsersByOperatingSystem($period);
+        }
+                    /**
+         * Get total users by browser.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalUsersByBrowser($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalUsersByBrowser($period);
+        }
+                    /**
+         * Get total users by screen resolution.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getTotalUsersByScreenResolution($period)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getTotalUsersByScreenResolution($period);
+        }
+                    /**
+         * Get most users by platform.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @param int $count
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getMostUsersByPlatform($period, $count = 20)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getMostUsersByPlatform($period, $count);
+        }
+                    /**
+         * Get most users by operating system.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @param int $count
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getMostUsersByOperatingSystem($period, $count = 20)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getMostUsersByOperatingSystem($period, $count);
+        }
+                    /**
+         * Get most users by browser.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @param int $count
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getMostUsersByBrowser($period, $count = 20)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getMostUsersByBrowser($period, $count);
+        }
+                    /**
+         * Get most users by screen resolution.
+         *
+         * @param \AkkiIo\LaravelGoogleAnalytics\Period $period
+         * @param int $count
+         * @return array 
+         * @throws \Google\ApiCore\ApiException
+         * @throws \Google\ApiCore\ValidationException
+         * @static 
+         */ 
+        public static function getMostUsersByScreenResolution($period, $count = 20)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getMostUsersByScreenResolution($period, $count);
+        }
+                    /**
+         * 
+         *
+         * @throws ApiException
+         * @throws ValidationException
+         * @static 
+         */ 
+        public static function getCurrentOnlineUsers()
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->getCurrentOnlineUsers();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function minuteRange($start, $end = 0)
+        {
+                        /** @var \AkkiIo\LaravelGoogleAnalytics\LaravelGoogleAnalytics $instance */
+                        return $instance->minuteRange($start, $end);
+        }
+         
+    }
+     
+}
+
+    namespace Biscolab\ReCaptcha\Facades { 
+            /**
+     * Class ReCaptcha
+     *
+     * @package Biscolab\ReCaptcha\Facades
+     * @method static string htmlFormButton(?string $button_label = '', ?array $properties = [])
+     * @method static string getFormId()
+     */ 
+        class ReCaptcha {
+                    /**
+         * Write ReCAPTCHA HTML tag in your FORM
+         * Insert before </form> tag
+         *
+         * @param null|array $attributes
+         * @return string 
+         * @static 
+         */ 
+        public static function htmlFormSnippet($attributes = [])
+        {
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->htmlFormSnippet($attributes);
+        }
+                    /**
+         * 
+         *
+         * @return array 
+         * @throws InvalidConfigurationException
+         * @static 
+         */ 
+        public static function getTagAttributes()
+        {
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->getTagAttributes();
+        }
+                    /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getOnLoadCallback()
+        {
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->getOnLoadCallback();
+        }
+                    /**
+         * Compare given attributes with allowed attributes
+         *
+         * @param array|null $attributes
+         * @return array 
+         * @static 
+         */ 
+        public static function cleanAttributes($attributes = [])
+        {
+                        return \Biscolab\ReCaptcha\ReCaptchaBuilderV2::cleanAttributes($attributes);
+        }
+                    /**
+         * 
+         *
+         * @param string $api_site_key
+         * @return \Biscolab\ReCaptcha\ReCaptchaBuilder 
+         * @static 
+         */ 
+        public static function setApiSiteKey($api_site_key)
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->setApiSiteKey($api_site_key);
+        }
+                    /**
+         * 
+         *
+         * @param string $api_secret_key
+         * @return \Biscolab\ReCaptcha\ReCaptchaBuilder 
+         * @static 
+         */ 
+        public static function setApiSecretKey($api_secret_key)
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->setApiSecretKey($api_secret_key);
+        }
+                    /**
+         * 
+         *
+         * @return int 
+         * @static 
+         */ 
+        public static function getCurlTimeout()
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->getCurlTimeout();
+        }
+                    /**
+         * 
+         *
+         * @param string $version
+         * @return \Biscolab\ReCaptcha\ReCaptchaBuilder 
+         * @static 
+         */ 
+        public static function setVersion($version)
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->setVersion($version);
+        }
+                    /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getVersion()
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->getVersion();
+        }
+                    /**
+         * 
+         *
+         * @param bool $skip_by_ip
+         * @return \Biscolab\ReCaptcha\ReCaptchaBuilder 
+         * @static 
+         */ 
+        public static function setSkipByIp($skip_by_ip)
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->setSkipByIp($skip_by_ip);
+        }
+                    /**
+         * 
+         *
+         * @param null|string $api_domain
+         * @return \Biscolab\ReCaptcha\ReCaptchaBuilder 
+         * @static 
+         */ 
+        public static function setApiDomain($api_domain = null)
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->setApiDomain($api_domain);
+        }
+                    /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getApiDomain()
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->getApiDomain();
+        }
+                    /**
+         * 
+         *
+         * @return \Biscolab\ReCaptcha\ReCaptchaBuilder 
+         * @static 
+         */ 
+        public static function setApiUrls()
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->setApiUrls();
+        }
+                    /**
+         * 
+         *
+         * @return array|mixed 
+         * @static 
+         */ 
+        public static function getIpWhitelist()
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->getIpWhitelist();
+        }
+                    /**
+         * Checks whether the user IP address is among IPs "to be skipped"
+         *
+         * @return boolean 
+         * @static 
+         */ 
+        public static function skipByIp()
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->skipByIp();
+        }
+                    /**
+         * Write script HTML tag in you HTML code
+         * Insert before </head> tag
+         *
+         * @param array|null $configuration
+         * @return string 
+         * @throws \Exception
+         * @static 
+         */ 
+        public static function htmlScriptTagJsApi($configuration = [])
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->htmlScriptTagJsApi($configuration);
+        }
+                    /**
+         * Call out to reCAPTCHA and process the response
+         *
+         * @param string $response
+         * @return boolean|array 
+         * @static 
+         */ 
+        public static function validate($response)
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->validate($response);
+        }
+                    /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getApiSiteKey()
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->getApiSiteKey();
+        }
+                    /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getApiSecretKey()
+        {            //Method inherited from \Biscolab\ReCaptcha\ReCaptchaBuilder         
+                        /** @var \Biscolab\ReCaptcha\ReCaptchaBuilderV2 $instance */
+                        return $instance->getApiSecretKey();
+        }
+         
+    }
+     
+}
+
     namespace Collective\Html { 
             /**
      * 
@@ -19006,6 +20102,27 @@
                     /**
          * 
          *
+         * @param array<class-string<ArgumentReducer>|ArgumentReducer>|\Spatie\Backtrace\Arguments\ArgumentReducers|null $argumentReducers
+         * @static 
+         */ 
+        public static function argumentReducers($argumentReducers)
+        {
+                        /** @var \Spatie\FlareClient\Flare $instance */
+                        return $instance->argumentReducers($argumentReducers);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function withStackFrameArguments($withStackFrameArguments = true)
+        {
+                        /** @var \Spatie\FlareClient\Flare $instance */
+                        return $instance->withStackFrameArguments($withStackFrameArguments);
+        }
+                    /**
+         * 
+         *
          * @static 
          */ 
         public static function version()
@@ -19077,7 +20194,7 @@
                     /**
          * 
          *
-         * @param \Spatie\FlareClient\FlareMiddleware\FlareMiddleware|array<FlareMiddleware>|\Spatie\FlareClient\class-string<FlareMiddleware> $middleware
+         * @param \Spatie\FlareClient\FlareMiddleware\FlareMiddleware|array<FlareMiddleware>|\Spatie\FlareClient\class-string<FlareMiddleware>|callable $middleware
          * @return \Spatie\FlareClient\Flare 
          * @static 
          */ 
@@ -19102,7 +20219,7 @@
          *
          * @param string $name
          * @param string $messageLevel
-         * @param \Spatie\FlareClient\array<int,  mixed> $metaData
+         * @param array<int, mixed> $metaData
          * @return \Spatie\FlareClient\Flare 
          * @static 
          */ 
@@ -19195,7 +20312,7 @@
                     /**
          * 
          *
-         * @param \Spatie\FlareClient\array<int,  string> $fieldNames
+         * @param array<int, string> $fieldNames
          * @return \Spatie\FlareClient\Flare 
          * @static 
          */ 
@@ -19271,7 +20388,7 @@
          * 
          *
          * @param string $groupName
-         * @param \Spatie\FlareClient\array<string,  mixed> $properties
+         * @param array<string, mixed> $properties
          * @return \Spatie\FlareClient\Flare 
          * @static 
          */ 
@@ -19368,7 +20485,7 @@
                     /**
          * DataTables using Collection.
          *
-         * @param \Illuminate\Support\Collection<array-key,  array>|array  $collection
+         * @param \Illuminate\Support\Collection<array-key, array>|array $collection
          * @return \Yajra\DataTables\CollectionDataTable 
          * @static 
          */ 
@@ -19380,7 +20497,7 @@
                     /**
          * DataTables using Collection.
          *
-         * @param \Illuminate\Http\Resources\Json\AnonymousResourceCollection<array-key,  array>|array  $resource
+         * @param \Illuminate\Http\Resources\Json\AnonymousResourceCollection<array-key, array>|array $resource
          * @return \Yajra\DataTables\ApiResourceDataTable|\Yajra\DataTables\DataTableAbstract 
          * @static 
          */ 
@@ -19474,6 +20591,172 @@
         public static function flushMacros()
         {
                         \Yajra\DataTables\DataTables::flushMacros();
+        }
+         
+    }
+     
+}
+
+    namespace Orangehill\Iseed\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class Iseed {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function readStubFile($file)
+        {
+                        /** @var \Orangehill\Iseed\Iseed $instance */
+                        return $instance->readStubFile($file);
+        }
+                    /**
+         * Generates a seed file.
+         *
+         * @param string $table
+         * @param string $prefix
+         * @param string $suffix
+         * @param string $database
+         * @param int $max
+         * @param string $prerunEvent
+         * @param string $postunEvent
+         * @return bool 
+         * @throws Orangehill\Iseed\TableNotFoundException
+         * @static 
+         */ 
+        public static function generateSeed($table, $prefix = null, $suffix = null, $database = null, $max = 0, $chunkSize = 0, $exclude = null, $prerunEvent = null, $postrunEvent = null, $dumpAuto = true, $indexed = true, $orderBy = null, $direction = 'ASC')
+        {
+                        /** @var \Orangehill\Iseed\Iseed $instance */
+                        return $instance->generateSeed($table, $prefix, $suffix, $database, $max, $chunkSize, $exclude, $prerunEvent, $postrunEvent, $dumpAuto, $indexed, $orderBy, $direction);
+        }
+                    /**
+         * Get a seed folder path
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getSeedPath()
+        {
+                        /** @var \Orangehill\Iseed\Iseed $instance */
+                        return $instance->getSeedPath();
+        }
+                    /**
+         * Get the Data
+         *
+         * @param string $table
+         * @return Array 
+         * @static 
+         */ 
+        public static function getData($table, $max, $exclude = null, $orderBy = null, $direction = 'ASC')
+        {
+                        /** @var \Orangehill\Iseed\Iseed $instance */
+                        return $instance->getData($table, $max, $exclude, $orderBy, $direction);
+        }
+                    /**
+         * Repacks data read from the database
+         *
+         * @param array|object $data
+         * @return array 
+         * @static 
+         */ 
+        public static function repackSeedData($data)
+        {
+                        /** @var \Orangehill\Iseed\Iseed $instance */
+                        return $instance->repackSeedData($data);
+        }
+                    /**
+         * Checks if a database table exists
+         *
+         * @param string $table
+         * @return boolean 
+         * @static 
+         */ 
+        public static function hasTable($table)
+        {
+                        /** @var \Orangehill\Iseed\Iseed $instance */
+                        return $instance->hasTable($table);
+        }
+                    /**
+         * Generates a seed class name (also used as a filename)
+         *
+         * @param string $table
+         * @param string $prefix
+         * @param string $suffix
+         * @return string 
+         * @static 
+         */ 
+        public static function generateClassName($table, $prefix = null, $suffix = null)
+        {
+                        /** @var \Orangehill\Iseed\Iseed $instance */
+                        return $instance->generateClassName($table, $prefix, $suffix);
+        }
+                    /**
+         * Get the path to the stub file.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getStubPath()
+        {
+                        /** @var \Orangehill\Iseed\Iseed $instance */
+                        return $instance->getStubPath();
+        }
+                    /**
+         * Populate the place-holders in the seed stub.
+         *
+         * @param string $class
+         * @param string $stub
+         * @param string $table
+         * @param string $data
+         * @param int $chunkSize
+         * @param string $prerunEvent
+         * @param string $postunEvent
+         * @return string 
+         * @static 
+         */ 
+        public static function populateStub($class, $stub, $table, $data, $chunkSize = null, $prerunEvent = null, $postrunEvent = null, $indexed = true)
+        {
+                        /** @var \Orangehill\Iseed\Iseed $instance */
+                        return $instance->populateStub($class, $stub, $table, $data, $chunkSize, $prerunEvent, $postrunEvent, $indexed);
+        }
+                    /**
+         * Create the full path name to the seed file.
+         *
+         * @param string $name
+         * @param string $path
+         * @return string 
+         * @static 
+         */ 
+        public static function getPath($name, $path)
+        {
+                        /** @var \Orangehill\Iseed\Iseed $instance */
+                        return $instance->getPath($name, $path);
+        }
+                    /**
+         * Cleans the iSeed section
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function cleanSection()
+        {
+                        /** @var \Orangehill\Iseed\Iseed $instance */
+                        return $instance->cleanSection();
+        }
+                    /**
+         * Updates the DatabaseSeeder file's run method (kudoz to: https://github.com/JeffreyWay/Laravel-4-Generators)
+         *
+         * @param string $className
+         * @return bool 
+         * @static 
+         */ 
+        public static function updateDatabaseSeederRunMethod($className)
+        {
+                        /** @var \Orangehill\Iseed\Iseed $instance */
+                        return $instance->updateDatabaseSeederRunMethod($className);
         }
          
     }
@@ -23163,8 +24446,8 @@ namespace  {
                 /**
              * Increment the given column's values by the given amounts.
              *
-             * @param \Illuminate\Database\Query\array<string,  float|int|numeric-string>  $columns
-             * @param \Illuminate\Database\Query\array<string,  mixed>  $extra
+             * @param array<string, float|int|numeric-string> $columns
+             * @param array<string, mixed> $extra
              * @return int 
              * @throws \InvalidArgumentException
              * @static 
@@ -23178,8 +24461,8 @@ namespace  {
                 /**
              * Decrement the given column's values by the given amounts.
              *
-             * @param \Illuminate\Database\Query\array<string,  float|int|numeric-string>  $columns
-             * @param \Illuminate\Database\Query\array<string,  mixed>  $extra
+             * @param array<string, float|int|numeric-string> $columns
+             * @param array<string, mixed> $extra
              * @return int 
              * @throws \InvalidArgumentException
              * @static 
@@ -23485,10 +24768,13 @@ namespace  {
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
             class Image extends \Intervention\Image\Facades\Image {}
+            class LaravelGoogleAnalytics extends \AkkiIo\LaravelGoogleAnalytics\Facades\LaravelGoogleAnalytics {}
+            class ReCaptcha extends \Biscolab\ReCaptcha\Facades\ReCaptcha {}
             class Form extends \Collective\Html\FormFacade {}
             class Html extends \Collective\Html\HtmlFacade {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
             class DataTables extends \Yajra\DataTables\Facades\DataTables {}
+            class Iseed extends \Orangehill\Iseed\Facades\Iseed {}
      
 }
 

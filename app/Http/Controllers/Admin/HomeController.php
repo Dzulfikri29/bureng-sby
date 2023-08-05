@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use AkkiIo\LaravelGoogleAnalytics\Facades\LaravelGoogleAnalytics;
+use AkkiIo\LaravelGoogleAnalytics\Period;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Analytics;
 use Carbon\Carbon;
 use Faker\Factory;
-use Spatie\Analytics\Period;
+use Illuminate\Support\Carbon as SupportCarbon;
 
 class HomeController extends Controller
 {
@@ -20,35 +22,35 @@ class HomeController extends Controller
     {
         $faker = Factory::create();
 
+        $from_date = $request->from_date ?? Carbon::now()->startOfMonth()->format('Y-m-d');
+        $to_date = $request->to_date ?? Carbon::now()->startOfMonth()->format('Y-m-d');
+
         if ($request->ajax()) {
-            $from_date = $request->from_date ?? Carbon::now()->startOfMonth()->format('Y-m-d');
-            $to_date = $request->to_date ?? Carbon::now()->startOfMonth()->format('Y-m-d');
-            $period = Period::create(Carbon::parse($from_date), Carbon::parse($to_date));
+            $period = Period::create(SupportCarbon::parse($from_date), SupportCarbon::parse($to_date));
 
-            $data['visitors_page_views'] = Analytics::fetchVisitorsAndPageViews($period);
+            $total_users_by_date = collect(LaravelGoogleAnalytics::getMostUsersByDate($period))->sortBy('date');
+            $total_views_by_date = collect(LaravelGoogleAnalytics::getTotalViewsByDate($period))->sortBy('date');
 
-            $total_visitors_page_views = collect(Analytics::fetchTotalVisitorsAndPageViews($period));
             $labels = [];
-            foreach ($total_visitors_page_views->pluck('date') as $key => $value) {
+            foreach ($total_views_by_date->pluck('date') as $key => $value) {
                 array_push($labels, Carbon::parse($value)->format('j/n/y'));
             }
 
             $data['total_visitors_page_views']  = [
-                'visitor_data' =>  $total_visitors_page_views->pluck('visitors')->toArray(),
-                'page_view_data' =>  $total_visitors_page_views->pluck('pageViews')->toArray(),
+                'visitor_data' =>  $total_users_by_date->pluck('totalUsers')->toArray(),
+                'page_view_data' =>  $total_views_by_date->pluck('screenPageViews')->toArray(),
                 'labels' => $labels,
             ];
-
-            $data['most_visited_pages'] = Analytics::fetchMostVisitedPages($period, 10);
+            $data['most_visited_pages'] = LaravelGoogleAnalytics::getMostViewsByPage($period, 10);
 
             // get user types
-            $user_types = Analytics::fetchUserTypes($period);
+            $user_types = LaravelGoogleAnalytics::getTotalNewAndReturningUsers($period);
             $user_types_labels = [];
             $user_types_data = [];
             $user_types_Color = [];
             foreach ($user_types as $key => $user_types) {
-                array_push($user_types_labels, $user_types['type']);
-                array_push($user_types_data, $user_types['sessions']);
+                array_push($user_types_labels, $user_types['newVsReturning']);
+                array_push($user_types_data, $user_types['totalUsers']);
                 array_push($user_types_Color, $faker->hexColor());
             }
 
@@ -57,27 +59,31 @@ class HomeController extends Controller
             $data['user_types_Color'] = $user_types_Color;
 
             // get top browsers
-            $top_browsers = Analytics::fetchTopBrowsers($period, 10);
+            $top_browsers = LaravelGoogleAnalytics::getMostUsersByBrowser($period, 10);
             $top_browser_data = [];
             foreach ($top_browsers as $key => $top_browser) {
                 $push_browser['browser'] = strtolower($top_browser['browser']);
-                $push_browser['sessions'] = strtolower($top_browser['sessions']);
+                $push_browser['sessions'] = strtolower($top_browser['totalUsers']);
 
                 array_push($top_browser_data, $push_browser);
             }
             $data['top_browsers'] = $top_browser_data;
 
-            //get top countries
-            $top_countries =  Analytics::performQuery(
-                $period,
-                'ga:sessions',
-                [
-                    'dimensions' => 'ga:country',
-                    'max-results' => 10,
-                ]
-            );
+            $top_countries = collect(LaravelGoogleAnalytics::getMostUsersByCountry($period, 10));
 
-            $data['top_countries'] = collect($top_countries['rows'] ?? [])->map(fn (array $pageRow) => [$pageRow]);
+            $data_top_countries = [];
+            foreach ($top_countries as $key => $item) {
+                array_push(
+                    $data_top_countries,
+                    [
+                        'country' => $item['country'],
+                        'totalUsers' => $item['totalUsers'],
+                        'countryId' => strtolower($item['countryId']),
+                    ]
+                );
+            }
+
+            $data['top_countries'] = $data_top_countries;
             return response()->json($data);
         }
 

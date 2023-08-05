@@ -141,7 +141,7 @@ const init_top_countries_table = (chart_data) => {
     let html = '';
     chart_data.forEach(e => {
         let country_flag = country_json.filter(function (item) {
-            return item.name == e[0][0];
+            return item.code == e.countryId;
         });
 
         let flag_image = '';
@@ -152,10 +152,10 @@ const init_top_countries_table = (chart_data) => {
                         <th scope="row">
                             <span>
                                 ${flag_image}
-                            </span> ${e[0][0]}
+                            </span> ${e.country}
                         </th>
                         <td>
-                            <span class="badge bg-soft-success text-success">${e[0][1]}</span> Sesi
+                            <span class="badge bg-soft-success text-success">${e.totalUsers}</span> Sesi
                         </td>
                     </tr>`;
     });
@@ -168,10 +168,10 @@ const init_most_visited_pages_table = (chart_data) => {
     chart_data.forEach(item => {
         html += `  <tr>
                         <th scope="row">
-                          <a href="${base_url}/${item.url}">${item.pageTitle}<a>
+                          <a href="${item.fullPageUrl}">${item.pageTitle}<a>
                         </th>
                         <td>
-                            <span class="badge bg-soft-success text-success">${item.pageViews}</span> View
+                            <span class="badge bg-soft-success text-success">${item.screenPageViews}</span> View
                         </td>
                     </tr>`;
     });

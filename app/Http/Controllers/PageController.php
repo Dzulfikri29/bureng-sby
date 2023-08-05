@@ -2,50 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use AkkiIo\LaravelGoogleAnalytics\Facades\LaravelGoogleAnalytics;
+use AkkiIo\LaravelGoogleAnalytics\Period;
 use App\Models\Blog;
 use App\Models\Section;
 use App\Models\Structure;
 use Illuminate\Http\Request;
 use Analytics;
 use Carbon\Carbon;
-use Spatie\Analytics\Period;
+use Illuminate\Support\Carbon as SupportCarbon;
 
 class PageController extends Controller
 {
     public function index(Request $request)
     {
+
         if ($request->ajax()) {
-            $period = Period::create(Carbon::parse('2022-01-01'), Carbon::now());
+            $period = Period::create(SupportCarbon::parse('2020-01-01'), SupportCarbon::now());
 
-            $total_users =  Analytics::performQuery(
-                $period,
-                'ga:sessionCount',
-                [
-                    'metrics' => 'ga:users',
-                ]
-            );
-            $total_users = $total_users->totalsForAllResults['ga:users'];
-
-            $total_durations =  Analytics::performQuery(
-                $period,
-                'ga:sessionDurationBucket',
-                [
-                    'metrics' => 'ga:avgSessionDuration',
-                ]
-            );
-            $total_durations = number_format($total_durations->totalsForAllResults['ga:avgSessionDuration'] / 60, 2) . " menit";
-
-            $total_pageviews =  Analytics::performQuery(
-                $period,
-                'ga:sessionCount',
-                [
-                    'metrics' => 'ga:pageViews',
-                ]
-            );
-            $total_pageviews = $total_pageviews->totalsForAllResults['ga:pageViews'] . " kali";
+            $total_users = LaravelGoogleAnalytics::getTotalUsers($period);
+            $total_durations = LaravelGoogleAnalytics::getAverageSessionDuration($period);
+            $total_pageviews = LaravelGoogleAnalytics::getTotalViews($period);
 
             $data['total_users'] = $total_users;
-            $data['total_durations'] = $total_durations;
+            $data['total_durations'] = number_format($total_durations / 60, 2) . " menit";
             $data['total_pageviews'] = $total_pageviews;
 
             return response()->json($data);

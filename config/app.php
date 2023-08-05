@@ -184,7 +184,6 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Spatie\Analytics\AnalyticsServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -214,8 +213,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        'Image' => Intervention\Image\Facades\Image::class,
-        'Analytics' => Spatie\Analytics\Analytics::class,
+        'Image' => Intervention\Image\Facades\Image::class
 
     ])->toArray(),
 
