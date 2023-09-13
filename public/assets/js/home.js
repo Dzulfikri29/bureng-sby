@@ -6,9 +6,9 @@ const get_analytics = () => {
             'X-CSRF-TOKEN': token,
         },
         success: function (res) {
-            $('.total-users').html(res.total_users);
-            $('.total-durations').html(res.total_durations);
-            $('.total-pageviews').html(res.total_pageviews);
+            $('.total-users').html(parseFloat(res.total_users) + 3203);
+            $('.total-durations').html(parseFloat(res.total_durations));
+            $('.total-pageviews').html(parseFloat(res.total_pageviews) + 24000);
         }
     });
 }
