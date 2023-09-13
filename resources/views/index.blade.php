@@ -327,7 +327,7 @@
     <!-- template js -->
     <script src="{{ asset('assets/js/agrion.js') }}"></script>
     <script src="{{ asset('assets/vendors/slick/slick.js') }}"></script>
-    <script src="{{ asset('assets/js/home.js') }}?v=2"></script>
+    <script src="{{ asset('assets/js/home.js') }}?v=3"></script>
     @yield('js')
 
     <script>
