@@ -214,7 +214,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-6 mb-3">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 mb-3">
                                         <a href="{{ route('street-view') }}" class="card-main-menu h-100 card my-1" target="_blank">
                                             <div class="card-body py-3 px-3">
                                                 <div class="text-center h-100">
