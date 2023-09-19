@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\PageController::class, 'index'])->name('index');
 Route::get('profile', [App\Http\Controllers\PageController::class, 'profile'])->name('profile');
 Route::get('structure', [App\Http\Controllers\PageController::class, 'structure'])->name('structure');
+Route::get('street-view', [App\Http\Controllers\PageController::class, 'street_view'])->name('street-view');
 
 Route::get('product', [App\Http\Controllers\ProductController::class, 'index'])->name('product');
 Route::get('product/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('product.show');

@@ -106,4 +106,9 @@ class PageController extends Controller
     {
         return view('blog');
     }
+
+    public function street_view()
+    {
+        return view('street_view');
+    }
 }
