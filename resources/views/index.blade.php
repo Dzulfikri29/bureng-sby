@@ -173,7 +173,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 mt-5">
-                                <div class="row">
+                                <div class="row justify-content-center">
                                     <div class="col-md-3 col-sm-6 col-xs-6 mb-3">
                                         <a href="{{ route('registration.index') }}" class="card-main-menu h-100 card my-1" target="_blank">
                                             <div class="card-body py-3 px-3">
@@ -210,6 +210,16 @@
                                                 <div class="text-center h-100">
                                                     <i class="fa fa-images"></i>
                                                     <p class="mt-1"><b>Dokumentasi<br>Kegiatan</b></p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 col-xs-6 mb-3">
+                                        <a href="{{ route('street-view') }}" class="card-main-menu h-100 card my-1" target="_blank">
+                                            <div class="card-body py-3 px-3">
+                                                <div class="text-center h-100">
+                                                    <i class="fa fa-street-view"></i>
+                                                    <p class="mt-1"><b>360<br>Street View</b></p>
                                                 </div>
                                             </div>
                                         </a>
