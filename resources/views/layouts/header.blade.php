@@ -25,6 +25,7 @@
              <div class="header-left">
                  <ul class="mb-0 list-unstyled d-inline-flex">
                      <li><a href="{{ route('index') }}" title="">Beranda</a></li>
+                     <li><a href="{{ route('history') }}" title="">Sejarah</a></li>
                      <li><a href="{{ route('tree') }}" title="">Silsilah</a></li>
                      <li><a href="{{ route('gallery') }}" title="">Galeri</a></li>
                      <li><a href="{{ route('news') }}" title="">Berita</a></li>
@@ -47,6 +48,7 @@
                  <div class="header-left">
                      <ul class="mb-0 list-unstyled d-inline-flex">
                          <li><a href="{{ route('index') }}" title="">Beranda</a></li>
+                         <li><a href="{{ route('history') }}" title="">Sejarah</a></li>
                          <li><a href="{{ route('tree') }}" title="">Silsilah</a></li>
                          <li><a href="{{ route('gallery') }}" title="">Galeri</a></li>
                          <li><a href="{{ route('news') }}" title="">Berita</a></li>
@@ -82,6 +84,7 @@
          <span class="rspn-mnu-cls"><i class="fa fa-times"></i></span>
          <ul class="mb-0 list-unstyled w-100">
              <li><a href="{{ route('index') }}" title="">Beranda</a></li>
+             <li><a href="{{ route('history') }}" title="">Sejarah</a></li>
              <li><a href="{{ route('tree') }}" title="">Silsilah</a></li>
              <li><a href="{{ route('gallery') }}" title="">Galeri</a></li>
              <li><a href="{{ route('news') }}" title="">Berita</a></li>

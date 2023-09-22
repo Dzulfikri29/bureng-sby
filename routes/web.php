@@ -27,6 +27,10 @@ Route::get('/news', function () {
     return view('news');
 })->name('news');
 
+Route::get('/history', function () {
+    return view('history');
+})->name('history');
+
 Route::group(
     [
         'as' => 'admin.',

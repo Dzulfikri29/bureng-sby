@@ -197,18 +197,23 @@
             </div>
         </div>
     </section>
-    {{-- <section>
+    <section>
         <div class="w-100 position-relative">
             <div class="time-course-wrap w-100">
                 <div class="row mrg">
+                    <div class="col-md-12 col-sm-12 col-lg-6">
+                        <div class="course-wrap d-flex flex-wrap align-items-center black-layer opc7 position-relative w-100">
+                            <div class="fixed-bg" style="background-image: url(assets/images/course-bg.jpg);"></div>
+                        </div><!-- Courses Wrap -->
+                    </div>
                     <div class="col-md-12 col-sm-12 col-lg-6">
                         <div class="time-wrap d-flex flex-wrap align-items-center justify-content-end thm-layer opc95 position-relative w-100">
                             <div class="fixed-bg" style="background-image: url(assets/images/time-bg.jpg);"></div>
                             <div class="time-inner w-100">
                                 <div class="sec-title w-100">
                                     <div class="sec-title-inner d-inline-block">
-                                        <h2 class="mb-0">Go to Allah Before its to Late</h2>
-                                        <p class="mb-0">Islamic:, 9 Shawwal 1441 AH - Monday, June 1, 2020</p>
+                                        <h2 class="mb-0">Waktu Sholat Hari Ini</h2>
+                                        <p class="mb-0">9 Shawwal 1441 H - {{ Carbon\Carbon::now()->translatedFormat('l, d F Y') }}</p>
                                     </div>
                                 </div><!-- Sec Title -->
                                 <div class="time-list-wrap d-flex flex-wrap w-100">
@@ -256,56 +261,12 @@
                             </div>
                         </div><!-- Time Wrap -->
                     </div>
-                    <div class="col-md-12 col-sm-12 col-lg-6">
-                        <div class="course-wrap d-flex flex-wrap align-items-center black-layer opc7 position-relative w-100">
-                            <div class="fixed-bg" style="background-image: url(assets/images/course-bg.jpg);"></div>
-                            <div class="course-inner w-100">
-                                <div class="sec-title w-100">
-                                    <div class="sec-title-inner d-inline-block">
-                                        <h2 class="mb-0">Islamic School Courses</h2>
-                                        <p class="mb-0">Adipiscing elit duis volutpat ligula nulla dapibus.</p>
-                                    </div>
-                                </div><!-- Sec Title -->
-                                <div class="course-list-wrap w-100">
-                                    <h3 class="mb-0 thm-clr">Weekly Programs</h3>
-                                    <ul class="course-list mb-0 list-unstyled w-100">
-                                        <li>
-                                            <div class="course-box d-flex flex-wrap w-100">
-                                                <i class="flaticon-rub-el-hizb thm-clr"></i>
-                                                <div class="course-inner">
-                                                    <h4 class="mb-0"><a href="online-courses-detail.html" title="">Tafseel ul Quran</a></h4>
-                                                    <p class="mb-0">Every Tuesday & Wednesday 8:00 am to 12:00 pm
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="course-box d-flex flex-wrap w-100">
-                                                <i class="flaticon-rub-el-hizb thm-clr"></i>
-                                                <div class="course-inner">
-                                                    <h4 class="mb-0"><a href="online-courses-detail.html" title="">Children's Islamic Classes</a></h4>
-                                                    <p class="mb-0">Daily from 8:00 am to 1:00 pm</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="course-box d-flex flex-wrap w-100">
-                                                <i class="flaticon-rub-el-hizb thm-clr"></i>
-                                                <div class="course-inner">
-                                                    <h4 class="mb-0"><a href="online-courses-detail.html" title="">Quran Recitation Class</a></h4>
-                                                    <p class="mb-0">Every Monday & Thursday 9:00 am to 11:30 pm</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- Courses Wrap -->
-                    </div>
+
                 </div>
             </div><!-- Time & Course Wrap -->
         </div>
     </section>
+    {{--
     <section>
         <div class="w-100 pt-90 gray-layer pb-110 opc85 position-relative">
             <div class="fixed-bg patern-bg back-blend-multiply gray-bg" style="background-image: url(assets/images/pattern-bg.jpg);"></div>
@@ -548,7 +509,7 @@
         </div>
     </section> --}}
     <section>
-        <div class="w-100 pb-50 position-relative">
+        <div class="w-100 pb-50 pt-90 position-relative">
             <div class="sec-title text-center w-100">
                 <div class="sec-title-inner d-inline-block">
                     <i class="flaticon-rub-el-hizb thm-clr"></i>
