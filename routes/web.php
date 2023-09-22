@@ -15,24 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\PageController::class, 'index'])->name('index');
-Route::get('profile', [App\Http\Controllers\PageController::class, 'profile'])->name('profile');
-Route::get('structure', [App\Http\Controllers\PageController::class, 'structure'])->name('structure');
-Route::get('street-view', [App\Http\Controllers\PageController::class, 'street_view'])->name('street-view');
+Route::get('/gallery', function () {
+    return view('gallery');
+})->name('gallery');
 
-Route::get('product', [App\Http\Controllers\ProductController::class, 'index'])->name('product');
-Route::get('product/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
+Route::get('/tree', function () {
+    return view('tree');
+})->name('tree');
 
-Route::get('activity', [App\Http\Controllers\ActivityController::class, 'index'])->name('activity');
-Route::get('activity/{slug}', [App\Http\Controllers\ActivityController::class, 'show'])->name('activity.show');
-Route::get('event', [App\Http\Controllers\ActivityController::class, 'event'])->name('activity.event');
-
-Route::get('blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');
-Route::get('blog/{slug}', [App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
-
-Route::resource('registration', App\Http\Controllers\RegistrationController::class);
-
-Route::get('tutorial', [App\Http\Controllers\TutorialController::class, 'index'])->name('tutorial');
-Route::get('tutorial/{slug}', [App\Http\Controllers\TutorialController::class, 'show'])->name('tutorial.show');
+Route::get('/news', function () {
+    return view('news');
+})->name('news');
 
 Route::group(
     [
