@@ -285,46 +285,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <div class="card mb-3 mb-lg-5">
-                        <!-- Header -->
-                        <div class="card-header">
-                            <h4 class="card-header-title">{{ Str::headline('social media') }}</h4>
-                        </div>
-                        <!-- End Header -->
-
-                        <!-- Body -->
-                        <div class="card-body">
-                            <div id="social-media-form">
-                                @foreach ($social_media as $key => $media)
-                                    <div class="row align-items-end mb-4" id="social_media_row_{{ $key }}">
-                                        <div class="col-md-3">
-                                            <label for="name" class="form-label">{{ Str::headline('social media') }}</label>
-                                            <input type="text" class="form-control" name="name[]" id="name_{{ $key }}" value="{{ $media->name }}" required>
-                                            <input type="hidden" name="social_media_id[]" value="{{ $media->id }}">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label for="user_name" class="form-label">{{ Str::headline('username') }}</label>
-                                            <input type="text" class="form-control" name="user_name[]" id="user_name_{{ $key }}" value="{{ $media->user_name }}" required>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="link" class="form-label">{{ Str::headline('link') }}</label>
-                                            <input type="text" class="form-control" name="link[]" id="link_{{ $key }}" value="{{ $media->link }}" required>
-                                        </div>
-                                        <div class="col align-items-end">
-                                            <button type="button" class="btn btn-danger" onclick="$('#social_media_row_{{ $key }}').remove()"><i class="bi-dash-circle"></i></button>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <input type="hidden" id="social_media_row_count" value="{{ count($social_media) }}">
-                            <a href="javascript:;" class="form-link" onclick="add_social_media_row()">
-                                <i class="bi-plus"></i> Tambah Social Media Lain
-                            </a>
-                        </div>
-                        <!-- Body -->
-                    </div>
-                </div>
             </div>
             <div class="position-fixed start-50 bottom-0 translate-middle-x w-100 zi-99 mb-3" style="max-width: 40rem;">
                 <!-- Card -->

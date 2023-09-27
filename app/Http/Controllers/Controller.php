@@ -27,25 +27,6 @@ class Controller extends BaseController
             ->add(url('/blog'))
             ->add(url('/registration'));
 
-        $blogs = Blog::all();
-        foreach ($blogs as $blog) {
-            $sitemap->add(url("/blog/{$blog->slug}"));
-        }
-
-        $products = Product::all();
-        foreach ($products as $product) {
-            $sitemap->add(url("/product/{$product->slug}"));
-        }
-
-        $activities = Activity::all();
-        foreach ($activities as $activity) {
-            $sitemap->add(url("/activity/{$activity->slug}"));
-        }
-
-        $tutorials = Tutorial::all();
-        foreach ($tutorials as $tutorial) {
-            $sitemap->add(url("/tutorial/{$tutorial->slug}"));
-        }
 
         $sitemap->writeToFile(public_path('sitemap.xml'));
     }

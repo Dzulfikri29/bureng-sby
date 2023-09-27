@@ -25,6 +25,8 @@ return new class extends Migration
             $table->text('logo_short');
             $table->text('logo_white');
             $table->text('logo_short_white');
+            $table->text('address')->nullable();
+            $table->text('tagline')->nullable();
             $table->text('browser_logo');
             $table->timestamps();
         });

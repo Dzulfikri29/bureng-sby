@@ -1,10 +1,5 @@
  @php
      $general = App\Models\General::first();
-     $social_media = App\Models\SocialMedia::all();
-     $footer_blogs = App\Models\Blog::orderBy('created_at', 'desc')
-         ->where('status', 'active')
-         ->limit(2)
-         ->get();
  @endphp
  <footer>
      <div class="w-100 pt-100 dark-layer pb-50 opc85 position-relative">

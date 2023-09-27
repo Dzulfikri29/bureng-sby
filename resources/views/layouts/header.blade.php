@@ -1,6 +1,5 @@
  @php
      $general = App\Models\General::first();
-     $social_media = App\Models\SocialMedia::all();
  @endphp
 
  <header class="stick style1 w-100">

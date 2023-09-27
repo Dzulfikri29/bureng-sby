@@ -7,12 +7,12 @@
 <g filter="url(#filter0_d)">
 <circle cx="679" cy="309" r="38" fill="white"/>
 </g>
-<path d="M690.476 297.705C691.192 296.863 692.454 296.761 693.295 297.476C694.137 298.191 694.239 299.454 693.524 300.295L676.524 320.295C675.797 321.15 674.51 321.24 673.671 320.495L664.671 312.495C663.846 311.761 663.771 310.497 664.505 309.671C665.239 308.846 666.503 308.771 667.329 309.505L674.8 316.147L690.476 297.705Z" fill="#4AAF49"/>
+<path d="M690.476 297.705C691.192 296.863 692.454 296.761 693.295 297.476C694.137 298.191 694.239 299.454 693.524 300.295L676.524 320.295C675.797 321.15 674.51 321.24 673.671 320.495L664.671 312.495C663.846 311.761 663.771 310.497 664.505 309.671C665.239 308.846 666.503 308.771 667.329 309.505L674.8 316.147L690.476 297.705Z" fill="#0a993c"/>
 <g filter="url(#filter1_d)">
 <circle cx="87" cy="311" r="36" fill="white"/>
 </g>
-<rect x="71" y="309" width="32" height="4" rx="1.5" fill="#4AAF49"/>
-<rect x="89" y="295" width="32" height="4" rx="1.5" transform="rotate(90 89 295)" fill="#4AAF49"/>
+<rect x="71" y="309" width="32" height="4" rx="1.5" fill="#0a993c"/>
+<rect x="89" y="295" width="32" height="4" rx="1.5" transform="rotate(90 89 295)" fill="#0a993c"/>
 <circle cx="513.5" cy="407.5" r="70.5" fill="#00C9A7"/>
 <g filter="url(#filter2_d)">
 <rect x="219" y="101" width="274" height="268" rx="8" fill="white"/>
@@ -62,8 +62,8 @@
 <stop offset="0.451042" stop-color="#D9DDEA"/>
 </linearGradient>
 <linearGradient id="paint1_linear" x1="119.5" y1="455" x2="375.5" y2="494" gradientUnits="userSpaceOnUse">
-<stop stop-color="#4AAF49"/>
-<stop offset="1" stop-color="#4AAF49" stop-opacity="0.77"/>
+<stop stop-color="#0a993c"/>
+<stop offset="1" stop-color="#0a993c" stop-opacity="0.77"/>
 </linearGradient>
 </defs>
 </svg>

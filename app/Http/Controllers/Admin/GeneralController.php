@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\General as model;
-use App\Models\SocialMedia;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Str;
@@ -22,7 +21,6 @@ class GeneralController extends Controller
     public function index(Request $request)
     {
         $data['model'] = model::first();
-        $data['social_media'] = SocialMedia::all();
 
         return view("admin.$this->view_folder.index", $data);
     }
@@ -44,7 +42,6 @@ class GeneralController extends Controller
             'email' => 'required',
             'address' => 'required',
             'tagline' => 'required',
-            'training_registration' => 'required',
             'meta_description' => 'required',
             'meta_keywords' => 'required',
             'meta_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -67,7 +64,6 @@ class GeneralController extends Controller
             $model->phone = $request->phone;
             $model->email = $request->email;
             $model->meta_description = $request->meta_description;
-            $model->training_registration = $request->training_registration;
             $model->address = $request->address;
             $model->tagline = $request->tagline;
             $model->meta_keywords = $request->meta_keywords;
@@ -153,26 +149,6 @@ class GeneralController extends Controller
                         'browser_logo' => $browser_logo_path,
                     ]
                 );
-            }
-
-            // ! Update Social Media Data
-            if ($request->social_media_id) {
-                SocialMedia::whereNotIn('id', $request->social_media_id)->delete();
-            } else {
-                SocialMedia::where('id', '!=', null)->delete();
-            }
-
-            foreach ($request->name ?? [] as $key => $name) {
-                $name = strtolower($name);
-                $social_media = SocialMedia::find($request->social_media_id[$key]);
-                if (!$social_media) {
-                    $social_media = new SocialMedia();
-                }
-                $social_media->icon = $name;
-                $social_media->name = $name;
-                $social_media->user_name = $request->user_name[$key];
-                $social_media->link = $request->link[$key];
-                $social_media->save();
             }
 
             $response = ['success' => true, 'message' => 'General updated successfully'];

@@ -52,69 +52,32 @@
                         </div>
                         {{-- END GENERAL --}}
 
-                        <!-- STUCTURE -->
-                        {{-- <div class="nav-item">
-                            <a class="nav-link " id="structure-menu" href="{{ route('admin.structure.index') }}" data-placement="left">
-                                <i class="bi-diagram-3 nav-icon"></i>
-                                <span class="nav-link-title">{{ Str::headline('struktur') }}</span>
-                            </a>
-                        </div> --}}
-                        <!-- STUCTURE -->
-
-                        <!-- PRODUCT -->
+                        {{-- gallery --}}
                         <div class="nav-item">
-                            <a class="nav-link dropdown-toggle " id="product-menu-parent" href="#product-menu-childs" role="button" data-bs-toggle="collapse" data-bs-target="#product-menu-childs" aria-expanded="false" aria-controls="product-menu-childs">
-                                <i class="bi-bag nav-icon"></i>
-                                <span class="nav-link-title">{{ Str::headline('produk') }}</span>
-                            </a>
-
-                            <div id="product-menu-childs" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                <a class="nav-link " href="{{ route('admin.product-category.index') }}" id="product-category-menu">{{ Str::headline('kategori') }}</a>
-                                <a class="nav-link " href="{{ route('admin.product.index') }}" id="product-menu">{{ Str::headline('daftar produk') }}</a>
-                            </div>
-                        </div>
-                        <!-- PRODUCT -->
-
-                        {{-- TRAINING --}}
-                        <div class="nav-item">
-                            <a class="nav-link " id="training-menu" href="{{ route('admin.training.index') }}" data-placement="left">
-                                <i class="bi-mortarboard nav-icon"></i>
-                                <span class="nav-link-title">{{ Str::headline('pelatihan') }}</span>
+                            <a class="nav-link " id="gallery-menu" href="{{ route('admin.gallery.index') }}" data-placement="left">
+                                <i class="bi-image nav-icon"></i>
+                                <span class="nav-link-title">{{ Str::headline('galeri') }}</span>
                             </a>
                         </div>
-                        {{-- END TRAINING --}}
+                        {{-- END gallery --}}
 
-                        <!-- BLOG -->
+                        {{-- news --}}
                         <div class="nav-item">
-                            <a class="nav-link dropdown-toggle " id="blog-menu-parent" href="#blog-menu-childs" role="button" data-bs-toggle="collapse" data-bs-target="#blog-menu-childs" aria-expanded="false" aria-controls="blog-menu-childs">
+                            <a class="nav-link " id="news-menu" href="{{ route('admin.news.index') }}" data-placement="left">
                                 <i class="bi-newspaper nav-icon"></i>
-                                <span class="nav-link-title">{{ Str::headline('blog') }}</span>
+                                <span class="nav-link-title">{{ Str::headline('news') }}</span>
                             </a>
-
-                            <div id="blog-menu-childs" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                <a class="nav-link " href="{{ route('admin.blog-category.index') }}" id="blog-category-menu">{{ Str::headline('kategori') }}</a>
-                                <a class="nav-link " href="{{ route('admin.blog.index') }}" id="blog-menu">{{ Str::headline('daftar blog') }}</a>
-                            </div>
                         </div>
-                        <!-- BLOG -->
+                        {{-- END news --}}
 
-                        <!-- ACTIVITY -->
+                        {{-- history --}}
                         <div class="nav-item">
-                            <a class="nav-link " id="activity-menu" href="{{ route('admin.activity.index') }}" data-placement="left">
-                                <i class="bi-clipboard-pulse nav-icon"></i>
-                                <span class="nav-link-title">{{ Str::headline('kegiatan') }}</span>
+                            <a class="nav-link " id="history-menu" href="{{ route('admin.history.index') }}" data-placement="left">
+                                <i class="bi-clock nav-icon"></i>
+                                <span class="nav-link-title">{{ Str::headline('history') }}</span>
                             </a>
                         </div>
-                        <!-- ACTIVITY -->
-
-                        <!-- ACTIVITY -->
-                        <div class="nav-item">
-                            <a class="nav-link " id="activity-menu" href="{{ route('admin.tutorial.index') }}" data-placement="left">
-                                <i class="bi-camera-video nav-icon"></i>
-                                <span class="nav-link-title">{{ Str::headline('E-learning') }}</span>
-                            </a>
-                        </div>
-                        <!-- ACTIVITY -->
+                        {{-- END history --}}
 
                         {{-- USER --}}
                         <div class="nav-item">
@@ -124,15 +87,6 @@
                             </a>
                         </div>
                         {{-- END USER --}}
-
-                        {{-- PAGE --}}
-                        <div class="nav-item">
-                            <a class="nav-link " id="page-menu" href="{{ route('admin.page.index') }}" data-placement="left">
-                                <i class="bi-layout-text-sidebar nav-icon"></i>
-                                <span class="nav-link-title">{{ Str::headline('halaman') }}</span>
-                            </a>
-                        </div>
-                        {{-- END PAGE --}}
 
                     </div>
                     <!-- End Collapse -->
