@@ -7,40 +7,23 @@
         <div class="w-100 position-relative">
             <div class="feat-wrap v1 text-center position-relative w-100">
                 <div class="feat-caro">
-                    <div class="feat-item">
-                        <div class="feat-img position-absolute" style="background-image: url(assets/images/resources/slide2.jpg);"></div>
-                        <div class="feat-cap-wrap position-absolute d-inline-block">
-                            <div class="feat-cap d-inline-block">
-                                <i class="d-inline-block flaticon-rub-el-hizb thm-clr"></i>
-                                <h2 class="mb-0">Memperingati Hari Isra' Mi'raj Nabi Muhammad SAW</h2>
-                                <p class="mb-0">Consectetur adipiscing elit duis volutpat ligula nulla dapibus.</p>
-                                <a class="thm-btn thm-bg" href="#" title="">Selengkapnya<span></span><span></span><span></span><span></span></a>
+                    @foreach ($banner_news as $news_data)
+                        <div class="feat-item">
+                            <div class="feat-img position-absolute" style="background-image: url({{ asset('storage/' . $news_data->gallery->path) }});"></div>
+                            <div class="feat-cap-wrap position-absolute d-inline-block">
+                                <div class="feat-cap d-inline-block">
+                                    <i class="d-inline-block flaticon-rub-el-hizb thm-clr"></i>
+                                    <h2 class="mb-0">{{ $news_data->name }}</h2>
+                                    <p class="mb-0">{{ Str::limit(strip_tags($news_data->body), 100, '...') }}</p>
+                                    @if ($news_data->type == 'news')
+                                        <a class="thm-btn thm-bg" href="{{ route('news-detail', ['slug' => $news_data->slug]) }}" title="">Selengkapnya<span></span><span></span><span></span><span></span></a>
+                                    @else
+                                        <a class="thm-btn thm-bg" href="{{ route('activity-detail', ['slug' => $news_data->slug]) }}" title="">Selengkapnya<span></span><span></span><span></span><span></span></a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="feat-item">
-                        <div class="feat-img position-absolute" style="background-image: url(assets/images/resources/slide1.jpg);"></div>
-                        <div class="feat-cap-wrap position-absolute d-inline-block">
-                            <div class="feat-cap d-inline-block">
-                                <i class="d-inline-block flaticon-rub-el-hizb thm-clr"></i>
-                                <h2 class="mb-0">Hari Raya Idul Adha</h2>
-                                <p class="mb-0">Consectetur adipiscing elit duis volutpat ligula nulla dapibus.</p>
-                                <a class="thm-btn thm-bg" href="#" title="">Selengkapnya<span></span><span></span><span></span><span></span></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="feat-item">
-                        <div class="feat-img position-absolute" style="background-image: url(assets/images/resources/slide3.jpg);"></div>
-                        <div class="feat-cap-wrap position-absolute d-inline-block">
-                            <div class="feat-cap d-inline-block">
-                                <i class="d-inline-block flaticon-rub-el-hizb thm-clr"></i>
-                                <h2 class="mb-0">Bersiap Menyambut Datangnya Bulan Suci Ramadhan</h2>
-                                <p class="mb-0">Consectetur adipiscing elit duis volutpat ligula nulla dapibus.</p>
-                                <a class="thm-btn thm-bg" href="#" title="">Selengkapnya<span></span><span></span><span></span><span></span></a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div><!-- Featured Area Wrap -->
         </div>
@@ -54,9 +37,9 @@
                         <div class="col-md-6 col-sm-6 col-lg-8">
                             <div class="cont-info w-100">
                                 <ul class="cont-info-list d-flex flex-wrap mb-0 list-unstyled w-100">
-                                    <li><span class="thm-bg"><i class="fas fa-phone-alt"></i></span>+96 125 554 24 5
+                                    <li><span class="thm-bg"><i class="fas fa-phone-alt"></i></span><a href="tel:{{ $general->phone }}">{{ $general->phone }}</a></li>
                                     </li>
-                                    <li><span class="thm-bg"><i class="far fa-envelope"></i></span><a href="javascript:void(0);" title="">info@youremailid.com</a></li>
+                                    <li><span class="thm-bg"><i class="far fa-envelope"></i></span><a href="mailto:{{ $general->email }}" title="">{{ $general->email }}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -73,11 +56,8 @@
                     <div class="about-inner d-inline-block">
                         <img class="img-fluid" src="assets/images/bism-img1.png" alt="Bismillah Image">
                         <h2 class="mb-0">Selamat Datang</h2>
-                        <p class="mb-0">The is not just a mosque for prayers rather it is a community center for
-                            all. The Center is committed to preserving an Islamic identity, building and supporting
-                            a viable Muslim community, promoting a comprehensive Islamic way of life based on the
-                            Holy Quran and the Sunnah of Prophet Muhammad.</p>
-                        <a class="thm-btn thm-bg" href="#" title="">Selengkapnya<span></span><span></span><span></span><span></span></a>
+                        <p class="mb-0">{{ $history->header }}</p>
+                        <a class="thm-btn thm-bg" href="{{ route('history') }}" title="">Selengkapnya<span></span><span></span><span></span><span></span></a>
                     </div>
                 </div><!-- About Wrap -->
             </div>
@@ -95,46 +75,15 @@
                 </div><!-- Sec Title -->
                 <div class="serv-wrap wide-sec">
                     <div class="row mrg10 serv-caro">
-                        <div class="col-md-4 col-sm-6 col-lg-3">
-                            <div class="serv-box text-center pat-bg gray-layer opc85 position-relative back-blend-multiply gray-bg w-100" style="background-image: url(assets/images/pattern-bg.jpg);">
-                                <h3 class="mb-0">Silsilah Keluarga A</h3>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, coteudtu adipisicing elit, sed do
-                                    eiusmod tem por incididunt ut labore et.</p>
-                                <a href="{{ route('tree') }}" title="">Selengkapnya</a>
+                        @foreach ($families as $family)
+                            <div class="col-md-4 col-sm-6 col-lg-3">
+                                <div class="serv-box text-center pat-bg gray-layer opc85 position-relative back-blend-multiply gray-bg w-100" style="background-image: url(assets/images/pattern-bg.jpg);">
+                                    <h3 class="mb-0">{{ $family->name }}</h3>
+                                    <p class="mb-0">{{ Str::limit(strip_tags($family->profile), 50, '...') }}</p>
+                                    <a href="{{ route('family-detail', ['id' => $family->id]) }}" title="">Selengkapnya</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-lg-3">
-                            <div class="serv-box text-center pat-bg gray-layer opc85 position-relative back-blend-multiply gray-bg w-100" style="background-image: url(assets/images/pattern-bg.jpg);">
-                                <h3 class="mb-0">Silsilah Keluarga B</h3>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, coteudtu adipisicing elit, sed do
-                                    eiusmod tem por incididunt ut labore et.</p>
-                                <a href="{{ route('tree') }}" title="">Selengkapnya</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-lg-3">
-                            <div class="serv-box text-center pat-bg gray-layer opc85 position-relative back-blend-multiply gray-bg w-100" style="background-image: url(assets/images/pattern-bg.jpg);">
-                                <h3 class="mb-0">Silsilah Keluarga C</h3>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, coteudtu adipisicing elit, sed do
-                                    eiusmod tem por incididunt ut labore et.</p>
-                                <a href="{{ route('tree') }}" title="">Selengkapnya</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-lg-3">
-                            <div class="serv-box text-center pat-bg gray-layer opc85 position-relative back-blend-multiply gray-bg w-100" style="background-image: url(assets/images/pattern-bg.jpg);">
-                                <h3 class="mb-0">Silsilah Keluarga D</h3>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, coteudtu adipisicing elit, sed do
-                                    eiusmod tem por incididunt ut labore et.</p>
-                                <a href="{{ route('tree') }}" title="">Selengkapnya</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-lg-3">
-                            <div class="serv-box text-center pat-bg gray-layer opc85 position-relative back-blend-multiply gray-bg w-100" style="background-image: url(assets/images/pattern-bg.jpg);">
-                                <h3 class="mb-0">Silsilah Keluarga E</h3>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, coteudtu adipisicing elit, sed do
-                                    eiusmod tem por incididunt ut labore et.</p>
-                                <a href="{{ route('tree') }}" title="">Selengkapnya</a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div><!-- Services Wrap -->
             </div>
@@ -147,51 +96,27 @@
                 <div class="sec-title text-center w-100">
                     <div class="sec-title-inner d-inline-block">
                         <i class="thm-clr flaticon-rub-el-hizb"></i>
-                        <h2 class="mb-0">Kegiatan Akan Datang</h2>
+                        <h2 class="mb-0">Kegiatan</h2>
                         <p class="mb-0">Adipiscing elit duis volutpat ligula nulla dapibus.</p>
                     </div>
                 </div><!-- Sec Title -->
                 <div class="event-wrap res-row w-100">
                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col-lg-4">
-                            <div class="event-box w-100">
-                                <div class="event-img overflow-hidden position-relative w-100">
-                                    <a href="event-detail.html" title=""><img class="img-fluid w-100" src="assets/images/resources/event-img1-1.jpg" alt="Event Image 1"></a>
-                                </div>
-                                <div class="event-info pat-bg gray-layer opc85 position-relative back-blend-multiply gray-bg w-100" style="background-image: url(assets/images/pattern-bg.jpg);">
-                                    <span class="event-loc d-block thm-clr"><i class="fas fa-map-marker-alt"></i>Surabaya, Jawa Timur</span>
-                                    <h3 class="mb-0"><a href="event-detail.html" title="">Kajian Bulanan Masjid Sabilillah</a></h3>
-                                    <span class="event-time d-block thm-clr">Senin, 29 September 8:47 - 11:00</span>
-                                    <span class="event-price d-block"><i>Jl. R.A Kartini No. 209 Surabaya</i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-lg-4">
-                            <div class="event-box w-100">
-                                <div class="event-img overflow-hidden position-relative w-100">
-                                    <a href="event-detail.html" title=""><img class="img-fluid w-100" src="assets/images/resources/event-img1-1.jpg" alt="Event Image 1"></a>
-                                </div>
-                                <div class="event-info pat-bg gray-layer opc85 position-relative back-blend-multiply gray-bg w-100" style="background-image: url(assets/images/pattern-bg.jpg);">
-                                    <span class="event-loc d-block thm-clr"><i class="fas fa-map-marker-alt"></i>Surabaya, Jawa Timur</span>
-                                    <h3 class="mb-0"><a href="event-detail.html" title="">Tabligh Akbar Hari Santri Nasional</a></h3>
-                                    <span class="event-time d-block thm-clr">Senin, 29 September 8:47 - 11:00</span>
-                                    <span class="event-price d-block"><i>Jl. R.A Kartini No. 209 Surabaya</i></span>
+                        @foreach ($activites as $activity)
+                            <div class="col-md-6 col-sm-6 col-lg-4">
+                                <div class="event-box w-100">
+                                    <div class="event-img overflow-hidden position-relative w-100">
+                                        <a href="{{ route('activity-detail', ['slug' => $activity->slug]) }}" title=""><img class="img-fluid w-100 gallery-size" src="{{ asset('storage/' . $activity->gallery->path) }}" alt="Event Image 1"></a>
+                                    </div>
+                                    <div class="event-info pat-bg gray-layer opc85 position-relative back-blend-multiply gray-bg w-100" style="background-image: url(assets/images/pattern-bg.jpg);">
+                                        <span class="event-loc d-block thm-clr"><i class="fas fa-map-marker-alt"></i>{{ $activity->location }}</span>
+                                        <h3 class="mb-0"><a href="{{ route('activity-detail', ['slug' => $activity->slug]) }}" title="">{{ $activity->name }}</a></h3>
+                                        <span class="event-time d-block thm-clr">{{ Carbon\Carbon::parse($activity->date)->translatedFormat('l, d F Y') }}</span>
+                                        {{-- <span class="event-price d-block"><i>Jl. R.A Kartini No. 209 Surabaya</i></span> --}}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-lg-4">
-                            <div class="event-box w-100">
-                                <div class="event-img overflow-hidden position-relative w-100">
-                                    <a href="event-detail.html" title=""><img class="img-fluid w-100" src="assets/images/resources/event-img1-1.jpg" alt="Event Image 1"></a>
-                                </div>
-                                <div class="event-info pat-bg gray-layer opc85 position-relative back-blend-multiply gray-bg w-100" style="background-image: url(assets/images/pattern-bg.jpg);">
-                                    <span class="event-loc d-block thm-clr"><i class="fas fa-map-marker-alt"></i>Surabaya, Jawa Timur</span>
-                                    <h3 class="mb-0"><a href="event-detail.html" title="">Manasik Haji 2024 - Surabaya</a></h3>
-                                    <span class="event-time d-block thm-clr">Senin, 29 September 8:47 - 11:00</span>
-                                    <span class="event-price d-block"><i>Jl. R.A Kartini No. 209 Surabaya</i></span>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div><!-- Events Wrap -->
             </div>
@@ -203,12 +128,11 @@
                 <div class="row mrg">
                     <div class="col-md-12 col-sm-12 col-lg-6">
                         <div class="course-wrap d-flex flex-wrap align-items-center black-layer opc7 position-relative w-100">
-                            <div class="fixed-bg" style="background-image: url(assets/images/course-bg.jpg);"></div>
+                            <div class="fixed-bg" style="background-image: url({{ asset('storage/' . $random_gallery->path) }});"></div>
                         </div><!-- Courses Wrap -->
                     </div>
                     <div class="col-md-12 col-sm-12 col-lg-6">
                         <div class="time-wrap d-flex flex-wrap align-items-center justify-content-end thm-layer opc95 position-relative w-100">
-                            <div class="fixed-bg" style="background-image: url(assets/images/time-bg.jpg);"></div>
                             <div class="time-inner w-100">
                                 <div class="sec-title w-100">
                                     <div class="sec-title-inner d-inline-block">
@@ -519,86 +443,17 @@
             </div><!-- Sec Title -->
             <div class="gallery-wrap w-100">
                 <div class="row mrg">
-                    <div class="col-md-6 col-sm-6 col-lg-3">
-                        <div class="gallery-box text-center overflow-hidden position-relative w-100">
-                            <img class="img-fluid w-100" src="assets/images/resources/gallery-img1-1.jpg" alt="Gallery Image 1">
-                            <div class="gallery-info position-absolute">
-                                <h3 class="mb-0">Al Mustafa – The Chosen One (Seerah of the Prophet ﷺ)</h3>
-                                <span class="d-block thm-clr">E-Book - Al Mustafa</span>
-                                <a class="d-inline-block thm-clr" href="assets/images/resources/gallery-img1-1.jpg" data-fancybox="gallery" title=""><i class="flaticon-view"></i></a>
+                    @foreach ($galleries as $gallery)
+                        <div class="col-md-6 col-sm-6 col-lg-3">
+                            <div class="gallery-box text-center overflow-hidden position-relative w-100">
+                                <img class="img-fluid w-100 gallery-size" src="{{ asset('storage/' . $gallery->path) }}" alt="{{ $gallery->name }}">
+                                <div class="gallery-info position-absolute">
+                                    <h3 class="mb-0">{{ $gallery->name }}</h3>
+                                    <a class="d-inline-block thm-clr" href="{{ asset('storage/' . $gallery->path) }}" data-fancybox="gallery" title=""><i class="flaticon-view"></i></a>
+                                </div>
                             </div>
                         </div>
-                        <div class="gallery-box text-center overflow-hidden position-relative w-100">
-                            <img class="img-fluid w-100" src="assets/images/resources/gallery-img1-2.jpg" alt="Gallery Image 2">
-                            <div class="gallery-info position-absolute">
-                                <h3 class="mb-0">Al Mustafa – The Chosen One (Seerah of the Prophet ﷺ)</h3>
-                                <span class="d-block thm-clr">E-Book - Al Mustafa</span>
-                                <a class="d-inline-block thm-clr" href="assets/images/resources/gallery-img1-2.jpg" data-fancybox="gallery" title=""><i class="flaticon-view"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-3">
-                        <div class="gallery-box text-center overflow-hidden position-relative w-100">
-                            <img class="img-fluid w-100" src="assets/images/resources/gallery-img1-3.jpg" alt="Gallery Image 3">
-                            <div class="gallery-info position-absolute">
-                                <h3 class="mb-0">Al Mustafa – The Chosen One (Seerah of the Prophet ﷺ)</h3>
-                                <span class="d-block thm-clr">E-Book - Al Mustafa</span>
-                                <a class="d-inline-block thm-clr" href="assets/images/resources/gallery-img1-3.jpg" data-fancybox="gallery" title=""><i class="flaticon-view"></i></a>
-                            </div>
-                        </div>
-                        <div class="gallery-box text-center overflow-hidden position-relative w-100">
-                            <img class="img-fluid w-100" src="assets/images/resources/gallery-img1-4.jpg" alt="Gallery Image 4">
-                            <div class="gallery-info position-absolute">
-                                <h3 class="mb-0">Al Mustafa – The Chosen One (Seerah of the Prophet ﷺ)</h3>
-                                <span class="d-block thm-clr">E-Book - Al Mustafa</span>
-                                <a class="d-inline-block thm-clr" href="assets/images/resources/gallery-img1-4.jpg" data-fancybox="gallery" title=""><i class="flaticon-view"></i></a>
-                            </div>
-                        </div>
-                        <div class="gallery-box text-center overflow-hidden position-relative w-100">
-                            <img class="img-fluid w-100" src="assets/images/resources/gallery-img1-5.jpg" alt="Gallery Image 5">
-                            <div class="gallery-info position-absolute">
-                                <h3 class="mb-0">Al Mustafa – The Chosen One (Seerah of the Prophet ﷺ)</h3>
-                                <span class="d-block thm-clr">E-Book - Al Mustafa</span>
-                                <a class="d-inline-block thm-clr" href="assets/images/resources/gallery-img1-5.jpg" data-fancybox="gallery" title=""><i class="flaticon-view"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-3">
-                        <div class="gallery-box text-center overflow-hidden position-relative w-100">
-                            <img class="img-fluid w-100" src="assets/images/resources/gallery-img1-6.jpg" alt="Gallery Image 6">
-                            <div class="gallery-info position-absolute">
-                                <h3 class="mb-0">Al Mustafa – The Chosen One (Seerah of the Prophet ﷺ)</h3>
-                                <span class="d-block thm-clr">E-Book - Al Mustafa</span>
-                                <a class="d-inline-block thm-clr" href="assets/images/resources/gallery-img1-6.jpg" data-fancybox="gallery" title=""><i class="flaticon-view"></i></a>
-                            </div>
-                        </div>
-                        <div class="gallery-box text-center overflow-hidden position-relative w-100">
-                            <img class="img-fluid w-100" src="assets/images/resources/gallery-img1-7.jpg" alt="Gallery Image 7">
-                            <div class="gallery-info position-absolute">
-                                <h3 class="mb-0">Al Mustafa – The Chosen One (Seerah of the Prophet ﷺ)</h3>
-                                <span class="d-block thm-clr">E-Book - Al Mustafa</span>
-                                <a class="d-inline-block thm-clr" href="assets/images/resources/gallery-img1-7.jpg" data-fancybox="gallery" title=""><i class="flaticon-view"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-3">
-                        <div class="gallery-box text-center overflow-hidden position-relative w-100">
-                            <img class="img-fluid w-100" src="assets/images/resources/gallery-img1-8.jpg" alt="Gallery Image 8">
-                            <div class="gallery-info position-absolute">
-                                <h3 class="mb-0">Al Mustafa – The Chosen One (Seerah of the Prophet ﷺ)</h3>
-                                <span class="d-block thm-clr">E-Book - Al Mustafa</span>
-                                <a class="d-inline-block thm-clr" href="assets/images/resources/gallery-img1-8.jpg" data-fancybox="gallery" title=""><i class="flaticon-view"></i></a>
-                            </div>
-                        </div>
-                        <div class="gallery-box text-center overflow-hidden position-relative w-100">
-                            <img class="img-fluid w-100" src="assets/images/resources/gallery-img1-9.jpg" alt="Gallery Image 9">
-                            <div class="gallery-info position-absolute">
-                                <h3 class="mb-0">Al Mustafa – The Chosen One (Seerah of the Prophet ﷺ)</h3>
-                                <span class="d-block thm-clr">E-Book - Al Mustafa</span>
-                                <a class="d-inline-block thm-clr" href="assets/images/resources/gallery-img1-9.jpg" data-fancybox="gallery" title=""><i class="flaticon-view"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div><!-- Gallery Wrap -->
         </div>
@@ -616,54 +471,24 @@
                 </div><!-- Sec Title -->
                 <div class="blog-wrap res-row w-100">
                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col-lg-4">
-                            <div class="post-box w-100">
-                                <div class="post-img overflow-hidden position-relative w-100">
-                                    <a href="#" title=""><img class="img-fluid w-100" src="assets/images/resources/blog-img1-1.jpg" alt="Blog Image 1"></a>
-                                </div>
-                                <div class="post-info position-relative w-100">
-                                    <a class="thm-bg" href="#" title=""><i class="fas fa-link"></i></a>
-                                    <span class="post-date thm-clr">July 30, 2020</span>
-                                    <h3 class="mb-0"><a href="#" title="">Memperingati maulid Nabi Muhammad SAW</a></h3>
-                                    <ul class="post-meta d-flex flex-wrap mb-0 list-unstyled">
-                                        <li><i class="fas fa-user-alt"></i>By: <a href="javascript:void(0);" title="">James Smith</a></li>
-                                        <li><i class="fas fa-comment-alt"></i>1 Comments</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-lg-4">
-                            <div class="post-box w-100">
-                                <div class="post-img overflow-hidden position-relative w-100">
-                                    <a href="#" title=""><img class="img-fluid w-100" src="assets/images/resources/blog-img1-2.jpg" alt="Blog Image 2"></a>
-                                </div>
-                                <div class="post-info position-relative w-100">
-                                    <a class="thm-bg" href="#" title=""><i class="fas fa-link"></i></a>
-                                    <span class="post-date thm-clr">June 28, 2020</span>
-                                    <h3 class="mb-0"><a href="#" title="">Keutamaan Besar Bulan Ramadhan</a></h3>
-                                    <ul class="post-meta d-flex flex-wrap mb-0 list-unstyled">
-                                        <li><i class="fas fa-user-alt"></i>By: <a href="javascript:void(0);" title="">James Smith</a></li>
-                                        <li><i class="fas fa-comment-alt"></i>5 Comments</li>
-                                    </ul>
+                        @foreach ($news as $data_news)
+                            <div class="col-md-6 col-sm-6 col-lg-4">
+                                <div class="post-box w-100">
+                                    <div class="post-img overflow-hidden position-relative w-100">
+                                        <a href="{{ route('news-detail', ['slug' => $data_news->slug]) }}" title=""><img class="img-fluid w-100 gallery-size" src="{{ asset('storage/' . $data_news->gallery->path) }}" alt="{{ $data_news->gallery->name }}"></a>
+                                    </div>
+                                    <div class="post-info position-relative w-100">
+                                        <a class="thm-bg" href="{{ route('news-detail', ['slug' => $data_news->slug]) }}" title=""><i class="fas fa-link"></i></a>
+                                        <span class="post-date thm-clr">{{ Carbon\Carbon::parse($data_news->created_at)->format('d M Y') }}</span>
+                                        <h3 class="mb-0"><a href="{{ route('news-detail', ['slug' => $data_news->slug]) }}" title="">{{ $data_news->name }}</a></h3>
+                                        <ul class="post-meta d-flex flex-wrap mb-0 list-unstyled">
+                                            {{-- <li><i class="fas fa-user-alt"></i>By: <a href="javascript:void(0);" title="">James Smith</a></li> --}}
+                                            {{-- <li><i class="fas fa-comment-alt"></i>1 Comments</li> --}}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-lg-4">
-                            <div class="post-box w-100">
-                                <div class="post-img overflow-hidden position-relative w-100">
-                                    <a href="#" title=""><img class="img-fluid w-100" src="assets/images/resources/blog-img1-3.jpg" alt="Blog Image 3"></a>
-                                </div>
-                                <div class="post-info position-relative w-100">
-                                    <a class="thm-bg" href="#" title=""><i class="fas fa-link"></i></a>
-                                    <span class="post-date thm-clr">April 25, 2020</span>
-                                    <h3 class="mb-0"><a href="#" title="">Meningkatkan Rasa Syukur Kepada Allah SWT</a></h3>
-                                    <ul class="post-meta d-flex flex-wrap mb-0 list-unstyled">
-                                        <li><i class="fas fa-user-alt"></i>By: <a href="javascript:void(0);" title="">James Smith</a></li>
-                                        <li><i class="fas fa-comment-alt"></i>15 Comments</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div><!-- Blog Wrap -->
                 <div class="view-more d-inline-block text-center w-100">
@@ -672,4 +497,10 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('js')
+    <script>
+        $('.index-menu').addClass('active');
+    </script>
 @endsection

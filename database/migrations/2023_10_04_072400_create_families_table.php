@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Gallery;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('families', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
-            $table->string('name');
-            $table->text('body');
-            $table->enum('type', ['news', 'activity'])->default('news');
-            $table->date('date');
-            $table->string('location');
-            $table->foreignIdFor(Gallery::class)->constrained();
+            $table->string("name");
+            $table->text('profile')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('families');
     }
 };

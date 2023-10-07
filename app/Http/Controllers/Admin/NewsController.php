@@ -96,6 +96,7 @@ class NewsController extends Controller
             $model->type = $request->type;
             $model->date = $request->date;
             $model->location = $request->location;
+            $model->gallery_id = $request->gallery_id;
             $model->save();
 
             $response = ['success' => true, 'message' => 'News created successfully'];
@@ -162,7 +163,7 @@ class NewsController extends Controller
             'location' => 'required',
         ]);
 
-        $slug = Str::slug(Str::lower($request->title));
+        $slug = Str::slug(Str::lower($request->name));
         try {
             $model = model::find($id);
             $model->slug = $slug;
@@ -171,6 +172,7 @@ class NewsController extends Controller
             $model->type = $request->type;
             $model->date = $request->date;
             $model->location = $request->location;
+            $model->gallery_id = $request->gallery_id;
             $model->save();
 
             $response = ['success' => true, 'message' => 'News updated successfully'];

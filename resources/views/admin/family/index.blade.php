@@ -1,10 +1,11 @@
 @extends('admin.layouts.app')
 
 @php
-    $main = 'history';
+    $main = 'family';
+    $title = 'keluarga';
 @endphp
 
-@section('title', Str::headline($main)))
+@section('title', Str::headline($title)))
 
 @section('content')
     <div class="content container-fluid">
@@ -16,7 +17,7 @@
                         <ol class="breadcrumb breadcrumb-no-gutter">
                             <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('admin.home.index') }}">{{ Str::headline('dashboard') }}</a>
                             </li>
-                            <li class="breadcrumb-item active"><a class="breadcrumb-link" href="{{ route('admin.' . $main . '.index') }}">{{ Str::headline($main) }}</a>
+                            <li class="breadcrumb-item active"><a class="breadcrumb-link" href="{{ route('admin.' . $main . '.index') }}">{{ Str::headline($title) }}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">{{ Str::headline('overview') }}</li>
                         </ol>
@@ -28,7 +29,7 @@
 
                 <div class="col-sm-auto">
                     <a class="btn btn-primary" href="{{ route("admin.$main.create") }}">
-                        <i class="bi-plus me-1"></i> {{ Str::headline("tambah $main") }}
+                        <i class="bi-plus me-1"></i> {{ Str::headline("tambah $title") }}
                     </a>
                 </div>
                 <!-- End Col -->
@@ -48,7 +49,7 @@
                             <div class="input-group-prepend input-group-text">
                                 <i class="bi-search"></i>
                             </div>
-                            <input id="datatableSearch" type="search" class="form-control" placeholder="Search {{ $main }}" aria-label="Search {{ $main }}">
+                            <input id="datatableSearch" type="search" class="form-control" placeholder="Search {{ $title }}" aria-label="Search {{ $title }}">
                         </div>
                         <!-- End Search -->
                     </form>
@@ -74,7 +75,7 @@
 
             <!-- Table -->
             <div class="table-responsive datatable-custom">
-                <table id="datatable-history" class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                <table id="datatable-family" class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                     <thead class="thead-light">
                         <tr>
                             <th class="table-column-pe-0">
@@ -83,7 +84,8 @@
                                     <label class="form-check-label" for="datatableCheckAll"></label>
                                 </div>
                             </th>
-                            <th>{{ Str::headline('judul') }}</th>
+                            <th>{{ Str::headline('nama keluarga') }}</th>
+                            <th>{{ Str::headline('keterangan') }}</th>
                             <th>{{ Str::headline('opsi') }}</th>
                         </tr>
                     </thead>

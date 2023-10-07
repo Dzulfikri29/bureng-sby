@@ -49,7 +49,7 @@
                                 <div class="col-md-12">
                                     <div class="mb-4">
                                         <label for="header" class="form-label">{{ Str::headline('header') }}</label>
-                                        <textarea name="header" id="header" rows="10" required>{{ $model->header }}</textarea>
+                                        <textarea name="header" id="header" rows="10" required class="form-control">{{ $model->header }}</textarea>
                                         @error('header')
                                             <span class="form-text text-danger">{{ $message }}</span>
                                         @enderror
@@ -142,7 +142,7 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('admin-assets/js/news/create.js') }}"></script>
+    <script src="{{ asset('admin-assets/js/history/create.js') }}"></script>
     <script>
         $('#{{ $main }}-menu').addClass('active');
 

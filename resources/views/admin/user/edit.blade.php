@@ -66,7 +66,7 @@
                             <div class="col-md-4">
                                 <div class="mb-4">
                                     <label for="password" class="form-label">{{ Str::headline('password') }}</label>
-                                    <input type="text" class="form-control" name="password" id="password" value="">
+                                    <input type="password" class="form-control" name="password" id="password" value="">
                                     @error('password')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror

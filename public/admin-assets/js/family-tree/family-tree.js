@@ -1,9 +1,12 @@
 $(document).on('ready', function () {
     // INITIALIZATION OF DATATABLES
     // =======================================================
-    HSCore.components.HSDatatables.init($('#datatable-gallery'), {
+    HSCore.components.HSDatatables.init($('#datatable-family-tree'), {
         ajax: {
-            url: `${base_url}/admin/gallery`,
+            url: `${base_url}/admin/family-tree`,
+            data: {
+                family_id: $('#family_id').val(),
+            }
         },
         columns: [{
             data: "checkbox",
@@ -14,14 +17,14 @@ $(document).on('ready', function () {
             data: "name",
         },
         {
-            data: "path",
+            data: "parent_name",
+            name: "parents.name",
         },
         {
             data: "action",
             orderable: false,
             searchable: false,
-        },
-        ],
+        }],
         info: {
             totalQty: "#datatableWithPaginationInfoTotalQty"
         },
@@ -106,82 +109,4 @@ $(document).on('ready', function () {
     });
 });
 
-$("#datatable-gallery").css("width", "100%");
-
-
-var formModal = $('#formModal');
-var formModalTitle = $('#formModalTitle');
-var method = $('#_method');
-var name_input = $('#name');
-
-$('#form-data').submit(function (e) {
-    e.preventDefault();
-    Swal.showLoading();
-    $('.validation-error-message').text('').addClass('d-none');
-
-    var formData = new FormData(this)
-    $.ajax({
-        url: $(this).attr('action'),
-        method: "POST",
-        headers: {
-            'X-CSRF-TOKEN': token,
-        },
-        data: formData,
-        processData: false,
-        contentType: false,
-        enctype: 'multipart/form-data',
-        success: function (res) {
-            Swal.close();
-            Toast.fire({
-                icon: res.success ? 'success' : 'error',
-                title: res.message,
-            });
-
-            if (res.success) {
-                formModal.modal('toggle');
-                $('#form-data')[0].reset();
-                $('#datatable-gallery').DataTable().ajax.reload();
-            }
-            name_input.val('');
-        },
-        error: function (res) {
-            Swal.close();
-            if (res.status === 422) {
-                var errors = res.responseJSON;
-                console.log(errors);
-                $.each(res.responseJSON.errors, function (key, value) {
-                    $("#" + key + "_error").html(value[0]);
-                    $("#" + key + "_error").removeClass('d-none');
-                });
-            }
-        }
-    });
-});
-
-const edit_data = (id) => {
-    $('.validation-error-message').text('').addClass('d-none');
-    formModalTitle.text('edit galeri');
-    $.ajax({
-        url: `${base_url}/admin/gallery/${id}/edit`,
-        method: "GET",
-        headers: {
-            'X-CSRF-TOKEN': token,
-        },
-        success: function (res) {
-            name_input.val(res.name);
-
-
-            $('#form-data').attr('action', `${base_url}/admin/gallery/${res.id}`);
-            formModal.modal('show');
-            method.val('PUT');
-        }
-    });
-}
-
-const add_data = () => {
-    $('.validation-error-message').text('').addClass('d-none');
-    $('#form-data').attr('action', `${base_url}/admin/gallery`);
-    formModalTitle.text('tambah galeri');
-    formModal.modal('show');
-    method.val('POST');
-}
+$("#datatable-family-tree").css("width", "100%");

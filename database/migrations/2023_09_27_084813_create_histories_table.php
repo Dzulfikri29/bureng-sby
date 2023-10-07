@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->string('header');
+            $table->text('header');
             $table->text('body');
-            $table->bigInteger('first_gallery_id');
-            $table->bigInteger('second_gallery_id');
+            $table->unsignedBigInteger('first_gallery_id');
+            $table->foreign('first_gallery_id')->references('id')->on('galleries')->constrained()->onDelete('restrict');
+            $table->unsignedBigInteger('second_gallery_id');
+            $table->foreign('second_gallery_id')->references('id')->on('galleries')->constrained()->onDelete('restrict');
             $table->timestamps();
         });
     }

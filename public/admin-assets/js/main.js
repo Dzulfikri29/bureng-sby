@@ -151,7 +151,7 @@ const init_basic_editor = () => {
 var advanceEditor;
 const init_advance_editor = () => {
     advanceEditor = new Quill('.advance-editor', {
-        placeholder: "Masukkan Deskripsi Produk",
+        placeholder: "Masukkan Konten",
         modules: {
             toolbar: [
                 ['bold', 'italic', 'underline', 'strike'], // toggled buttons

@@ -27,6 +27,9 @@ class HistoryController extends Controller
                 ->select('histories.*');
 
             return DataTables::of($data)
+                ->editColumn('header', function ($row) {
+                    return Str::limit($row->header, 80, '...');
+                })
                 ->addColumn('checkbox', function ($row) {
                     $checkbox = "<div class='form-check'>
                                     <input type='checkbox' class='form-check-input' id='historyDataCheck$row->id' name='multi_delete_$this->view_folder[]' value='$row->id'>
@@ -148,7 +151,7 @@ class HistoryController extends Controller
             'body' => 'required',
 
         ]);
-        $slug = Str::slug(Str::lower($request->title));
+
         try {
             $model = model::find($id);
             $model->header = $request->header;

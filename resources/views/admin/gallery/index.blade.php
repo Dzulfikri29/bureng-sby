@@ -85,6 +85,7 @@
                                 </div>
                             </th>
                             <th>{{ Str::headline('nama') }}</th>
+                            <th>{{ Str::headline('gambar') }}</th>
                             <th>{{ Str::headline('opsi') }}</th>
                         </tr>
                     </thead>

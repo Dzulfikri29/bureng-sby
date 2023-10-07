@@ -81,8 +81,17 @@
 
                         {{-- USER --}}
                         <div class="nav-item">
-                            <a class="nav-link " id="user-menu" href="{{ route('admin.user.index') }}" data-placement="left">
+                            <a class="nav-link " id="family-menu" href="{{ route('admin.family.index') }}" data-placement="left">
                                 <i class="bi-people nav-icon"></i>
+                                <span class="nav-link-title">{{ Str::headline('keluarga') }}</span>
+                            </a>
+                        </div>
+                        {{-- END USER --}}
+
+                        {{-- USER --}}
+                        <div class="nav-item">
+                            <a class="nav-link " id="user-menu" href="{{ route('admin.user.index') }}" data-placement="left">
+                                <i class="bi-person nav-icon"></i>
                                 <span class="nav-link-title">{{ Str::headline('user') }}</span>
                             </a>
                         </div>

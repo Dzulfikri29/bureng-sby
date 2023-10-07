@@ -51,7 +51,7 @@
                                         <label for="gallery_id" class="form-label">{{ Str::headline('gambar') }}</label>
                                         <div class="tom-select-custom mb-1">
                                             <select class="form-select" id="gallery_id" name="gallery_id" required>
-                                                <option value="{{ $model->gallery?->id }}">{{ $model->gallery?->name }}</option>
+                                                <option value="{{ $model->gallery?->id }}" selected>{{ $model->gallery?->name }}</option>
                                             </select>
                                         </div>
                                         @error('gallery_id')
@@ -64,7 +64,7 @@
                                         <label for="type" class="form-label">{{ Str::headline('jenis') }}</label>
                                         <select name="type" id="type" class="form-control" required>
                                             <option value="news" {{ $model->type == 'news' ? 'selected' : '' }}>News</option>
-                                            <option value="activty" {{ $model->type == 'activty' ? 'selected' : '' }}>Kegiatan</option>
+                                            <option value="activity" {{ $model->type == 'activity' ? 'selected' : '' }}>Kegiatan</option>
                                         </select>
                                         @error('type')
                                             <span class="form-text text-danger">{{ $message }}</span>

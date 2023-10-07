@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Gallery as model;
-use App\Models\Gallery;
+use App\Models\Family as model;
 use DOMDocument;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -13,9 +12,9 @@ use Image;
 use Yajra\DataTables\Facades\DataTables;
 use Str;
 
-class GalleryController extends Controller
+class FamilyController extends Controller
 {
-    protected $view_folder = "gallery";
+    protected $view_folder = "family";
     /**
      * Display a listing of the resource.
      *
@@ -24,30 +23,26 @@ class GalleryController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = DB::table('galleries')
-                ->select('galleries.*');
+            $data = DB::table('families')
+                ->select('families.*');
 
             return DataTables::of($data)
+                ->editColumn('profile', function ($row) {
+                    return Str::limit(strip_tags($row->profile), 50, '...');
+                })
                 ->addColumn('checkbox', function ($row) {
                     $checkbox = "<div class='form-check'>
-                                    <input type='checkbox' class='form-check-input' id='galleriesDataCheck$row->id' name='multi_delete_$this->view_folder[]' value='$row->id'>
-                                    <label class='form-check-label' for='galleriesDataCheck$row->id'></label>
+                                    <input type='checkbox' class='form-check-input' id='historyDataCheck$row->id' name='multi_delete_$this->view_folder[]' value='$row->id'>
+                                    <label class='form-check-label' for='historyDataCheck$row->id'></label>
                                 </div>";
 
                     return $checkbox;
-                })
-                ->editColumn('path', function ($row) {
-                    $path = asset('storage/' . $row->path);
-                    $path = "<img src='$path' class='img-fluid' style='max-width: 100px'>";
-
-                    return $path;
                 })
                 ->addColumn('action', function ($row) {
                     $action['data'] = $row;
                     $action['edit'] = route("admin.$this->view_folder.edit", [$this->view_folder => $row->id]);
                     $action['delete'] = route("admin.$this->view_folder.destroy", [$this->view_folder => $row->id]);
                     $action['main'] = $this->view_folder;
-                    $action['edit_ajax'] = true;
 
                     return view('admin.component.action_button', $action);
                 })
@@ -80,30 +75,20 @@ class GalleryController extends Controller
         DB::beginTransaction();
 
         $request->validate([
-            'name' => 'required|unique:galleries,name',
-            'file' => 'required|mimes:png,jpg,jpeg|max:8192',
+            'name' => 'required',
+            'profile' => 'required',
         ]);
 
         try {
             $model = new model();
             $model->name = $request->name;
+            $model->profile = $request->profile;
             $model->save();
 
-            $file_name = Str::slug('gallery-' . time()) . "." . $request->file('file')->getClientOriginalExtension();
-            $file = $request->file('file');
-            $file = Image::make($file);
-            $file->resize(700, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-            $file_path = 'gallery/' . $file_name;
-            Storage::put($file_path, (string) $file->encode());
-
-            $model->path = $file_path;
-            $model->save();
-
-            $response = ['success' => true, 'message' => 'Gallery created successfully'];
+            $response = ['success' => true, 'message' => 'Family created successfully'];
             DB::commit();
 
+            $this->createSiteMap();
             if ($request->ajax()) {
                 return response()->json($response);
             }
@@ -137,14 +122,10 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Request $request)
+    public function edit($id)
     {
 
         $model = model::findOrFail($id);
-        if ($request->ajax()) {
-            return response()->json($model);
-        }
-
         return view("admin.$this->view_folder.edit", ['model' => $model]);
     }
 
@@ -160,31 +141,21 @@ class GalleryController extends Controller
         DB::beginTransaction();
 
         $request->validate([
-            'name' => 'required|unique:galleries,name,' . $id,
+            'name' => 'required',
+            'profile' => 'required',
+
         ]);
 
         try {
             $model = model::find($id);
             $model->name = $request->name;
+            $model->profile = $request->profile;
             $model->save();
 
-            if ($request->file('file')) {
-                $file_name = Str::slug('gallery-' . time()) . "." . $request->file('file')->getClientOriginalExtension();
-                $file = $request->file('file');
-                $file = Image::make($file);
-                $file->resize(700, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
-                $file_path = 'gallery/' . $file_name;
-                Storage::delete($model->path);
-                Storage::put($file_path, (string) $file->encode());
-
-                $model->path = $file_path;
-                $model->save();
-            }
-
-            $response = ['success' => true, 'message' => 'Gallery updated successfully'];
+            $response = ['success' => true, 'message' => 'Family updated successfully'];
             DB::commit();
+
+            $this->createSiteMap();
 
             if ($request->ajax()) {
                 return response()->json($response);
@@ -213,11 +184,22 @@ class GalleryController extends Controller
         DB::beginTransaction();
         try {
             $model = model::findOrFail($id);
-            Storage::delete($model->path);
+
+            $doc = new DOMDocument();
+            $doc->loadHTML($model->profile);
+            $xml = simplexml_import_dom($doc);
+            $images = $xml->xpath('//img');
+            foreach ($images as $img) {
+                $src = $img->attributes()->src;
+                $src = str_replace(asset('storage/'), '', $src);
+                Storage::delete($src);
+            }
             $model->delete();
 
-            $response = ['success' => true, 'message' => 'Gallery deleted successfully'];
+            $response = ['success' => true, 'message' => 'Family deleted successfully'];
             DB::commit();
+
+            $this->createSiteMap();
 
             if ($request->ajax()) {
                 return response()->json($response);
@@ -241,16 +223,23 @@ class GalleryController extends Controller
         try {
             $models = model::whereIn('id', $request->ids)->get();
             foreach ($models as $model) {
-                $images = $model->images();
+                Storage::delete($model->image);
+
+                $doc = new DOMDocument();
+                $doc->loadHTML($model->profile);
+                $xml = simplexml_import_dom($doc);
+                $images = $xml->xpath('//img');
                 foreach ($images as $img) {
-                    Storage::delete($img->path);
-                    $img->delete();
+                    $src = $img->attributes()->src;
+                    $src = str_replace(asset('storage/'), '', $src);
+                    Storage::delete($src);
                 }
                 $model->delete();
             }
 
-            $response = ['success' => true, 'message' => 'Gallery deleted successfully'];
+            $response = ['success' => true, 'message' => 'Family deleted successfully'];
             DB::commit();
+            $this->createSiteMap();
 
             if ($request->ajax()) {
                 return response()->json($response);
@@ -268,20 +257,73 @@ class GalleryController extends Controller
         }
     }
 
-    public function select(Request $request)
+    public function upload_image(Request $request)
+    {
+        DB::beginTransaction();
+
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        try {
+            if ($request->file('image')) {
+                $file = $request->file('image');
+                $file_name = Str::slug($request->file('image')->getClientOriginalName()) . "-" . time() . Str::random(8) . "." . $request->file('image')->getClientOriginalExtension();
+                $image = Image::make($file);
+                $image->resize(500, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                Storage::put('family/' . $file_name, (string) $image->encode());
+                $image_path = 'family/' . $file_name;
+            }
+
+            $response = [
+                'success' => true,
+                'message' => 'Image uploaded successfully',
+                'url' => asset('storage/' . $image_path),
+            ];
+            DB::commit();
+
+            if ($request->ajax()) {
+                return response()->json($response);
+            }
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            $response = ['success' => false, 'message' => $th->getMessage()];
+            if ($request->ajax()) {
+                return response()->json($response);
+            }
+
+            return redirect()->back()->with($response);
+        }
+    }
+
+    public function delete_image(Request $request)
     {
         try {
-            $models = model::when($request->search, function ($query) use ($request) {
-                $query->where('name', 'like', "%$request->search%");
-            })
-                ->get();
+            $paths = $request->paths ?? [];
+            $fix_path = [];
+            if (count($paths) > 0) {
+                foreach ($paths as $key => $path) {
+                    $fix_path[] = str_replace(asset('storage/'), '', $path);
+                }
+                Storage::delete($fix_path);
+                $response = [
+                    'success' => true,
+                    'message' => 'Image uploaded successfully',
+                ];
 
-            return response()->json($models);
+                if ($request->ajax()) {
+                    return response()->json($response);
+                }
+            }
         } catch (\Throwable $th) {
             $response = ['success' => false, 'message' => $th->getMessage()];
             if ($request->ajax()) {
                 return response()->json($response);
             }
+
+            return redirect()->back()->with($response);
         }
     }
 }

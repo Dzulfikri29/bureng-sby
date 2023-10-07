@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Galeri')
+@section('title', 'Kegiatan')
 
 @section('content')
     <section>
@@ -9,31 +9,32 @@
             <div class="container">
                 <div class="page-title-wrap text-center w-100">
                     <div class="page-title-inner d-inline-block">
-                        <h1 class="mb-0">Galeri Kegiatan</h1>
+                        <h1 class="mb-0">Kegiatan</h1>
                     </div>
                 </div><!-- Page Title Wrap -->
             </div>
         </div>
     </section>
     <section>
-        <div class="w-100 pb-250 position-relative">
+        <div class="w-100 pt-120 pb-280 position-relative">
             <img class="sec-botm-rgt-mckp img-fluid position-absolute" src="assets/images/sec-botm-mckp.png" alt="Sec Bottom Mockup">
-            <div id="gallery-content"></div>
+            <div class="container" id="activity-content">
+            </div>
         </div>
     </section>
 @endsection
 
 @section('js')
     <script>
-        $('.gallery-menu').addClass('active');
+        $('.activity-menu').addClass('active');
         $(document).ready(function() {
             function get_data($page) {
                 $.ajax({
-                    url: "{{ route('gallery') }}?page=" + $page,
+                    url: "{{ route('activity') }}?page=" + $page,
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
-                        $('#gallery-content').html(data);
+                        $('#activity-content').html(data);
                         $('.page-link').on('click', function(e) {
                             e.preventDefault();
                             var page = $(this).attr('href').split('page=')[1];
@@ -44,6 +45,7 @@
             }
 
             get_data();
+
         });
     </script>
 @endsection

@@ -22,5 +22,10 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call(UsersTableSeeder::class);
         $this->call(GeneralsTableSeeder::class);
+        $this->call(GalleriesTableSeeder::class);
+        $this->call(NewsTableSeeder::class);
+        $this->call(HistoriesTableSeeder::class);
+        $this->call(FamiliesTableSeeder::class);
+        $this->call(FamilyTreesTableSeeder::class);
     }
 }

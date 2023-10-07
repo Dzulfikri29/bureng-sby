@@ -92,15 +92,6 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="mb-4">
-                                        <label for="training_registration" class="form-label">{{ Str::headline('pendaftaran pelatihan') }}</label>
-                                        <textarea class="form-control" name="training_registration" id="training_registration" required rows="5">{{ $model->training_registration }}</textarea>
-                                        @error('training_registration')
-                                            <span class="form-text text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
                                     <hr>
                                     <h4 class="mb-4">Pengaturan SEO</h4>
                                 </div>

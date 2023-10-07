@@ -63,7 +63,7 @@
                                         <label for="type" class="form-label">{{ Str::headline('jenis') }}</label>
                                         <select name="type" id="type" class="form-control" required>
                                             <option value="news">News</option>
-                                            <option value="activty">Kegiatan</option>
+                                            <option value="activity">Kegiatan</option>
                                         </select>
                                         @error('type')
                                             <span class="form-text text-danger">{{ $message }}</span>

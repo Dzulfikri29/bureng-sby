@@ -48,7 +48,7 @@
                                 <div class="col-md-12">
                                     <div class="mb-4">
                                         <label for="header" class="form-label">{{ Str::headline('header') }}</label>
-                                        <textarea name="header" id="header" rows="10" required>{{ old('header') }}</textarea>
+                                        <textarea name="header" id="header" rows="10" required class="form-control">{{ old('header') }}</textarea>
                                         @error('header')
                                             <span class="form-text text-danger">{{ $message }}</span>
                                         @enderror
@@ -101,7 +101,7 @@
                                         <label class="form-label">{{ Str::headline('deskripsi') }}</label>
                                         <textarea name="body" id="body" style="display: none" cols="30" rows="10"></textarea>
                                         <div class="quill-custom">
-                                            <div class="advance-editor" style="height: 15rem;" data-url="{{ route('admin.news.upload-image') }}" data-delete-url="{{ route('admin.news.delete-image') }}">
+                                            <div class="advance-editor" style="height: 15rem;" data-url="{{ route('admin.history.upload-image') }}" data-delete-url="{{ route('admin.history.delete-image') }}">
                                                 {!! @old('body') !!}
                                             </div>
                                         </div>
@@ -137,10 +137,8 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('admin-assets/js/news/create.js') }}"></script>
+    <script src="{{ asset('admin-assets/js/history/create.js') }}"></script>
     <script>
-        $('#news-menu-parent').addClass('active').removeClass('collapsed').attr('aria-expanded', true);
-        $('#news-menu-childs').addClass('show');
         $('#{{ $main }}-menu').addClass('active');
 
         $(document).ready(function() {
