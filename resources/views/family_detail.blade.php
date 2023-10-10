@@ -46,7 +46,7 @@
                                             <div class="mini-post-box d-flex flex-wrap w-100">
                                                 <div class="mini-post-info">
                                                     <span class="d-block thm-clr">{{ Carbon\Carbon::parse($other_family->created_at)->format('d F Y') }}</span>
-                                                    <h4 class="mb-0"><a href="{{ route('family-detail', ['id' => $other_family->id]) }}" title="">{{ $other_family->name }}</a></h4>
+                                                    <h4 class="mb-0"><a href="{{ route('family-detail', ['slug' => $other_family->slug]) }}" title="">{{ $other_family->name }}</a></h4>
                                                 </div>
                                             </div>
                                         @endforeach

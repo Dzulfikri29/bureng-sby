@@ -5,7 +5,7 @@
                 <div class="serv-box text-center pat-bg gray-layer opc8 position-relative back-blend-multiply gray-bg w-100" style="background-image: url(assets/images/pattern-bg.jpg);">
                     <h3 class="mb-0">{{ $family->name }}</h3>
                     <p class="mb-0">{{ Str::limit(strip_tags($family->profile), 50, '...') }}</p>
-                    <a href="{{ route('family-detail', ['id' => $family->id]) }}" title="">Selengkapnya</a>
+                    <a href="{{ route('family-detail', ['slug' => $family->slug]) }}" title="">Selengkapnya</a>
                 </div>
             </div>
         @endforeach

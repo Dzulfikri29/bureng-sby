@@ -15,14 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\PageController::class, 'index'])->name('index');
-Route::get('history', [App\Http\Controllers\PageController::class, 'history'])->name('history');
-Route::get('gallery', [App\Http\Controllers\PageController::class, 'gallery'])->name('gallery');
-Route::get('news', [App\Http\Controllers\PageController::class, 'news'])->name('news');
-Route::get('news/{slug}', [App\Http\Controllers\PageController::class, 'news_detail'])->name('news-detail');
-Route::get('activity', [App\Http\Controllers\PageController::class, 'activity'])->name('activity');
-Route::get('activity/{slug}', [App\Http\Controllers\PageController::class, 'activity_detail'])->name('activity-detail');
-Route::get('family', [App\Http\Controllers\PageController::class, 'family'])->name('family');
-Route::get('family-detail/{id}', [App\Http\Controllers\PageController::class, 'family_detail'])->name('family-detail');
+Route::get('sejarah', [App\Http\Controllers\PageController::class, 'history'])->name('history');
+Route::get('galeri', [App\Http\Controllers\PageController::class, 'gallery'])->name('gallery');
+Route::get('berita', [App\Http\Controllers\PageController::class, 'news'])->name('news');
+Route::get('berita/{slug}', [App\Http\Controllers\PageController::class, 'news_detail'])->name('news-detail');
+Route::get('kegiatan', [App\Http\Controllers\PageController::class, 'activity'])->name('activity');
+Route::get('kegiatan/{slug}', [App\Http\Controllers\PageController::class, 'activity_detail'])->name('activity-detail');
+Route::get('silsilah', [App\Http\Controllers\PageController::class, 'family'])->name('family');
+Route::get('silsilah/{slug}', [App\Http\Controllers\PageController::class, 'family_detail'])->name('family-detail');
 Route::get('family-tree-data/{id}', [App\Http\Controllers\PageController::class, 'family_tree_data'])->name('family-tree-data');
 
 Route::get('/tree', function () {

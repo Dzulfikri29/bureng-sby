@@ -158,10 +158,11 @@ class PageController extends Controller
         return view('family', compact('sections'));
     }
 
-    public function family_detail($id, Request $request)
+    public function family_detail($slug, Request $request)
     {
-        $family = Family::find($id);
-        $other_families = Family::where('id', '!=', $id)
+        $family = Family::where('slug', $slug)
+            ->firstOrFail();
+        $other_families = Family::where('id', '!=', $family->id)
             ->limit(4)
             ->get();
 

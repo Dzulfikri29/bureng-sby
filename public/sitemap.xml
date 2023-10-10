@@ -2,26 +2,82 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
         <loc>http://bureng-sby.test/profile</loc>
-            <lastmod>2023-10-08T00:36:56+07:00</lastmod>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
     </sitemap>
     <sitemap>
-        <loc>http://bureng-sby.test/product</loc>
-            <lastmod>2023-10-08T00:36:56+07:00</lastmod>
+        <loc>http://bureng-sby.test/sejarah</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
     </sitemap>
     <sitemap>
-        <loc>http://bureng-sby.test/activity</loc>
-            <lastmod>2023-10-08T00:36:56+07:00</lastmod>
+        <loc>http://bureng-sby.test/galeri</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
     </sitemap>
     <sitemap>
-        <loc>http://bureng-sby.test/tutorial</loc>
-            <lastmod>2023-10-08T00:36:56+07:00</lastmod>
+        <loc>http://bureng-sby.test/berita</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
     </sitemap>
     <sitemap>
-        <loc>http://bureng-sby.test/blog</loc>
-            <lastmod>2023-10-08T00:36:56+07:00</lastmod>
+        <loc>http://bureng-sby.test/kegiatan</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
     </sitemap>
     <sitemap>
-        <loc>http://bureng-sby.test/registration</loc>
-            <lastmod>2023-10-08T00:36:56+07:00</lastmod>
+        <loc>http://bureng-sby.test/silsilah</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://bureng-sby.test/berita/aliquam-eleifend-mi-in-nulla-posuere-enim-lobortis-scelerisque-fermentum</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://bureng-sby.test/berita/diam-volutpat-commodo-sed-egestas-egestas-fringilla</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://bureng-sby.test/berita/at-risus-viverra-adipiscing-at-in-tellus-integer-feugiat-scelerisque</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://bureng-sby.test/berita/interdum-varius-sit-amet-mattis-vulputate-enim-nulla</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://bureng-sby.test/berita/session-viii-lets-explore-the-differences</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://bureng-sby.test/berita/medicoethicolegal</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://bureng-sby.test/kegiatan/eget-nulla-facilisi-etiam-dignissim</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://bureng-sby.test/kegiatan/facilisi-cras-fermentum-odio-eu-feugiat-pretium-nibh</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://bureng-sby.test/kegiatan/lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://bureng-sby.test/kegiatan/rhoncus-aenean-vel-elit-scelerisque-mauris-pellentesque-pulvinar</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://bureng-sby.test/silsilah/bani-abu-bakar</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://bureng-sby.test/silsilah/bani-umar</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://bureng-sby.test/silsilah/bani-ali</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://bureng-sby.test/silsilah/bani-adam</loc>
+            <lastmod>2023-10-10T07:51:41+07:00</lastmod>
     </sitemap>
 </sitemapindex>

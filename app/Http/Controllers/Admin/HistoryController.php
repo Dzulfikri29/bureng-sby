@@ -92,7 +92,6 @@ class HistoryController extends Controller
             $response = ['success' => true, 'message' => 'History created successfully'];
             DB::commit();
 
-            $this->createSiteMap();
             if ($request->ajax()) {
                 return response()->json($response);
             }
@@ -163,7 +162,6 @@ class HistoryController extends Controller
             $response = ['success' => true, 'message' => 'History updated successfully'];
             DB::commit();
 
-            $this->createSiteMap();
 
             if ($request->ajax()) {
                 return response()->json($response);
@@ -207,7 +205,6 @@ class HistoryController extends Controller
             $response = ['success' => true, 'message' => 'History deleted successfully'];
             DB::commit();
 
-            $this->createSiteMap();
 
             if ($request->ajax()) {
                 return response()->json($response);
@@ -247,7 +244,6 @@ class HistoryController extends Controller
 
             $response = ['success' => true, 'message' => 'History deleted successfully'];
             DB::commit();
-            $this->createSiteMap();
 
             if ($request->ajax()) {
                 return response()->json($response);

@@ -78,13 +78,15 @@ class FamilyController extends Controller
         DB::beginTransaction();
 
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:families,name',
             'profile' => 'required',
             'gallery_id' => 'required',
         ]);
 
         try {
             $model = new model();
+            $slug = Str::slug($request->name);
+            $model->slug = $slug;
             $model->name = $request->name;
             $model->profile = $request->profile;
             $model->gallery_id = $request->gallery_id;
@@ -147,7 +149,7 @@ class FamilyController extends Controller
         DB::beginTransaction();
 
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:families,name,' . $id,
             'profile' => 'required',
             'gallery_id' => 'required',
 
@@ -155,8 +157,9 @@ class FamilyController extends Controller
 
         $model = model::find($id);
         $this->authorize('view', [model::class, $model->id]);
-
+        $slug = Str::slug($request->name);
         try {
+            $model->slug = $slug;
             $model->name = $request->name;
             $model->profile = $request->profile;
             $model->gallery_id = $request->gallery_id;
