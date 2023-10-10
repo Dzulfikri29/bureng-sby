@@ -20,12 +20,12 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $this->call(FamiliesTableSeeder::class);
+        $this->call(GalleriesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(GeneralsTableSeeder::class);
-        $this->call(GalleriesTableSeeder::class);
         $this->call(NewsTableSeeder::class);
         $this->call(HistoriesTableSeeder::class);
-        $this->call(FamiliesTableSeeder::class);
         $this->call(FamilyTreesTableSeeder::class);
         $this->call(PagesTableSeeder::class);
         $this->call(SectionsTableSeeder::class);
