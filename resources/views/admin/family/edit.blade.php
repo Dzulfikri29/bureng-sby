@@ -50,6 +50,21 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <label for="gallery_id" class="form-label">{{ Str::headline('gambar') }}</label>
+                                        <div class="tom-select-custom mb-1">
+                                            <select class="form-select" id="gallery_id" name="gallery_id" required>
+                                                @if ($model->gallery_id)
+                                                    <option value="{{ $model->gallery_id }}" selected>{{ $model->gallery->name }}</option>
+                                                @endif
+                                            </select>
+                                        </div>
+                                        @error('gallery_id')
+                                            <span class="form-text text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="col-md-12">
                                     <div class="mb-4">
                                         <label class="form-label">{{ Str::headline('keterangan') }}</label>
@@ -229,6 +244,27 @@
                                     <label for="family_tree_name" class="form-label">{{ Str::headline('nama anggota') }}</label>
                                     <input type="text" class="form-control" id="family_tree_name" name="name" value="">
                                     <span class="form-text text-danger d-none validation-error-message" id="name_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-4">
+                                    <label for="birth_date" class="form-label">{{ Str::headline('tanggal lahir') }}</label>
+                                    <input type="date" class="form-control" id="birth_date" name="birth_date" value="">
+                                    <span class="form-text text-danger d-none validation-error-message" id="birth_date_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-4">
+                                    <label for="death_date" class="form-label">{{ Str::headline('tanggal wafat') }}</label>
+                                    <input type="date" class="form-control" id="death_date" name="death_date" value="">
+                                    <span class="form-text text-danger d-none validation-error-message" id="death_date_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-4">
+                                    <label for="place_of_death" class="form-label">{{ Str::headline('tempat makam') }}</label>
+                                    <input type="text" class="form-control" id="place_of_death" name="place_of_death" value="">
+                                    <span class="form-text text-danger d-none validation-error-message" id="place_of_death_error"></span>
                                 </div>
                             </div>
                         </div>

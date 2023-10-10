@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </form>
-            <div class="card mb-3 mb-lg-5">
+            {{-- <div class="card mb-3 mb-lg-5">
                 <div class="card-header card-header-content-between">
                     <h4 class="card-header-title">{{ Str::headline('gambar ' . $main) }}</h4>
                 </div>
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection

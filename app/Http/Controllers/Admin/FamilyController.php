@@ -24,6 +24,9 @@ class FamilyController extends Controller
     {
         if ($request->ajax()) {
             $data = DB::table('families')
+                ->when(auth()->user()->family_id, function ($query) {
+                    $query->where('id', auth()->user()->family_id);
+                })
                 ->select('families.*');
 
             return DataTables::of($data)
@@ -77,12 +80,14 @@ class FamilyController extends Controller
         $request->validate([
             'name' => 'required',
             'profile' => 'required',
+            'gallery_id' => 'required',
         ]);
 
         try {
             $model = new model();
             $model->name = $request->name;
             $model->profile = $request->profile;
+            $model->gallery_id = $request->gallery_id;
             $model->save();
 
             $response = ['success' => true, 'message' => 'Family created successfully'];
@@ -124,8 +129,9 @@ class FamilyController extends Controller
      */
     public function edit($id)
     {
-
         $model = model::findOrFail($id);
+        $this->authorize('view', [model::class, $model->id]);
+
         return view("admin.$this->view_folder.edit", ['model' => $model]);
     }
 
@@ -143,13 +149,17 @@ class FamilyController extends Controller
         $request->validate([
             'name' => 'required',
             'profile' => 'required',
+            'gallery_id' => 'required',
 
         ]);
 
+        $model = model::find($id);
+        $this->authorize('view', [model::class, $model->id]);
+
         try {
-            $model = model::find($id);
             $model->name = $request->name;
             $model->profile = $request->profile;
+            $model->gallery_id = $request->gallery_id;
             $model->save();
 
             $response = ['success' => true, 'message' => 'Family updated successfully'];
@@ -182,9 +192,9 @@ class FamilyController extends Controller
     public function destroy(Request $request, $id)
     {
         DB::beginTransaction();
+        $model = model::findOrFail($id);
+        $this->authorize('view', [model::class, $model->id]);
         try {
-            $model = model::findOrFail($id);
-
             $doc = new DOMDocument();
             $doc->loadHTML($model->profile);
             $xml = simplexml_import_dom($doc);
@@ -324,6 +334,23 @@ class FamilyController extends Controller
             }
 
             return redirect()->back()->with($response);
+        }
+    }
+
+    public function select(Request $request)
+    {
+        try {
+            $models = model::when($request->search, function ($query) use ($request) {
+                $query->where('name', 'like', "%$request->search%");
+            })
+                ->get();
+
+            return response()->json($models);
+        } catch (\Throwable $th) {
+            $response = ['success' => false, 'message' => $th->getMessage()];
+            if ($request->ajax()) {
+                return response()->json($response);
+            }
         }
     }
 }

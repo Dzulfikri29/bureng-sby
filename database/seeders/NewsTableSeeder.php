@@ -31,6 +31,7 @@ class NewsTableSeeder extends Seeder
                 'gallery_id' => 3,
                 'created_at' => '2023-10-07 09:39:53',
                 'updated_at' => '2023-10-07 09:42:09',
+                'family_id' => NULL,
             ),
             1 => 
             array (
@@ -44,6 +45,7 @@ class NewsTableSeeder extends Seeder
                 'gallery_id' => 4,
                 'created_at' => '2023-10-07 09:39:53',
                 'updated_at' => '2023-10-07 09:41:42',
+                'family_id' => NULL,
             ),
             2 => 
             array (
@@ -57,6 +59,7 @@ class NewsTableSeeder extends Seeder
                 'gallery_id' => 5,
                 'created_at' => '2023-10-07 09:39:53',
                 'updated_at' => '2023-10-07 09:42:44',
+                'family_id' => NULL,
             ),
             3 => 
             array (
@@ -70,6 +73,7 @@ class NewsTableSeeder extends Seeder
                 'gallery_id' => 6,
                 'created_at' => '2023-10-07 09:39:53',
                 'updated_at' => '2023-10-07 09:43:04',
+                'family_id' => NULL,
             ),
             4 => 
             array (
@@ -83,6 +87,7 @@ class NewsTableSeeder extends Seeder
                 'gallery_id' => 7,
                 'created_at' => '2023-10-07 09:39:53',
                 'updated_at' => '2023-10-07 09:43:19',
+                'family_id' => NULL,
             ),
             5 => 
             array (
@@ -96,6 +101,7 @@ class NewsTableSeeder extends Seeder
                 'gallery_id' => 8,
                 'created_at' => '2023-10-07 09:39:53',
                 'updated_at' => '2023-10-07 09:39:53',
+                'family_id' => NULL,
             ),
             6 => 
             array (
@@ -109,6 +115,7 @@ class NewsTableSeeder extends Seeder
                 'gallery_id' => 9,
                 'created_at' => '2023-10-07 09:39:53',
                 'updated_at' => '2023-10-07 09:43:37',
+                'family_id' => NULL,
             ),
             7 => 
             array (
@@ -122,6 +129,35 @@ class NewsTableSeeder extends Seeder
                 'gallery_id' => 10,
                 'created_at' => '2023-10-07 09:39:53',
                 'updated_at' => '2023-10-07 09:42:27',
+                'family_id' => NULL,
+            ),
+            8 => 
+            array (
+                'id' => 11,
+                'slug' => 'session-viii-lets-explore-the-differences',
+                'name' => 'Session VIII : LET\'S EXPLORE THE DIFFERENCES',
+                'body' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra suspendisse potenti nullam ac tortor vitae. Platea dictumst quisque sagittis purus sit amet. Malesuada bibendum arcu vitae elementum curabitur vitae. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Habitant morbi tristique senectus et netus et malesuada fames ac. At erat pellentesque adipiscing commodo elit at imperdiet dui. Sem viverra aliquet eget sit amet tellus cras. Mattis vulputate enim nulla aliquet. Cras semper auctor neque vitae tempus quam. Gravida dictum fusce ut placerat. Nibh mauris cursus mattis molestie a iaculis at erat pellentesque. Ullamcorper eget nulla facilisi etiam dignissim diam. Quam pellentesque nec nam aliquam. Morbi tempus iaculis urna id volutpat lacus. At volutpat diam ut venenatis tellus. Nunc scelerisque viverra mauris in aliquam. Faucibus nisl tincidunt eget nullam. In nulla posuere sollicitudin aliquam ultrices. Elementum nisi quis eleifend quam adipiscing.</p><p>Sagittis aliquam malesuada bibendum arcu. Maecenas pharetra convallis posuere morbi leo urna molestie. Pretium nibh ipsum consequat nisl vel pretium lectus. Neque aliquam vestibulum morbi blandit cursus risus at. Pretium viverra suspendisse potenti nullam ac. Volutpat est velit egestas dui. Pretium nibh ipsum consequat nisl vel pretium lectus quam. Tempus urna et pharetra pharetra. Eu non diam phasellus vestibulum lorem sed risus ultricies tristique. Faucibus nisl tincidunt eget nullam non nisi est sit. Facilisi morbi tempus iaculis urna id. Vel pharetra vel turpis nunc eget lorem dolor. Libero id faucibus nisl tincidunt eget nullam non.</p>',
+                'type' => 'news',
+                'date' => '2023-10-08',
+                'location' => 'Bureng Surabaya',
+                'gallery_id' => 15,
+                'created_at' => '2023-10-08 00:36:01',
+                'updated_at' => '2023-10-08 00:36:01',
+                'family_id' => 5,
+            ),
+            9 => 
+            array (
+                'id' => 12,
+                'slug' => 'medicoethicolegal',
+                'name' => 'MEDICOETHICOLEGAL',
+                'body' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra suspendisse potenti nullam ac tortor vitae. Platea dictumst quisque sagittis purus sit amet. Malesuada bibendum arcu vitae elementum curabitur vitae. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Habitant morbi tristique senectus et netus et malesuada fames ac. At erat pellentesque adipiscing commodo elit at imperdiet dui. Sem viverra aliquet eget sit amet tellus cras. Mattis vulputate enim nulla aliquet. Cras semper auctor neque vitae tempus quam. Gravida dictum fusce ut placerat. Nibh mauris cursus mattis molestie a iaculis at erat pellentesque. Ullamcorper eget nulla facilisi etiam dignissim diam. Quam pellentesque nec nam aliquam. Morbi tempus iaculis urna id volutpat lacus. At volutpat diam ut venenatis tellus. Nunc scelerisque viverra mauris in aliquam. Faucibus nisl tincidunt eget nullam. In nulla posuere sollicitudin aliquam ultrices. Elementum nisi quis eleifend quam adipiscing.</p><p>Sagittis aliquam malesuada bibendum arcu. Maecenas pharetra convallis posuere morbi leo urna molestie. Pretium nibh ipsum consequat nisl vel pretium lectus. Neque aliquam vestibulum morbi blandit cursus risus at. Pretium viverra suspendisse potenti nullam ac. Volutpat est velit egestas dui. Pretium nibh ipsum consequat nisl vel pretium lectus quam. Tempus urna et pharetra pharetra. Eu non diam phasellus vestibulum lorem sed risus ultricies tristique. Faucibus nisl tincidunt eget nullam non nisi est sit. Facilisi morbi tempus iaculis urna id. Vel pharetra vel turpis nunc eget lorem dolor. Libero id faucibus nisl tincidunt eget nullam non.</p>',
+                'type' => 'news',
+                'date' => '2023-10-07',
+                'location' => 'Malang jawa Timur',
+                'gallery_id' => 14,
+                'created_at' => '2023-10-08 00:36:56',
+                'updated_at' => '2023-10-08 00:36:56',
+                'family_id' => 5,
             ),
         ));
         

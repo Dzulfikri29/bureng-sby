@@ -96,6 +96,29 @@
     <script src="{{ asset('assets/js/slick.min.js') }}"></script>
     <script src="{{ asset('assets/js/musicplayer-min.js') }}"></script>
     <script src="{{ asset('assets/js/custom-scripts.js') }}"></script>
+    <script>
+        get_pray_time();
+
+        function get_pray_time() {
+            $.ajax({
+                url: "https://api.myquran.com/v1/sholat/jadwal/1638/{{ date('Y/m/d') }}",
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    $('#imsak').html(data.data.jadwal.imsak + " WIB")
+                    $('#subuh').html(data.data.jadwal.subuh + " WIB")
+                    $('#terbit').html(data.data.jadwal.terbit + " WIB")
+                    $('#terbit-header').html(data.data.jadwal.terbit + " WIB")
+                    $('#dhuha').html(data.data.jadwal.dhuha + " WIB")
+                    $('#dzuhur').html(data.data.jadwal.dzuhur + " WIB")
+                    $('#ashar').html(data.data.jadwal.ashar + " WIB")
+                    $('#maghrib').html(data.data.jadwal.maghrib + " WIB")
+                    $('#maghrib-header').html(data.data.jadwal.maghrib + " WIB")
+                    $('#isya').html(data.data.jadwal.isya + " WIB")
+                }
+            });
+        }
+    </script>
     @yield('js')
 </body>
 

@@ -4,8 +4,13 @@
 
 @section('css')
     <style>
-        svg.tommy .node>rect {
+        svg.myTemplate .node>rect {
             fill: #0A993C;
+        }
+
+        .bft-light {
+            background-color: #e8e8e8 !important;
+            border-radius: 10px !important;
         }
     </style>
 @endsection
@@ -21,6 +26,11 @@
                             <div class="post-detail-inner w-100">
                                 <div class="post-detail-desc w-100">
                                     <h2>Silsilah {{ $family->name }}</h2>
+                                </div>
+                                <div class="post-detail-img w-100">
+                                    @if ($family->gallery)
+                                        <img class="img-fluid w-100" src="{{ asset('storage/' . $family->gallery->path) }}" alt="{{ $family->gallery->name }}">
+                                    @endif
                                 </div>
                                 <div class="post-detail-desc w-100">
                                     {!! $family->profile !!}
@@ -46,9 +56,18 @@
                         </div>
                         <div class="col-md-12 mt-5">
                             <div>
-                                <h2 class="">Pohon Keluarga</h2>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h2 class="">Pohon Keluarga</h2>
+                                    </div>
+                                </div>
+                                <svg class="tommy" style="position: fixed; top: -10000px; left: -10000px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:block;">
+                                    <text id="field_0" style="font-size: 10px;text-align:left;font-weight:bold" fill="#ffffff" x="10" y="20" text-anchor="start"></text>
+                                    <text id="field_1" style="font-size: 8px;text-align:left" fill="#ffffff" x="10" y="35" text-anchor="start"></text>
+                                    <text id="field_2" style="font-size: 8px;text-align:left" fill="#ffffff" x="10" y="45" text-anchor="start"></text>
+                                    <text id="field_3" style="font-size: 8px;text-align:left" fill="#ffffff" x="10" y="55" text-anchor="start"></text>
+                                </svg>
                                 <div id="tree"></div>
-
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -121,16 +140,51 @@
         }
 
         function init_tree(data) {
-
             FamilyTree.SEARCH_PLACEHOLDER = "Cari Nama";
+            FamilyTree.templates.myTemplate = Object.assign({}, FamilyTree.templates.tommy);
+            FamilyTree.templates.myTemplate.field_0 = '<text style="font-size: 10px;text-align:left;font-weight:bold" fill="#ffffff" x="10" y="20" text-anchor="left" id="test_field">{val}</text>';
+            FamilyTree.templates.myTemplate.field_1 = '<text style="font-size: 8px;text-align:left" fill="#ffffff" x="10" y="35" text-anchor="left">{val}</text>';
+            FamilyTree.templates.myTemplate.field_2 = '<text style="font-size: 8px;text-align:left" fill="#ffffff" x="10" y="45" text-anchor="left">{val}</text>';
+            FamilyTree.templates.myTemplate.field_3 = '<text style="font-size: 8px;text-align:left" fill="#ffffff" x="10" y="55" text-anchor="left">{val}</text>';
             let family = new FamilyTree(document.getElementById("tree"), {
+                scaleInitial: FamilyTree.match.boundary,
                 nodeBinding: {
-                    field_0: "name"
+                    field_0: "name",
+                    field_1: "birth_date",
+                    field_2: "death_date",
+                    field_3: "place_of_death",
                 },
                 nodeMouseClick: FamilyTree.action.none,
-                template: 'tommy',
-                mouseScrool: FamilyTree.action.none,
+                template: 'myTemplate',
+                mouseScrool: FamilyTree.action.zoom,
                 nodes: data,
+                zoom: {
+                    speed: 120,
+                    smooth: 10
+                }
+            });
+
+
+            family.on('node-initialized', function(sender, args) {
+                var data = family._get(args.node.id);
+
+                if (data.name) {
+                    document.getElementById('field_0').innerHTML = data.name;
+                    document.getElementById('field_1').innerHTML = data.birth_date;
+                    document.getElementById('field_2').innerHTML = data.death_date;
+                    document.getElementById('field_3').innerHTML = data.place_of_death;
+
+                    var rect = document.getElementById('field_0').getBoundingClientRect();
+                    var rect_1 = document.getElementById('field_1').getBoundingClientRect();
+                    var rect_2 = document.getElementById('field_2').getBoundingClientRect();
+                    var rect_3 = document.getElementById('field_3').getBoundingClientRect();
+
+                    // get longer width
+                    var max_width = Math.max(rect.width, rect_1.width, rect_2.width, rect_3.width);
+                    args.node.w = max_width + 15;
+
+                    args.node.h = rect.height + rect_1.height + rect_2.height + rect_3.height + 20;
+                }
             });
         }
     </script>

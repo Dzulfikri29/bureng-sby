@@ -1,0 +1,34 @@
+<?php
+
+use App\Models\Family;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('news', function (Blueprint $table) {
+            $table->foreignIdFor(Family::class)->nullable()->constrained();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('news', function (Blueprint $table) {
+            $table->dropForeign('news_family_id_foreign');
+            $table->dropColumn('family_id');
+        });
+    }
+};

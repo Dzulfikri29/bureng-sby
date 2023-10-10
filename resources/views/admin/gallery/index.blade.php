@@ -152,6 +152,19 @@
                     <div class="modal-body">
                         <input type="hidden" id="_method" name="_method">
                         <div class="row">
+                            @if (!auth()->user()->family_id)
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <label for="family_id" class="form-label">{{ Str::headline('keluarga terkait') }}</label>
+                                        <div class="tom-select-custom mb-1">
+                                            <select class="form-select" id="family_id" name="family_id">
+                                                <option value="">Pilih Keluarga Terkait...</option>
+                                            </select>
+                                            <span class="form-text text-danger d-none validation-error-message" id="family_id_error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="col-md-12">
                                 <div class="mb-4">
                                     <label for="name" class="form-label">{{ Str::headline('nama') }}</label>

@@ -9,7 +9,10 @@
             <div class="container">
                 <div class="page-title-wrap text-center w-100">
                     <div class="page-title-inner d-inline-block">
-                        <h1 class="mb-0">Sejarah</h1>
+                        @php
+                            $section = $sections->where('name', 'header')->first();
+                        @endphp
+                        <h1 class="mb-0">{{ $section->title }}</h1>
                     </div>
                 </div><!-- Page Title Wrap -->
             </div>
@@ -27,8 +30,11 @@
                         </div>
                         <div class="col-md-12 col-sm-12 col-lg-5">
                             <div class="about-inner4 w-100">
-                                <span class="d-block thm-clr">Tentang Kami</span>
-                                <h2 class="mb-0">Sejarang Bureng Surabaya</h2>
+                                @php
+                                    $section = $sections->where('name', 'content')->first();
+                                @endphp
+                                <span class="d-block thm-clr">{{ $section->subtitle }}</span>
+                                <h2 class="mb-0">{{ $section->title }}</h2>
                                 <p class="mb-0">{{ $history->header }}</p>
                             </div>
                         </div>

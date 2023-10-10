@@ -80,13 +80,15 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'family_id' => 'nullable|exists:families,id'
         ]);
 
         try {
             $model = new model();
             $model->name = $request->name;
             $model->email = $request->email;
+            $model->family_id = $request->family_id;
             $model->password = bcrypt($request->password);
             $model->save();
 
@@ -163,6 +165,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'nullable',
+            'family_id' => 'nullable|exists:families,id',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
@@ -170,6 +173,7 @@ class UserController extends Controller
             $model = model::findOrFail($id);
             $model->name = $request->name;
             $model->email = $request->email;
+            $model->family_id = $request->family_id;
             if ($request->password) {
                 $model->password = bcrypt($request->password);
             }

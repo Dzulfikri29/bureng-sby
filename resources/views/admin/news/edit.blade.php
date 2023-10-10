@@ -46,6 +46,23 @@
                         <!-- Body -->
                         <div class="card-body">
                             <div class="row">
+                                @if (!auth()->user()->family_id)
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <label for="family_id" class="form-label">{{ Str::headline('keluarga terkait') }}</label>
+                                            <div class="tom-select-custom mb-1">
+                                                <select class="form-select" id="family_id" name="family_id">
+                                                    @if ($model->family)
+                                                        <option value="{{ $model->family->id }}" selected>{{ $model->family->name }}</option>
+                                                    @endif
+                                                </select>
+                                            </div>
+                                            @error('family_id')
+                                                <span class="form-text text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="col-md-6">
                                     <div class="mb-4">
                                         <label for="gallery_id" class="form-label">{{ Str::headline('gambar') }}</label>
@@ -209,6 +226,35 @@
 
         $('form').submit(function(e) {
             $('#body').text($('.advance-editor .ql-editor').html());
+        });
+
+        var family_id = new TomSelect('#family_id', {
+            valueField: 'id',
+            labelField: 'name',
+            searchField: 'name',
+            createOnBlur: false,
+            create: false,
+            load: function(query, callback) {
+                var url = `${base_url}/family/select`;
+                fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            'search': encodeURIComponent(query),
+                            '_token': token,
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(json => {
+                        callback(json);
+                    }).catch(() => {
+                        callback();
+                    });
+
+            },
         });
     </script>
 @endsection

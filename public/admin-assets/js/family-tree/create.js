@@ -87,6 +87,10 @@ const edit_data = (id) => {
         },
         success: function (res) {
             $('#family_tree_name').val(res.name);
+            $('#birth_date').val(res.birth_date);
+            $('#death_date').val(res.death_date);
+            $('#place_of_death').val(res.place_of_death);
+
             $('input[name="family_id"]').val($('#family_id').val());
             if (res.family_tree_id != null) {
                 family_tree_id.addOption({
@@ -104,6 +108,7 @@ const edit_data = (id) => {
 }
 
 const add_data = () => {
+    $('#form-data')[0].reset();
     $('input[name="family_id"]').val($('#family_id').val());
     family_tree_id.clear();
     $('.validation-error-message').text('').addClass('d-none');

@@ -25,6 +25,9 @@ class GalleryController extends Controller
     {
         if ($request->ajax()) {
             $data = DB::table('galleries')
+                ->when(auth()->user()->family_id, function ($query) {
+                    $query->where('family_id', auth()->user()->family_id);
+                })
                 ->select('galleries.*');
 
             return DataTables::of($data)
@@ -82,11 +85,13 @@ class GalleryController extends Controller
         $request->validate([
             'name' => 'required|unique:galleries,name',
             'file' => 'required|mimes:png,jpg,jpeg|max:8192',
+            'family_id' => 'nullable|exists:families,id',
         ]);
 
         try {
             $model = new model();
             $model->name = $request->name;
+            $model->family_id = auth()->user()->family_id ?? $request->family_id ?? null;
             $model->save();
 
             $file_name = Str::slug('gallery-' . time()) . "." . $request->file('file')->getClientOriginalExtension();
@@ -161,11 +166,14 @@ class GalleryController extends Controller
 
         $request->validate([
             'name' => 'required|unique:galleries,name,' . $id,
+            'family_id' => 'nullable|exists:families,id',
+            'file' => 'nullable|mimes:png,jpg,jpeg|max:8192',
         ]);
 
         try {
             $model = model::find($id);
             $model->name = $request->name;
+            $model->family_id = auth()->user()->family_id ?? $request->family_id ?? null;
             $model->save();
 
             if ($request->file('file')) {
@@ -271,9 +279,12 @@ class GalleryController extends Controller
     public function select(Request $request)
     {
         try {
-            $models = model::when($request->search, function ($query) use ($request) {
-                $query->where('name', 'like', "%$request->search%");
+            $models = model::when(auth()->user()->family_id, function ($query) {
+                $query->where('family_id', auth()->user()->family_id);
             })
+                ->when($request->search, function ($query) use ($request) {
+                    $query->where('name', 'like', "%$request->search%");
+                })
                 ->get();
 
             return response()->json($models);

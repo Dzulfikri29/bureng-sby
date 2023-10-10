@@ -88,6 +88,9 @@ class FamilyTreeController extends Controller
             $model->family_id = $request->family_id;
             $model->family_tree_id = $request->family_tree_id;
             $model->name = $request->name;
+            $model->birth_date = $request->birth_date;
+            $model->death_date = $request->death_date;
+            $model->place_of_death = $request->place_of_death;
             $model->save();
 
             $response = ['success' => true, 'message' => 'Family tree created successfully'];
@@ -161,6 +164,9 @@ class FamilyTreeController extends Controller
             $model->family_id = $request->family_id;
             $model->family_tree_id = $request->family_tree_id;
             $model->name = $request->name;
+            $model->birth_date = $request->birth_date;
+            $model->death_date = $request->death_date;
+            $model->place_of_death = $request->place_of_death;
             $model->save();
 
             $response = ['success' => true, 'message' => 'Family tree updated successfully'];

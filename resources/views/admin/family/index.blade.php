@@ -28,9 +28,11 @@
                 <!-- End Col -->
 
                 <div class="col-sm-auto">
-                    <a class="btn btn-primary" href="{{ route("admin.$main.create") }}">
-                        <i class="bi-plus me-1"></i> {{ Str::headline("tambah $title") }}
-                    </a>
+                    @if (!auth()->user()->family_id)
+                        <a class="btn btn-primary" href="{{ route("admin.$main.create") }}">
+                            <i class="bi-plus me-1"></i> {{ Str::headline("tambah $title") }}
+                        </a>
+                    @endif
                 </div>
                 <!-- End Col -->
             </div>

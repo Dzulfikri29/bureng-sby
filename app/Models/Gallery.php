@@ -13,4 +13,9 @@ class Gallery extends Model
         'name',
         'path',
     ];
+
+    public function family()
+    {
+        return $this->belongsTo(Family::class);
+    }
 }

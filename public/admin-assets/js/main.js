@@ -95,7 +95,7 @@ const image_preview = (input, target) => {
 
 const init_basic_editor = () => {
     new Quill('.basic-editor', {
-        placeholder: "Masukkan Deskripsi Produk",
+        placeholder: "Masukkan Konten",
         modules: {
             toolbar: [
                 ['bold', 'italic', 'underline', 'strike'], // toggled buttons

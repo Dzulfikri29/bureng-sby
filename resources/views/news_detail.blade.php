@@ -9,7 +9,10 @@
             <div class="container">
                 <div class="page-title-wrap text-center w-100">
                     <div class="page-title-inner d-inline-block">
-                        <h1 class="mb-0">Update & Berita</h1>
+                        @php
+                            $section = $sections->where('name', 'header')->first();
+                        @endphp
+                        <h1 class="mb-0">{{ $section->title }}</h1>
                     </div>
                 </div><!-- Page Title Wrap -->
             </div>

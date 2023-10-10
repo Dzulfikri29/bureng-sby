@@ -55,8 +55,11 @@
                 <div class="about-wrap text-center position-relative w-100">
                     <div class="about-inner d-inline-block">
                         <img class="img-fluid" src="assets/images/bism-img1.png" alt="Bismillah Image">
-                        <h2 class="mb-0">Selamat Datang</h2>
-                        <p class="mb-0">{{ $history->header }}</p>
+                        @php
+                            $section = $sections->where('name', 'selamat-datang')->first();
+                        @endphp
+                        <h2 class="mb-0">{{ $section->title }}</h2>
+                        <p class="mb-0">{!! $section->body !!}</p>
                         <a class="thm-btn thm-bg" href="{{ route('history') }}" title="">Selengkapnya<span></span><span></span><span></span><span></span></a>
                     </div>
                 </div><!-- About Wrap -->
@@ -69,8 +72,11 @@
                 <div class="sec-title text-center w-100">
                     <div class="sec-title-inner d-inline-block">
                         <i class="thm-clr flaticon-rub-el-hizb"></i>
-                        <h2 class="mb-0">Pohon Keluarga</h2>
-                        <p class="mb-0">Adipiscing elit duis volutpat ligula nulla dapibus.</p>
+                        @php
+                            $section = $sections->where('name', 'pohon-keluarga')->first();
+                        @endphp
+                        <h2 class="mb-0">{{ $section->title }}</h2>
+                        <p class="mb-0">{{ $section->subtitle }}</p>
                     </div>
                 </div><!-- Sec Title -->
                 <div class="serv-wrap wide-sec">
@@ -94,10 +100,13 @@
             <img class="img-fluid sec-top-mckp position-absolute" src="assets/images/sec-top-mckp2.png" alt="Sec Top Mockup 2">
             <div class="container">
                 <div class="sec-title text-center w-100">
+                    @php
+                        $section = $sections->where('name', 'kegiatan')->first();
+                    @endphp
                     <div class="sec-title-inner d-inline-block">
                         <i class="thm-clr flaticon-rub-el-hizb"></i>
-                        <h2 class="mb-0">Kegiatan</h2>
-                        <p class="mb-0">Adipiscing elit duis volutpat ligula nulla dapibus.</p>
+                        <h2 class="mb-0">{{ $section->title }}</h2>
+                        <p class="mb-0">{{ $section->subtitle }}</p>
                     </div>
                 </div><!-- Sec Title -->
                 <div class="event-wrap res-row w-100">
@@ -135,49 +144,65 @@
                         <div class="time-wrap d-flex flex-wrap align-items-center justify-content-end thm-layer opc95 position-relative w-100">
                             <div class="time-inner w-100">
                                 <div class="sec-title w-100">
+                                    @php
+                                        $section = $sections->where('name', 'waktu-sholat')->first();
+                                    @endphp
                                     <div class="sec-title-inner d-inline-block">
-                                        <h2 class="mb-0">Waktu Sholat Hari Ini</h2>
-                                        <p class="mb-0">9 Shawwal 1441 H - {{ Carbon\Carbon::now()->translatedFormat('l, d F Y') }}</p>
+                                        <h2 class="mb-0">{{ $section->title }}</h2>
+                                        <p class="mb-0">Surabaya dan Sekitarnya - {{ Carbon\Carbon::now()->translatedFormat('l, d F Y') }}</p>
                                     </div>
                                 </div><!-- Sec Title -->
                                 <div class="time-list-wrap d-flex flex-wrap w-100">
                                     <ul class="time-list mb-0 list-unstyled">
                                         <li>
                                             <div class="time-box d-flex flex-wrap align-items-center justify-content-between">
-                                                <span><i class="flaticon-rub-el-hizb"></i>Fajar</span>
-                                                <span>04:06 am</span>
+                                                <span><i class="flaticon-rub-el-hizb"></i>Imsak</span>
+                                                <span id="imsak"></span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="time-box d-flex flex-wrap align-items-center justify-content-between">
-                                                <span><i class="flaticon-rub-el-hizb"></i>Sunrise</span>
-                                                <span>05:30 am</span>
+                                                <span><i class="flaticon-rub-el-hizb"></i>Subuh</span>
+                                                <span id="subuh"></span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="time-box d-flex flex-wrap align-items-center justify-content-between">
-                                                <span><i class="flaticon-rub-el-hizb"></i>Dhuhr</span>
-                                                <span>12:23 pm</span>
+                                                <span><i class="flaticon-rub-el-hizb"></i>Terbit</span>
+                                                <span id="terbit"></span>
                                             </div>
                                         </li>
+                                        <li>
+                                            <div class="time-box d-flex flex-wrap align-items-center justify-content-between">
+                                                <span><i class="flaticon-rub-el-hizb"></i>Dhuha</span>
+                                                <span id="dhuha"></span>
+                                            </div>
+                                        </li>
+
                                     </ul>
                                     <ul class="time-list mb-0 list-unstyled">
                                         <li>
                                             <div class="time-box d-flex flex-wrap align-items-center justify-content-between">
-                                                <span><i class="flaticon-rub-el-hizb"></i>Asr</span>
-                                                <span>03:43 pm</span>
+                                                <span><i class="flaticon-rub-el-hizb"></i>Dzuhur</span>
+                                                <span id="dzuhur"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="time-box d-flex flex-wrap align-items-center justify-content-between">
+                                                <span><i class="flaticon-rub-el-hizb"></i>Ashar</span>
+                                                <span id="ashar"></span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="time-box d-flex flex-wrap align-items-center justify-content-between">
                                                 <span><i class="flaticon-rub-el-hizb"></i>Maghrib</span>
-                                                <span>07:10 pm</span>
+                                                <span id="maghrib"></span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="time-box d-flex flex-wrap align-items-center justify-content-between">
-                                                <span><i class="flaticon-rub-el-hizb"></i>Isha'a</span>
-                                                <span>08:35 pm</span>
+                                                <span><i class="flaticon-rub-el-hizb"></i>Isya</span>
+                                                <span id="isya"></span>
                                             </div>
                                         </li>
                                     </ul>
@@ -437,8 +462,11 @@
             <div class="sec-title text-center w-100">
                 <div class="sec-title-inner d-inline-block">
                     <i class="flaticon-rub-el-hizb thm-clr"></i>
-                    <h2 class="mb-0">Galeri Kegiatan</h2>
-                    <p class="mb-0">Adipiscing elit duis volutpat ligula nulla dapibus.</p>
+                    @php
+                        $section = $sections->where('name', 'galeri')->first();
+                    @endphp
+                    <h2 class="mb-0">{{ $section->title }}</h2>
+                    <p class="mb-0">{{ $section->subtitle }}</p>
                 </div>
             </div><!-- Sec Title -->
             <div class="gallery-wrap w-100">
@@ -465,8 +493,11 @@
                 <div class="sec-title text-center w-100">
                     <div class="sec-title-inner d-inline-block">
                         <i class="flaticon-rub-el-hizb thm-clr"></i>
-                        <h2 class="mb-0">Update & Berita Terbaru</h2>
-                        <p class="mb-0">Adipiscing elit duis volutpat ligula nulla dapibus.</p>
+                        @php
+                            $section = $sections->where('name', 'berita')->first();
+                        @endphp
+                        <h2 class="mb-0">{{ $section->title }}</h2>
+                        <p class="mb-0">{{ $section->subtitle }}</p>
                     </div>
                 </div><!-- Sec Title -->
                 <div class="blog-wrap res-row w-100">

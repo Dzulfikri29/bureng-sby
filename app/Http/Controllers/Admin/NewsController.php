@@ -24,6 +24,9 @@ class NewsController extends Controller
     {
         if ($request->ajax()) {
             $data = DB::table('news')
+                ->when(auth()->user()->family_id, function ($query) {
+                    $query->where('family_id', auth()->user()->family_id);
+                })
                 ->select('news.*');
 
             return DataTables::of($data)
@@ -84,6 +87,7 @@ class NewsController extends Controller
             'type' => 'required',
             'date' => 'required',
             'location' => 'required',
+            'family_id' => 'nullable|exists:families,id',
         ]);
 
         $slug = Str::slug(Str::lower($request->name));
@@ -97,6 +101,7 @@ class NewsController extends Controller
             $model->date = $request->date;
             $model->location = $request->location;
             $model->gallery_id = $request->gallery_id;
+            $model->family_id = auth()->user()->family_id ?? $request->family_id ?? null;
             $model->save();
 
             $response = ['success' => true, 'message' => 'News created successfully'];
@@ -138,8 +143,8 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-
         $model = model::findOrFail($id);
+        $this->authorize('view', [model::class, $model->family_id]);
         return view("admin.$this->view_folder.edit", ['model' => $model]);
     }
 
@@ -161,11 +166,14 @@ class NewsController extends Controller
             'type' => 'required',
             'date' => 'required',
             'location' => 'required',
+            'family_id' => 'nullable|exists:families,id',
         ]);
+
+        $model = model::find($id);
+        $this->authorize('view', [model::class, $model->family_id]);
 
         $slug = Str::slug(Str::lower($request->name));
         try {
-            $model = model::find($id);
             $model->slug = $slug;
             $model->name = $request->name;
             $model->body = $request->body;
@@ -173,6 +181,7 @@ class NewsController extends Controller
             $model->date = $request->date;
             $model->location = $request->location;
             $model->gallery_id = $request->gallery_id;
+            $model->family_id = auth()->user()->family_id ?? $request->family_id ?? null;
             $model->save();
 
             $response = ['success' => true, 'message' => 'News updated successfully'];
@@ -205,9 +214,10 @@ class NewsController extends Controller
     public function destroy(Request $request, $id)
     {
         DB::beginTransaction();
-        try {
-            $model = model::findOrFail($id);
+        $model = model::findOrFail($id);
+        $this->authorize('view', [model::class, $model->family_id]);
 
+        try {
             $doc = new DOMDocument();
             $doc->loadHTML($model->body);
             $xml = simplexml_import_dom($doc);

@@ -1,4 +1,4 @@
-Dropzone.options.familyImageUpload = {
+Dropzone.options.sectionImageUpload = {
     paramName: 'image',
     textTarget: null,
     maxFileSize: 1024,
@@ -12,7 +12,7 @@ Dropzone.options.familyImageUpload = {
     thumbnailHeight: 300,
     removedfile: function (file) {
         var name = file.previewElement.querySelector("[data-dz-name]").dataset.dzName;
-        delete_family_image(name);
+        delete_section_image(name);
 
         var _ref;
         return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
@@ -21,7 +21,7 @@ Dropzone.options.familyImageUpload = {
         var fileuploded = file.previewElement.querySelector("[data-dz-name]");
         fileuploded.dataset.dzName = response.path;
 
-        get_family_images();
+        get_section_images();
     },
     previewTemplate: `<div class="col h-100 mb-4">
                             <div class="dz-preview dz-file-preview">
@@ -58,34 +58,34 @@ Dropzone.options.familyImageUpload = {
 };
 
 
-const get_family_images = () => {
+const get_section_images = () => {
     $('#fancyboxGallery').html('');
     $.ajax({
-        url: `${base_url}/admin/family-image`,
+        url: `${base_url}/admin/section-image`,
         method: "GET",
         headers: {
             'X-CSRF-TOKEN': token,
         },
         data: {
-            family_id: $('#family_id').val(),
+            section_id: $('#section_id').val(),
         },
         success: function (res) {
             let html = '';
             res.data.forEach(e => {
-                html += `<div class="col-6 col-sm-4 col-md-3 mb-3 mb-lg-5" id="${e.image}">
+                html += `<div class="col-6 col-sm-4 col-md-3 mb-3 mb-lg-5" id="${e.path}">
                                 <div class="card card-sm">
-                                    <img class="card-img-top" src="${base_url}/storage/${e.image}" alt="Image Description">
+                                    <img class="card-img-top" src="${base_url}/storage/${e.path}" alt="Image Description">
 
                                     <div class="card-body">
                                         <div class="row col-divider text-center">
                                             <div class="col">
-                                                <a class="text-body lightbox" href="${base_url}/storage/${e.image}" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
+                                                <a class="text-body lightbox" href="${base_url}/storage/${e.path}" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
                                                     <i class="bi-eye"></i>
                                                 </a>
                                             </div>
 
                                             <div class="col">
-                                                <a class="text-danger" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete" onclick="delete_family_image('${e.image}')">
+                                                <a class="text-danger" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete" onclick="delete_section_image('${e.path}')">
                                                     <i class="bi-trash"></i>
                                                 </a>
                                             </div>
@@ -105,9 +105,9 @@ const get_family_images = () => {
 }
 
 
-const delete_family_image = (name) => {
+const delete_section_image = (name) => {
     $.ajax({
-        url: `${base_url}/admin/family-image-delete`,
+        url: `${base_url}/admin/section-image-delete`,
         method: "POST",
         headers: {
             'X-CSRF-TOKEN': token,
@@ -121,36 +121,7 @@ const delete_family_image = (name) => {
                 title: res.message,
             });
 
-            get_family_images();
+            get_section_images();
         }
     });
 }
-
-new TomSelect('#gallery_id', {
-    valueField: 'id',
-    labelField: 'name',
-    searchField: 'name',
-    createOnBlur: true,
-    create: true,
-    load: function (query, callback) {
-        var url = `${base_url}/gallery/select`;
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                'search': encodeURIComponent(query),
-                '_token': token,
-            }),
-        })
-            .then(response => response.json())
-            .then(json => {
-                callback(json);
-            }).catch(() => {
-                callback();
-            });
-
-    },
-});

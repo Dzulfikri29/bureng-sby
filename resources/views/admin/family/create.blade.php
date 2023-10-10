@@ -49,6 +49,19 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <label for="gallery_id" class="form-label">{{ Str::headline('gambar') }}</label>
+                                        <div class="tom-select-custom mb-1">
+                                            <select class="form-select" id="gallery_id" name="gallery_id" required>
+                                                <option value="">Pilih Gambar...</option>
+                                            </select>
+                                        </div>
+                                        @error('gallery_id')
+                                            <span class="form-text text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="col-md-12">
                                     <div class="mb-4">
                                         <label class="form-label">{{ Str::headline('keterangan') }}</label>

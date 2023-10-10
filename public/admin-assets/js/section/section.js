@@ -1,26 +1,21 @@
 $(document).on('ready', function () {
     // INITIALIZATION OF DATATABLES
     // =======================================================
-    HSCore.components.HSDatatables.init($('#datatable-gallery'), {
+    HSCore.components.HSDatatables.init($('#datatable-section'), {
         ajax: {
-            url: `${base_url}/admin/gallery`,
+            url: `${base_url}/admin/section?page_id=${$('#page_id').val()}`,
         },
         columns: [{
-            data: "checkbox",
-            orderable: false,
-            searchable: false,
-        },
-        {
-            data: "name",
-        },
-        {
-            data: "path",
-        },
-        {
-            data: "action",
-            orderable: false,
-            searchable: false,
-        },
+                data: "name",
+            },
+            {
+                data: "title",
+            },
+            {
+                data: "action",
+                orderable: false,
+                searchable: false,
+            },
         ],
         info: {
             totalQty: "#datatableWithPaginationInfoTotalQty"
@@ -33,29 +28,29 @@ $(document).on('ready', function () {
         pagination: "datatablePagination",
         serverSide: true,
         order: [
-            [1, 'desc']
+            [0, 'desc']
         ],
         dom: 'Bfrtip',
         buttons: [{
-            extend: 'copy',
-            className: 'd-none'
-        },
-        {
-            extend: 'excel',
-            className: 'd-none'
-        },
-        {
-            extend: 'csv',
-            className: 'd-none'
-        },
-        {
-            extend: 'pdf',
-            className: 'd-none'
-        },
-        {
-            extend: 'print',
-            className: 'd-none'
-        },
+                extend: 'copy',
+                className: 'd-none'
+            },
+            {
+                extend: 'excel',
+                className: 'd-none'
+            },
+            {
+                extend: 'csv',
+                className: 'd-none'
+            },
+            {
+                extend: 'pdf',
+                className: 'd-none'
+            },
+            {
+                extend: 'print',
+                className: 'd-none'
+            },
         ],
         select: {
             style: 'multi',
@@ -106,7 +101,7 @@ $(document).on('ready', function () {
     });
 });
 
-$("#datatable-gallery").css("width", "100%");
+$("#datatable-section").css("width", "100%");
 
 
 var formModal = $('#formModal');
@@ -140,7 +135,7 @@ $('#form-data').submit(function (e) {
             if (res.success) {
                 formModal.modal('toggle');
                 $('#form-data')[0].reset();
-                $('#datatable-gallery').DataTable().ajax.reload();
+                $('#datatable-section').DataTable().ajax.reload(null, false);
             }
             name_input.val('');
         },
@@ -158,66 +153,10 @@ $('#form-data').submit(function (e) {
     });
 });
 
-var family_id = new TomSelect('#family_id', {
-    valueField: 'id',
-    labelField: 'name',
-    searchField: 'name',
-    createOnBlur: false,
-    create: false,
-    load: function (query, callback) {
-        var url = `${base_url}/family/select`;
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                'search': encodeURIComponent(query),
-                '_token': token,
-            }),
-        })
-            .then(response => response.json())
-            .then(json => {
-                callback(json);
-            }).catch(() => {
-                callback();
-            });
-
-    },
-});
-
-const edit_data = (id) => {
-    $('.validation-error-message').text('').addClass('d-none');
-    formModalTitle.text('edit galeri');
-    $.ajax({
-        url: `${base_url}/admin/gallery/${id}/edit`,
-        method: "GET",
-        headers: {
-            'X-CSRF-TOKEN': token,
-        },
-        success: function (res) {
-            name_input.val(res.name);
-            if (res.family_tree_id != null) {
-                family_tree_id.addOption({
-                    id: res.family_tree_id,
-                    name: res.parent_name,
-                });
-                family_tree_id.setValue(res.family_tree_id);
-            }
-
-
-            $('#form-data').attr('action', `${base_url}/admin/gallery/${res.id}`);
-            formModal.modal('show');
-            method.val('PUT');
-        }
-    });
-}
-
 const add_data = () => {
     $('.validation-error-message').text('').addClass('d-none');
-    $('#form-data').attr('action', `${base_url}/admin/gallery`);
-    formModalTitle.text('tambah galeri');
+    $('#form-data').attr('action', `${base_url}/admin/section`);
+    formModalTitle.text('tambah bagian');
     formModal.modal('show');
     method.val('POST');
 }

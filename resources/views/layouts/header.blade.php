@@ -5,8 +5,8 @@
  <header class="stick style1 w-100">
      <div class="topbar bg-color1 d-flex flex-wrap justify-content-end w-100">
          <ul class="topbar-info-list mb-0 list-unstyled d-inline-flex">
-             <li><i class="thm-clr flaticon-sun"></i>Terbit: <span class="thm-clr">5:05am</span></li>
-             <li><i class="thm-clr flaticon-moon"></i>Terbenam: <span class="thm-clr">7:14pm</span></li>
+             <li><i class="thm-clr flaticon-sun"></i>Terbit: <span class="thm-clr" id="terbit-header"></span></li>
+             <li><i class="thm-clr flaticon-moon"></i>Terbenam: <span class="thm-clr" id="maghrib-header"></span></li>
          </ul>
          {{-- <div class="social-links d-inline-flex"> --}}
          {{-- <a href="https://twitter.com/" title="Twtiiter" target="_blank"><i class="fab fa-twitter"></i></a>

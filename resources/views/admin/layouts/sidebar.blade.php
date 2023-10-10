@@ -43,14 +43,16 @@
 
                     </div>
                     <div id="navbarVerticalMenuPagesMenu">
-                        {{-- GENERAL --}}
-                        <div class="nav-item">
-                            <a class="nav-link " id="general-menu" href="{{ route('admin.general.index') }}" data-placement="left">
-                                <i class="bi-gear nav-icon"></i>
-                                <span class="nav-link-title">{{ Str::headline('general') }}</span>
-                            </a>
-                        </div>
-                        {{-- END GENERAL --}}
+                        @if (!Auth::user()->family_id)
+                            {{-- GENERAL --}}
+                            <div class="nav-item">
+                                <a class="nav-link " id="general-menu" href="{{ route('admin.general.index') }}" data-placement="left">
+                                    <i class="bi-gear nav-icon"></i>
+                                    <span class="nav-link-title">{{ Str::headline('general') }}</span>
+                                </a>
+                            </div>
+                            {{-- END GENERAL --}}
+                        @endif
 
                         {{-- gallery --}}
                         <div class="nav-item">
@@ -70,33 +72,49 @@
                         </div>
                         {{-- END news --}}
 
-                        {{-- history --}}
-                        <div class="nav-item">
-                            <a class="nav-link " id="history-menu" href="{{ route('admin.history.index') }}" data-placement="left">
-                                <i class="bi-clock nav-icon"></i>
-                                <span class="nav-link-title">{{ Str::headline('history') }}</span>
-                            </a>
-                        </div>
-                        {{-- END history --}}
+                        @if (!Auth::user()->family_id)
+                            {{-- history --}}
+                            <div class="nav-item">
+                                <a class="nav-link " id="history-menu" href="{{ route('admin.history.index') }}" data-placement="left">
+                                    <i class="bi-clock nav-icon"></i>
+                                    <span class="nav-link-title">{{ Str::headline('history') }}</span>
+                                </a>
+                            </div>
+                            {{-- END history --}}
+                        @endif
 
-                        {{-- USER --}}
+                        {{-- FAMILY --}}
                         <div class="nav-item">
                             <a class="nav-link " id="family-menu" href="{{ route('admin.family.index') }}" data-placement="left">
                                 <i class="bi-people nav-icon"></i>
                                 <span class="nav-link-title">{{ Str::headline('keluarga') }}</span>
                             </a>
                         </div>
-                        {{-- END USER --}}
+                        {{-- END FAMILY --}}
 
-                        {{-- USER --}}
-                        <div class="nav-item">
-                            <a class="nav-link " id="user-menu" href="{{ route('admin.user.index') }}" data-placement="left">
-                                <i class="bi-person nav-icon"></i>
-                                <span class="nav-link-title">{{ Str::headline('user') }}</span>
-                            </a>
-                        </div>
-                        {{-- END USER --}}
+                        @if (!Auth::user()->family_id)
+                            {{-- USER --}}
+                            <div class="nav-item">
+                                <a class="nav-link " id="user-menu" href="{{ route('admin.user.index') }}" data-placement="left">
+                                    <i class="bi-person nav-icon"></i>
+                                    <span class="nav-link-title">{{ Str::headline('user') }}</span>
+                                </a>
+                            </div>
+                            {{-- END USER --}}
+                        @endif
 
+                        {{-- PAGE --}}
+
+                        @if (!Auth::user()->family_id)
+                            {{-- PAGE --}}
+                            <div class="nav-item">
+                                <a class="nav-link " id="page-menu" href="{{ route('admin.page.index') }}" data-placement="left">
+                                    <i class="bi-layout-text-sidebar nav-icon"></i>
+                                    <span class="nav-link-title">{{ Str::headline('halaman') }}</span>
+                                </a>
+                            </div>
+                            {{-- END PAGE --}}
+                        @endif
                     </div>
                     <!-- End Collapse -->
                 </div>

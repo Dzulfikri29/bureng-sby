@@ -6,6 +6,7 @@ use App\Models\Family;
 use App\Models\FamilyTree;
 use App\Models\Gallery;
 use App\Models\News;
+use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon as SupportCarbon;
 
@@ -39,18 +40,28 @@ class PageController extends Controller
         $random_gallery = Gallery::inRandomOrder()
             ->first();
 
-        return view('index', compact('banner_news', 'general', 'families', 'activites', 'galleries', 'news', 'history', 'random_gallery'));
+        $sections = Section::whereHas('page', function ($query) {
+            $query->where('name', 'beranda');
+        })->get();
+
+        return view('index', compact('banner_news', 'general', 'families', 'activites', 'galleries', 'news', 'history', 'random_gallery', 'sections'));
     }
 
     public function history()
     {
         $history = \App\Models\History::first();
+        $sections = Section::whereHas('page', function ($query) {
+            $query->where('name', 'sejarah');
+        })->get();
 
-        return view('history', compact('history'));
+        return view('history', compact('history', 'sections'));
     }
 
     public function gallery(Request $request)
     {
+        $sections = Section::whereHas('page', function ($query) {
+            $query->where('name', 'galeri');
+        })->get();
 
         if ($request->ajax()) {
             $galleries = Gallery::orderBy('created_at', 'desc')
@@ -59,11 +70,15 @@ class PageController extends Controller
 
             return response()->json(view('gallery_data', compact('galleries'))->render());
         }
-        return view('gallery');
+        return view('gallery', compact('sections'));
     }
 
     public function news(Request $request)
     {
+        $sections = Section::whereHas('page', function ($query) {
+            $query->where('name', 'berita');
+        })->get();
+
         if ($request->ajax()) {
             $news = News::orderBy('created_at', 'desc')
                 ->where('type', 'news')
@@ -72,7 +87,7 @@ class PageController extends Controller
 
             return response()->json(view('news_data', compact('news'))->render());
         }
-        return view('news');
+        return view('news', compact('sections'));
     }
 
     function news_detail($slug)
@@ -85,11 +100,19 @@ class PageController extends Controller
             ->limit(4)
             ->get();
 
-        return view('news_detail', compact('news', 'other_news'));
+        $sections = Section::whereHas('page', function ($query) {
+            $query->where('name', 'berita');
+        })->get();
+
+        return view('news_detail', compact('news', 'other_news', 'sections'));
     }
 
     public function activity(Request $request)
     {
+
+        $sections = Section::whereHas('page', function ($query) {
+            $query->where('name', 'kegiatan');
+        })->get();
 
         if ($request->ajax()) {
             $news = News::orderBy('created_at', 'desc')
@@ -99,7 +122,7 @@ class PageController extends Controller
 
             return response()->json(view('activity_data', compact('news'))->render());
         }
-        return view('activity');
+        return view('activity', compact('sections'));
     }
 
     function activity_detail($slug)
@@ -112,19 +135,27 @@ class PageController extends Controller
             ->limit(4)
             ->get();
 
-        return view('activity_detail', compact('news', 'other_news'));
+        $sections = Section::whereHas('page', function ($query) {
+            $query->where('name', 'beranda');
+        })->get();
+
+        return view('activity_detail', compact('news', 'other_news', 'sections'));
     }
 
 
     public function family(Request $request)
     {
+        $sections = Section::whereHas('page', function ($query) {
+            $query->where('name', 'silsilah');
+        })->get();
+
         if ($request->ajax()) {
             $families = Family::paginate(8)
                 ->withQueryString();
 
             return response()->json(view('family_data', compact('families'))->render());
         }
-        return view('family');
+        return view('family', compact('sections'));
     }
 
     public function family_detail($id, Request $request)
@@ -142,14 +173,36 @@ class PageController extends Controller
             ->limit(4)
             ->get();
 
-        return view('family_detail', compact('family', 'other_families', 'news', 'galleries'));
+        $sections = Section::whereHas('page', function ($query) {
+            $query->where('name', 'silsilah');
+        })->get();
+
+        return view('family_detail', compact('family', 'other_families', 'news', 'galleries', 'sections'));
     }
 
     function family_tree_data($id)
     {
         $family_trees = FamilyTree::where('family_id', $id)
-            ->select('id', 'family_tree_id as mid', 'name')
+            ->select('id', 'family_tree_id as mid', 'name', 'birth_date', 'death_date', 'place_of_death')
             ->get();
+
+        $family_trees = $family_trees->map(function ($item) {
+            if ($item->birth_date) {
+                $item->birth_date = 'Lahir ' . SupportCarbon::parse($item->birth_date)->translatedFormat('d M Y');
+            }
+            if ($item->death_date) {
+                $item->death_date = 'Wafat ' . SupportCarbon::parse($item->death_date)->translatedFormat('d M Y');
+                if ($item->place_of_death) {
+                    $item->place_of_death = 'Makam di ' . $item->place_of_death;
+                } else {
+                    $item->place_of_death = '';
+                }
+            } else {
+                $item->death_date = '';
+                $item->place_of_death = '';
+            }
+            return $item;
+        });
 
         return response()->json($family_trees);
     }
