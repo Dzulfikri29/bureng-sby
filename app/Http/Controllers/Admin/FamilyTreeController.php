@@ -81,6 +81,7 @@ class FamilyTreeController extends Controller
             'family_id' => 'required|exists:families,id',
             'family_tree_id' => 'nullable|exists:family_trees,id',
             'name' => 'required',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         try {
@@ -92,6 +93,17 @@ class FamilyTreeController extends Controller
             $model->death_date = $request->death_date;
             $model->place_of_death = $request->place_of_death;
             $model->save();
+
+            if ($request->file('photo')) {
+                $photo = Image::make($request->file('photo'));
+                $photo->resize(500, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $file_name = Str::slug($request->file('photo')->getClientOriginalName()) . "-" . time() . Str::random(8) . "." . $request->file('photo')->getClientOriginalExtension();
+                Storage::put('family-tree/' . $file_name, (string) $photo->encode());
+                $model->photo = 'family-tree/' . $file_name;
+                $model->save();
+            }
 
             $response = ['success' => true, 'message' => 'Family tree created successfully'];
             DB::commit();
@@ -157,6 +169,7 @@ class FamilyTreeController extends Controller
             'family_id' => 'required|exists:families,id',
             'family_tree_id' => 'nullable|exists:family_trees,id',
             'name' => 'required',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         try {
@@ -168,6 +181,18 @@ class FamilyTreeController extends Controller
             $model->death_date = $request->death_date;
             $model->place_of_death = $request->place_of_death;
             $model->save();
+
+            if ($request->file('photo')) {
+                Storage::delete($model->photo ?? '');
+                $photo = Image::make($request->file('photo'));
+                $photo->resize(500, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $file_name = Str::slug($request->file('photo')->getClientOriginalName()) . "-" . time() . Str::random(8) . "." . $request->file('photo')->getClientOriginalExtension();
+                Storage::put('family-tree/' . $file_name, (string) $photo->encode());
+                $model->photo = 'family-tree/' . $file_name;
+                $model->save();
+            }
 
             $response = ['success' => true, 'message' => 'Family tree updated successfully'];
             DB::commit();
@@ -200,6 +225,7 @@ class FamilyTreeController extends Controller
         DB::beginTransaction();
         try {
             $model = model::findOrFail($id);
+            Storage::delete($model->photo);
             $model->delete();
 
             $response = ['success' => true, 'message' => 'Family tree deleted successfully'];

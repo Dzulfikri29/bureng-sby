@@ -18,8 +18,9 @@ class Controller extends BaseController
     public function createSiteMap()
     {
         $sitemap = SitemapIndex::create()
-            ->add(url('/profile'))
+            ->add(url('/'))
             ->add(url('/sejarah'))
+            ->add(url('/pohon-keluarga'))
             ->add(url('/galeri'))
             ->add(url('/berita'))
             ->add(url('/kegiatan'))

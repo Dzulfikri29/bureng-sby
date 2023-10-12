@@ -79,6 +79,12 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <input type="checkbox" name="is_main" id="is_main" value="1" {{ $model->is_main ? 'checked' : '' }}>
+                                        <label for="is_main" class="form-label">{{ Str::headline('tampilkan di menu pohon keluarga') }}</label>
+                                    </div>
+                                </div>
 
                             </div>
                             <div class="row justify-content-end">
@@ -248,6 +254,14 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-4">
+                                    <label for="photo" class="form-label">{{ Str::headline('foto') }}</label>
+                                    <input type="file" class="form-control" id="photo" name="photo" value="" accept="image/*">
+                                    <span class="form-text text-danger d-none validation-error-message" id="photo_error"></span>
+                                </div>
+                                <img src="" alt="" srcset="" width="200px" id="photo_preview">
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-4">
                                     <label for="birth_date" class="form-label">{{ Str::headline('tanggal lahir') }}</label>
                                     <input type="date" class="form-control" id="birth_date" name="birth_date" value="">
                                     <span class="form-text text-danger d-none validation-error-message" id="birth_date_error"></span>
@@ -267,6 +281,7 @@
                                     <span class="form-text text-danger d-none validation-error-message" id="place_of_death_error"></span>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div class="modal-footer">

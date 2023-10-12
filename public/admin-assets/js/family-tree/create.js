@@ -90,6 +90,11 @@ const edit_data = (id) => {
             $('#birth_date').val(res.birth_date);
             $('#death_date').val(res.death_date);
             $('#place_of_death').val(res.place_of_death);
+            if (res.photo) {
+                $('#photo_preview').attr('src', `${base_url}/storage/${res.photo}`);
+            } else {
+                $('#photo_preview').attr('src', ``);
+            }
 
             $('input[name="family_id"]').val($('#family_id').val());
             if (res.family_tree_id != null) {
@@ -118,3 +123,12 @@ const add_data = () => {
     method.val('POST');
 }
 
+$('#photo').on('change', function () {
+    var file = $(this).get(0).files;
+    var reader = new FileReader();
+    reader.readAsDataURL(file[0]);
+    reader.addEventListener("load", function (e) {
+        var image = e.target.result;
+        $('#photo_preview').attr('src', image);
+    });
+});

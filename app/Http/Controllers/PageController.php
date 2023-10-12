@@ -136,7 +136,7 @@ class PageController extends Controller
             ->get();
 
         $sections = Section::whereHas('page', function ($query) {
-            $query->where('name', 'beranda');
+            $query->where('name', 'kegiatan');
         })->get();
 
         return view('activity_detail', compact('news', 'other_news', 'sections'));
@@ -167,10 +167,12 @@ class PageController extends Controller
             ->get();
 
         $news = News::inRandomOrder()
+            ->where('family_id', $family->id)
             ->limit(3)
             ->get();
 
         $galleries = Gallery::inRandomOrder()
+            ->where('family_id', $family->id)
             ->limit(4)
             ->get();
 
@@ -184,7 +186,7 @@ class PageController extends Controller
     function family_tree_data($id)
     {
         $family_trees = FamilyTree::where('family_id', $id)
-            ->select('id', 'family_tree_id as mid', 'name', 'birth_date', 'death_date', 'place_of_death')
+            ->select('id', 'family_tree_id as mid', 'name', 'birth_date', 'death_date', 'place_of_death', 'photo')
             ->get();
 
         $family_trees = $family_trees->map(function ($item) {
@@ -202,9 +204,32 @@ class PageController extends Controller
                 $item->death_date = '';
                 $item->place_of_death = '';
             }
+
+            if ($item->photo) {
+                $item->img = asset('storage/' . $item->photo);
+            } else {
+                $item->img = asset('admin-assets/img/160x160/img1.jpg');
+            }
             return $item;
         });
 
         return response()->json($family_trees);
+    }
+
+    public function family_tree(Request $request)
+    {
+
+        $family = Family::where('is_main', 1)
+            ->firstOrFail();
+
+        $news = News::where('family_id', $family->id)
+            ->limit(3)
+            ->get();
+
+        $galleries = Gallery::where('family_id', $family->id)
+            ->limit(4)
+            ->get();
+
+        return view('family_tree', compact('family', 'news', 'galleries'));
     }
 }

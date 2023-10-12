@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Silsilah Keluarga')
+@section('title', 'Pohon Keluarga')
 
 @section('css')
     <style>
@@ -22,10 +22,10 @@
             <div class="container">
                 <div class="post-detail-wrap w-100">
                     <div class="row">
-                        <div class="col-md-12 col-sm-12 col-lg-9">
+                        <div class="col-md-12 col-sm-12 col-lg-12">
                             <div class="post-detail-inner w-100">
                                 <div class="post-detail-desc w-100">
-                                    <h2>Silsilah {{ $family->name }}</h2>
+                                    <h2>Pohon Keluarga {{ $family->name }}</h2>
                                 </div>
                                 <div class="post-detail-img w-100">
                                     @if ($family->gallery)
@@ -36,23 +36,6 @@
                                     {!! $family->profile !!}
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-lg-3">
-                            <aside class="sidebar w-100">
-                                <div class="widget2 w-100">
-                                    <h3 class="widget-title2">SILSILAH LAIN</h3>
-                                    <div class="mini-posts-wrap w-100">
-                                        @foreach ($other_families as $other_family)
-                                            <div class="mini-post-box d-flex flex-wrap w-100">
-                                                <div class="mini-post-info">
-                                                    <span class="d-block thm-clr">{{ Carbon\Carbon::parse($other_family->created_at)->format('d F Y') }}</span>
-                                                    <h4 class="mb-0"><a href="{{ route('family-detail', ['slug' => $other_family->slug]) }}" title="">{{ $other_family->name }}</a></h4>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </aside><!-- Sidebar -->
                         </div>
                         <div class="col-md-12 mt-5">
                             <div>
@@ -74,7 +57,7 @@
                                 <div id="tree"></div>
                             </div>
                         </div>
-                        @if ($news->count() > 0)
+                        @if (count($news) > 0)
                             <div class="col-md-12 mt-5">
                                 <div class="blog-wrap w-100">
                                     <h2 class="">Berita</h2>
@@ -131,7 +114,7 @@
 @section('js')
     <script src="{{ asset('assets/js/familytree.js') }}"></script>
     <script>
-        $('.family-menu').addClass('active');
+        $('.family-tree-menu').addClass('active');
 
         get_family_tree();
 

@@ -76,6 +76,12 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <input type="checkbox" name="is_main" id="is_main" value="1" {{ old('is_main') ? 'checked' : '' }}>
+                                        <label for="is_main" class="form-label">{{ Str::headline('tampilkan di menu pohon keluarga') }}</label>
+                                    </div>
+                                </div>
 
                             </div>
                             <div class="row justify-content-end">

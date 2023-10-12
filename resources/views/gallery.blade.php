@@ -20,7 +20,7 @@
     </section>
     <section>
         <div class="w-100 pb-250 position-relative">
-            <img class="sec-botm-rgt-mckp img-fluid position-absolute" src="assets/images/sec-botm-mckp.png" alt="Sec Bottom Mockup">
+            <img class="sec-botm-rgt-mckp img-fluid position-absolute" src="{{ asset('assets/images/sec-botm-mckp.png') }}" alt="Sec Bottom Mockup">
             <div id="gallery-content"></div>
         </div>
     </section>

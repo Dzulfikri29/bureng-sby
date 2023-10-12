@@ -25,6 +25,7 @@
                  <ul class="mb-0 list-unstyled d-inline-flex">
                      <li class="index-menu"><a href="{{ route('index') }}" title="">Beranda</a></li>
                      <li class="history-menu"><a href="{{ route('history') }}" title="">Sejarah</a></li>
+                     <li class="family-tree-menu"><a href="{{ route('family-tree') }}" title="">Pohon Keluarga</a></li>
                      <li class="family-menu"><a href="{{ route('family') }}" title="">Silsilah</a></li>
                      <li class="gallery-menu"><a href="{{ route('gallery') }}" title="">Galeri</a></li>
                      <li class="activity-menu"><a href="{{ route('activity') }}" title="">Kegiatan</a></li>
@@ -49,6 +50,7 @@
                      <ul class="mb-0 list-unstyled d-inline-flex">
                          <li class="index-menu"><a href="{{ route('index') }}" title="">Beranda</a></li>
                          <li class="history-menu"><a href="{{ route('history') }}" title="">Sejarah</a></li>
+                         <li class="family-tree-menu"><a href="{{ route('family-tree') }}" title="">Pohon Keluarga</a></li>
                          <li class="family-menu"><a href="{{ route('family') }}" title="">Silsilah</a></li>
                          <li class="gallery-menu"><a href="{{ route('gallery') }}" title="">Galeri</a></li>
                          <li class="activity-menu"><a href="{{ route('activity') }}" title="">Kegiatan</a></li>
@@ -86,6 +88,7 @@
          <ul class="mb-0 list-unstyled w-100">
              <li class="index-menu"><a href="{{ route('index') }}" title="">Beranda</a></li>
              <li class="history-menu"><a href="{{ route('history') }}" title="">Sejarah</a></li>
+             <li class="family-tree-menu"><a href="{{ route('family-tree') }}" title="">Pohon Keluarga</a></li>
              <li class="family-menu"><a href="{{ route('family') }}" title="">Silsilah</a></li>
              <li class="gallery-menu"><a href="{{ route('gallery') }}" title="">Galeri</a></li>
              <li class="activity-menu"><a href="{{ route('activity') }}" title="">Kegiatan</a></li>

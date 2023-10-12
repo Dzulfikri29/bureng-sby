@@ -90,7 +90,13 @@ class FamilyController extends Controller
             $model->name = $request->name;
             $model->profile = $request->profile;
             $model->gallery_id = $request->gallery_id;
+            $model->is_main = $request->is_main;
             $model->save();
+
+            if ($request->is_main) {
+                model::where('id', '!=', $model->id)
+                    ->update(['is_main' => 0]);
+            }
 
             $response = ['success' => true, 'message' => 'Family created successfully'];
             DB::commit();
@@ -163,7 +169,13 @@ class FamilyController extends Controller
             $model->name = $request->name;
             $model->profile = $request->profile;
             $model->gallery_id = $request->gallery_id;
+            $model->is_main = $request->is_main;
             $model->save();
+
+            if ($request->is_main) {
+                model::where('id', '!=', $model->id)
+                    ->update(['is_main' => 0]);
+            }
 
             $response = ['success' => true, 'message' => 'Family updated successfully'];
             DB::commit();

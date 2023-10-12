@@ -488,7 +488,7 @@
     </section>
     <section>
         <div class="w-100 pt-90 pb-235 position-relative">
-            <img class="sec-botm-rgt-mckp img-fluid position-absolute" src="assets/images/sec-botm-mckp.png" alt="Sec Bottom Mockup">
+            <img class="sec-botm-rgt-mckp img-fluid position-absolute" src="{{ asset('assets/images/sec-botm-mckp.png') }}" alt="Sec Bottom Mockup">
             <div class="container">
                 <div class="sec-title text-center w-100">
                     <div class="sec-title-inner d-inline-block">

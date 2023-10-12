@@ -24,6 +24,7 @@ Route::get('kegiatan/{slug}', [App\Http\Controllers\PageController::class, 'acti
 Route::get('silsilah', [App\Http\Controllers\PageController::class, 'family'])->name('family');
 Route::get('silsilah/{slug}', [App\Http\Controllers\PageController::class, 'family_detail'])->name('family-detail');
 Route::get('family-tree-data/{id}', [App\Http\Controllers\PageController::class, 'family_tree_data'])->name('family-tree-data');
+Route::get('pohon-keluarga', [App\Http\Controllers\PageController::class, 'family_tree'])->name('family-tree');
 
 Route::get('/tree', function () {
     return view('tree');
