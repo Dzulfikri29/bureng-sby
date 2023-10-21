@@ -18,7 +18,7 @@ $(document).on('ready', function () {
         },
         {
             data: "parent_name",
-            name: "parents.name",
+            name: "name",
         },
         {
             data: "action",

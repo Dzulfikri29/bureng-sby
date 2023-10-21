@@ -254,6 +254,34 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-4">
+                                    <label for="phone" class="form-label">{{ Str::headline('nomor telepon') }}</label>
+                                    <input type="text" class="form-control" id="phone" name="phone" value="">
+                                    <span class="form-text text-danger d-none validation-error-message" id="phone_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-4">
+                                    <label for="number" class="form-label">{{ Str::headline('nomor induk') }}</label>
+                                    <input type="text" class="form-control" id="number" name="number" value="">
+                                    <span class="form-text text-danger d-none validation-error-message" id="number_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-4">
+                                    <label for="address" class="form-label">{{ Str::headline('alamat') }}</label>
+                                    <input type="text" class="form-control" id="address" name="address" value="">
+                                    <span class="form-text text-danger d-none validation-error-message" id="address_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-4">
+                                    <label for="map_link" class="form-label">{{ Str::headline('link maps') }}</label>
+                                    <input type="text" class="form-control" id="map_link" name="map_link" value="">
+                                    <span class="form-text text-danger d-none validation-error-message" id="map_link_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-4">
                                     <label for="photo" class="form-label">{{ Str::headline('foto') }}</label>
                                     <input type="file" class="form-control" id="photo" name="photo" value="" accept="image/*">
                                     <span class="form-text text-danger d-none validation-error-message" id="photo_error"></span>

@@ -90,6 +90,10 @@ const edit_data = (id) => {
             $('#birth_date').val(res.birth_date);
             $('#death_date').val(res.death_date);
             $('#place_of_death').val(res.place_of_death);
+            $('#phone').val(res.phone);
+            $('#number').val(res.number);
+            $('#address').val(res.address);
+            $('#map_link').val(res.map_link);
             if (res.photo) {
                 $('#photo_preview').attr('src', `${base_url}/storage/${res.photo}`);
             } else {

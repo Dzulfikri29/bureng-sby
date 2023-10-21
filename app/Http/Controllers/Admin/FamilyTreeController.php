@@ -92,6 +92,10 @@ class FamilyTreeController extends Controller
             $model->birth_date = $request->birth_date;
             $model->death_date = $request->death_date;
             $model->place_of_death = $request->place_of_death;
+            $model->phone = $request->phone;
+            $model->number = $request->number;
+            $model->address = $request->address;
+            $model->map_link = $request->map_link;
             $model->save();
 
             if ($request->file('photo')) {
@@ -180,6 +184,10 @@ class FamilyTreeController extends Controller
             $model->birth_date = $request->birth_date;
             $model->death_date = $request->death_date;
             $model->place_of_death = $request->place_of_death;
+            $model->phone = $request->phone;
+            $model->number = $request->number;
+            $model->address = $request->address;
+            $model->map_link = $request->map_link;
             $model->save();
 
             if ($request->file('photo')) {
@@ -225,7 +233,7 @@ class FamilyTreeController extends Controller
         DB::beginTransaction();
         try {
             $model = model::findOrFail($id);
-            Storage::delete($model->photo);
+            Storage::delete($model->photo ?? '');
             $model->delete();
 
             $response = ['success' => true, 'message' => 'Family tree deleted successfully'];

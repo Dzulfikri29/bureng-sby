@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Family as model;
+use App\Models\FamilyTree;
 use DOMDocument;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -219,6 +220,10 @@ class FamilyController extends Controller
                 $src = str_replace(asset('storage/'), '', $src);
                 Storage::delete($src);
             }
+
+            $family_trees = FamilyTree::where('family_id', $model->id)->get();
+            Storage::delete($family_trees->pluck('image')->toArray());
+            $family_trees->each->delete();
             $model->delete();
 
             $response = ['success' => true, 'message' => 'Family deleted successfully'];

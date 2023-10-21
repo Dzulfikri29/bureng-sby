@@ -43,6 +43,10 @@
                                     <div class="col-md-6">
                                         <h2 class="">Pohon Keluarga</h2>
                                     </div>
+                                    <div class="col-md-6 text-right">
+                                        <button id="zoom-in" class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></button>
+                                        <button id="zoom-out" class="btn btn-success btn-sm"><i class="fas fa-search-minus"></i></button>
+                                    </div>
                                 </div>
                                 <svg class="tommy" style="position: fixed; top: -10000px; left: -10000px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:block;">
                                     <clipPath id="ulaImg">
@@ -53,6 +57,9 @@
                                     <text id="field_1" style="font-size: 8px;text-align:left" fill="#ffffff" x="65" y="35" text-anchor="start"></text>
                                     <text id="field_2" style="font-size: 8px;text-align:left" fill="#ffffff" x="65" y="45" text-anchor="start"></text>
                                     <text id="field_3" style="font-size: 8px;text-align:left" fill="#ffffff" x="65" y="55" text-anchor="start"></text>
+                                    <text id="field_4" style="font-size: 8px;text-align:left" fill="#ffffff" x="65" y="65" text-anchor="start"></text>
+                                    <text id="field_5" style="font-size: 8px;text-align:left" fill="#ffffff" x="65" y="75" text-anchor="start"></text>
+                                    <text id="field_6" style="font-size: 8px;text-align:left" fill="#ffffff" x="65" y="85" text-anchor="start"></text>
                                 </svg>
                                 <div id="tree"></div>
                             </div>
@@ -144,20 +151,26 @@
             FamilyTree.templates.myTemplate.field_1 = '<text class="content-text" style="font-size: 8px;text-align:left" fill="#ffffff" x="65" y="35" text-anchor="left">{val}</text>';
             FamilyTree.templates.myTemplate.field_2 = '<text class="content-text" style="font-size: 8px;text-align:left" fill="#ffffff" x="65" y="45" text-anchor="left">{val}</text>';
             FamilyTree.templates.myTemplate.field_3 = '<text class="content-text" style="font-size: 8px;text-align:left" fill="#ffffff" x="65" y="55" text-anchor="left">{val}</text>';
+            FamilyTree.templates.myTemplate.field_4 = '<text class="content-text" style="font-size: 8px;text-align:left" fill="#ffffff" x="65" y="65" text-anchor="left">{val}</text>';
+            FamilyTree.templates.myTemplate.field_5 = '<text class="content-text" style="font-size: 8px;text-align:left" fill="#ffffff" x="65" y="75" text-anchor="left">{val}</text>';
+            FamilyTree.templates.myTemplate.field_6 = '<text class="content-text" style="font-size: 8px;text-align:left" fill="#ffffff" x="65" y="85" text-anchor="left">{val}</text>';
             FamilyTree.templates.myTemplate.img_0 = imgTemplate;
 
             let family = new FamilyTree(document.getElementById("tree"), {
                 scaleInitial: FamilyTree.match.boundary,
                 nodeBinding: {
                     field_0: "name",
-                    field_1: "birth_date",
-                    field_2: "death_date",
-                    field_3: "place_of_death",
+                    field_1: "phone",
+                    field_2: "number",
+                    field_3: "address",
+                    field_4: "birth_date",
+                    field_5: "death_date",
+                    field_6: "place_of_death",
                     img_0: "img"
                 },
                 nodeMouseClick: FamilyTree.action.none,
                 template: 'myTemplate',
-                mouseScrool: FamilyTree.action.zoom,
+                mouseScrool: FamilyTree.action.none,
                 nodes: data,
                 zoom: {
                     speed: 120,
@@ -165,6 +178,18 @@
                 }
             });
 
+            // get the zoom in and zoom out buttons
+            var zoomInButton = document.getElementById("zoom-in");
+            var zoomOutButton = document.getElementById("zoom-out");
+
+            // bind the zoom method to the click event of the buttons
+            zoomInButton.addEventListener("click", function() {
+                family.zoom(1.2);
+            });
+
+            zoomOutButton.addEventListener("click", function() {
+                family.zoom(0.8);
+            });
 
             family.on('node-initialized', function(sender, args) {
                 var data = family._get(args.node.id);
@@ -173,22 +198,28 @@
 
                 if (data.name) {
                     document.getElementById('field_0').innerHTML = data.name;
-                    document.getElementById('field_1').innerHTML = data.birth_date;
-                    document.getElementById('field_2').innerHTML = data.death_date;
-                    document.getElementById('field_3').innerHTML = data.place_of_death;
+                    document.getElementById('field_1').innerHTML = data.phone;
+                    document.getElementById('field_2').innerHTML = data.number;
+                    document.getElementById('field_3').innerHTML = data.address;
+                    document.getElementById('field_4').innerHTML = data.birth_date;
+                    document.getElementById('field_5').innerHTML = data.death_date;
+                    document.getElementById('field_6').innerHTML = data.place_of_death;
                     document.getElementById('imageSvg').setAttribute('xlink:href', data.img);
 
                     var rect = document.getElementById('field_0').getBoundingClientRect();
                     var rect_1 = document.getElementById('field_1').getBoundingClientRect();
                     var rect_2 = document.getElementById('field_2').getBoundingClientRect();
                     var rect_3 = document.getElementById('field_3').getBoundingClientRect();
-                    var rect_4 = document.getElementById('imageSvg').getBoundingClientRect();
+                    var rect_4 = document.getElementById('field_4').getBoundingClientRect();
+                    var rect_5 = document.getElementById('field_5').getBoundingClientRect();
+                    var rect_6 = document.getElementById('field_6').getBoundingClientRect();
+                    var rect_7 = document.getElementById('imageSvg').getBoundingClientRect();
 
-                    var max_width = Math.max(rect.width, rect_1.width, rect_2.width, rect_3.width);
-                    args.node.w = rect_4.width + max_width + 20;
+                    var max_width = Math.max(rect.width, rect_1.width, rect_2.width, rect_3.width, rect_4.width, rect_5.width, rect_6.width);
+                    args.node.w = rect_7.width + max_width + 20;
 
-                    var content_height = rect.height + rect_1.height + rect_2.height + rect_3.height;
-                    var final_height = Math.max(content_height, rect_4.height);
+                    var content_height = rect.height + rect_1.height + rect_2.height + rect_3.height + rect_4.height + rect_5.height + rect_6.height;
+                    var final_height = Math.max(content_height, rect_7.height);
                     args.node.h = final_height + 20;
                 }
             });

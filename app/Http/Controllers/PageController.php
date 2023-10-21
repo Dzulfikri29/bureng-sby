@@ -186,7 +186,20 @@ class PageController extends Controller
     function family_tree_data($id)
     {
         $family_trees = FamilyTree::where('family_id', $id)
-            ->select('id', 'family_tree_id as mid', 'name', 'birth_date', 'death_date', 'place_of_death', 'photo')
+            ->select(
+                'id',
+                'family_tree_id as mid',
+                'name',
+                'birth_date',
+                'death_date',
+                'place_of_death',
+                'photo',
+                'phone',
+                'number',
+                'address',
+                'map_link'
+            )
+            ->orderBy('id')
             ->get();
 
         $family_trees = $family_trees->map(function ($item) {
@@ -209,6 +222,18 @@ class PageController extends Controller
                 $item->img = asset('storage/' . $item->photo);
             } else {
                 $item->img = asset('admin-assets/img/160x160/img1.jpg');
+            }
+
+            if ($item->phone) {
+                $item->phone = "Telepon {$item->phone}";
+            }
+
+            if ($item->number) {
+                $item->number = "Nomor Induk {$item->number}";
+            }
+
+            if ($item->address) {
+                $item->address = "Alamat <a href='{$item->map_link}' target='_blank'>{$item->address}</a>";
             }
             return $item;
         });
