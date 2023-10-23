@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\FamilyExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Family as model;
+use App\Models\Family;
 use App\Models\FamilyTree;
 use DOMDocument;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Image;
 use Yajra\DataTables\Facades\DataTables;
 use Str;
+use Excel;
 
 class FamilyController extends Controller
 {
@@ -46,6 +50,7 @@ class FamilyController extends Controller
                     $action['data'] = $row;
                     $action['edit'] = route("admin.$this->view_folder.edit", [$this->view_folder => $row->id]);
                     $action['delete'] = route("admin.$this->view_folder.destroy", [$this->view_folder => $row->id]);
+                    $action['export'] = route("family.get-data", ['slug' => $row->slug]);
                     $action['main'] = $this->view_folder;
 
                     return view('admin.component.action_button', $action);
@@ -372,5 +377,72 @@ class FamilyController extends Controller
                 return response()->json($response);
             }
         }
+    }
+
+    public function get_data($slug)
+    {
+        $family = Family::where('slug', $slug)->first();
+
+        // create familiy trees data
+        $family_trees = FamilyTree::where('family_id', $family->id)->get();
+        $parents = $family_trees->whereNull('family_tree_id');
+
+        $data = new Collection();
+        foreach ($parents as $parent) {
+            $data->push([
+                'id' => $parent->id,
+                'name' => $parent->name,
+                'slug' => $parent->slug,
+                'phone' => $parent->phone,
+                'address' => $parent->address,
+                'birth_date' => $parent->birth_date,
+                'children' => $this->get_children($parent),
+                'indent' => 1,
+            ]);
+        }
+
+        $flattened_array = $this->flatten_with_indent($data);
+
+        return Excel::download(new FamilyExport($flattened_array), 'family_' . $family->name . '.xlsx');
+    }
+
+    function get_children($family_tree)
+    {
+        $childrens = FamilyTree::where('family_tree_id', $family_tree->id)->get();
+        $data = new Collection();
+
+        $indent = 1;
+        foreach ($childrens as $children) {
+            $data->push([
+                'id' => $children->id,
+                'name' => $children->name,
+                'slug' => $children->slug,
+                'phone' => $children->phone,
+                'address' => $children->address,
+                'birth_date' => $children->birth_date,
+                'children' => $this->get_children($children),
+                'indent' => $indent++,
+            ]);
+        }
+
+        return $data;
+    }
+
+    function flatten_with_indent($arr, $depth = 0)
+    {
+        $flat_arr = array();
+        foreach ($arr as $item) {
+            if (is_array($item) && isset($item['children'])) {
+                $children = $item['children'];
+                unset($item['children']);
+                $item['indent'] = $depth;
+                $flat_arr[] = $item;
+                $flat_arr = array_merge($flat_arr, $this->flatten_with_indent($children, $depth + 1));
+            } else {
+                $item['indent'] = $depth;
+                $flat_arr[] = $item;
+            }
+        }
+        return $flat_arr;
     }
 }

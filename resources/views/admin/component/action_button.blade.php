@@ -15,13 +15,18 @@
     <div class="btn-group">
         <button type="button" class="btn btn-white btn-icon btn-sm dropdown-toggle dropdown-toggle-empty" id="productsEditDropdown1" data-bs-toggle="dropdown" aria-expanded="false"></button>
 
-        @if ($can_delete ?? true)
-            <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="productsEditDropdown1">
+        <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="productsEditDropdown1">
+            @if ($can_delete ?? true)
                 <a class="dropdown-item" href="javascript:;show_delete_confirmation('{{ $main }}', '{{ $delete }}')">
                     <i class="bi-trash dropdown-item-icon"></i> Delete
                 </a>
-            </div>
-        @endif
+            @endif
+            @if ($export ?? null)
+                <a class="dropdown-item" href="{{ $export }}" target="_blank">
+                    <i class="bi-save dropdown-item-icon"></i> Export
+                </a>
+            @endif
+        </div>
     </div>
     <!-- End Button Group -->
 </div>

@@ -63,6 +63,7 @@
                                     <div class="col-md-6 text-right">
                                         <button id="zoom-in" class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></button>
                                         <button id="zoom-out" class="btn btn-success btn-sm"><i class="fas fa-search-minus"></i></button>
+                                        <a class="btn btn-success btn-sm" href="{{ route('family.get-data', ['slug' => $family->slug]) }}"><i class="fas fa-download"></i></a>
                                     </div>
                                 </div>
                                 <svg class="tommy" style="position: fixed; top: -10000px; left: -10000px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:block;">

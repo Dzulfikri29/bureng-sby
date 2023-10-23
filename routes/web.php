@@ -86,4 +86,5 @@ Route::group(
 
 Auth::routes();
 
+Route::get('family-get-data/{slug}', [App\Http\Controllers\Admin\FamilyController::class, 'get_data'])->name('family.get-data');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

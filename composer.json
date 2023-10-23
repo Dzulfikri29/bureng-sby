@@ -15,7 +15,10 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
+        "maatwebsite/excel": "3.1.48",
         "orangehill/iseed": "^3.0",
+        "psr/simple-cache": "^1.0",
+        "spatie/laravel-html": "*",
         "spatie/laravel-sitemap": "^6.2",
         "yajra/laravel-datatables": "^9.0"
     },
