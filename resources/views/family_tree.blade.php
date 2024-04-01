@@ -119,7 +119,7 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('assets/js/familytree.js') }}"></script>
+    <script src="{{ asset('assets/js/familytree.js') }}?v=20"></script>
     <script>
         $('.family-tree-menu').addClass('active');
 

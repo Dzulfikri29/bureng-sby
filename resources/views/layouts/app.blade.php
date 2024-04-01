@@ -101,7 +101,7 @@
 
         function get_pray_time() {
             $.ajax({
-                url: "https://api.myquran.com/v1/sholat/jadwal/1638/{{ date('Y/m/d') }}",
+                url: "https://api.myquran.com/v2/sholat/jadwal/1638/{{ date('Y/m/d') }}",
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
